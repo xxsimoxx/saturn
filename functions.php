@@ -6,7 +6,7 @@
  */
 add_filter('github_updater_override_dot_org', function () {
     return [
-        // 'plugin-name/plugin-name.php', // plugin format
+        'wp-saturn/wp-saturn.php', // plugin format
         'saturn' // theme slug
     ];
 });
