@@ -14,17 +14,6 @@
                     <a href="<?php the_permalink(); ?>" class="supernova-blog-link"><?php the_title(); ?></a>
                     <span class="supernova-blog-meta">
                         <?php echo getSupernovaPostViews(get_the_ID()); ?>
-                        <?php if (function_exists('the_ratings')) {
-                            /*
-                            $average = get_post_meta(get_the_ID(), 'ratings_average', true);
-                            $score = get_post_meta(get_the_ID(), 'ratings_score', true);
-                            /**/
-                            $totalVotes = get_post_meta(get_the_ID(), 'ratings_users', true);
-                            $totalVotes = !empty($totalVotes) ? $totalVotes : 0;
-                            $totalVotesRatings = ((int) $totalVotes === 1) ? ' rating' : ' ratings';
-
-                            echo ' | ' . $totalVotes . $totalVotesRatings;
-                        } ?>
                     </span>
                     <?php echo get_the_category_list(); ?>
                 </h3>

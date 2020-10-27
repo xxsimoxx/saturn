@@ -311,11 +311,6 @@ function supernova_body_open() {
     if (!empty(get_option('tracking_gtm'))) {
         echo '<!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=' . get_option('tracking_gtm') . '" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->';
     }
-
-    // Detect IE (IE11 or below)
-    if (preg_match('~MSIE|Internet Explorer~i', $_SERVER['HTTP_USER_AGENT']) || preg_match('~Trident/7.0(; Touch)?; rv:11.0~',$_SERVER['HTTP_USER_AGENT'])) {
-        echo '<div class="unsupported-browser"><b>Unsupported Browser!</b> This website will offer limited functionality in this browser. We only support the recent versions of major browsers like Chrome, Firefox, Safari, and Edge.</div>';
-    }
 }
 
 add_action('wp_body_open', 'supernova_body_open');
@@ -410,7 +405,7 @@ add_shortcode('reusable', 'supernova_reusable_block_shortcode');
 function supernova_footer_signature() {
     $out = '<div class="footer-signature wrap">
         <small>
-            Crafted by <a href="https://www.4property.com/">4Property</a>. &copy;' . date('Y') . '. All rights reserved. <a href="' . wp_login_url() . '">Login</a>.&nbsp;';
+            Crafted by <a href="https://getbutterfly.com/">getButterfly</a>. &copy;' . date('Y') . '. All rights reserved.&nbsp;';
 
             $out .= wp_nav_menu([
                 'theme_location' => 'footer-menu',
@@ -459,25 +454,20 @@ function supernova_google_fonts() {
 /**
  * Register Custom Block Styles
  */
-function mels_patterns_register_block_patterns() {
-    //if ( function_exists( 'register_pattern' ) ) {
+function saturn_patterns_register_block_patterns() {
     /**
-    * Register block patterns
-    */register_block_pattern_category(
-    'hero',
-    array( 'label' => __( 'Hero', 'my-plugin' ) )
-);
+     * Register block patterns
+     */
+    register_block_pattern_category('hero', [
+        'label' => __('Hero', 'saturn')
+    ]);
 
-        register_block_pattern(
-            'mels-gutenberg-block-patterns/intro-two-columns',
-            array(
-                'title'   => __( 'Intro paragraph with two columns', 'mels-gutenberg-block-patterns' ),
-                'description' => _x( 'Two horizontal buttons, the left button is filled in, and the right button is outlined.', 'Block pattern description', 'wpdocs-my-plugin' ),
-                'categories' => ['hero'],
-                'keywords' => ['test'],
-                'content' => "<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column {\"width\":70} -->\n<div class=\"wp-block-column\" style=\"flex-basis:80%\"><!-- wp:paragraph {\"customFontSize\":28} -->\n<p style=\"font-size:28px\">Driving empathy maps and possibly surprise and delight. Target mobile-first design with the aim to build ROI.</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column -->\n\n<!-- wp:column {\"width\":33.33} -->\n<div class=\"wp-block-column\" style=\"flex-basis:33.33%\"></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->\n\n<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:paragraph -->\n<p>Informing innovation and then surprise and delight. Driving custom solutions and possibly think outside the box. Create awareness with a goal to funnel users. Lead relevant and engaging content with the possibility to infiltrate new markets.</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column -->\n\n<!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:paragraph -->\n<p>Amplifying innovation with the possibility to target the low hanging fruit. Consider dark social but innovate. Creating a holistic approach in order to be on brand. Leading empathy maps but be CMSable. Repurposing branding.</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->",
-            )
-        );
-    //}
+    register_block_pattern('saturn-gutenberg-block-patterns/intro-two-columns', [
+        'title' => __('Intro paragraph with two columns', 'saturn-gutenberg-block-patterns'),
+        'description' => _x('Two horizontal buttons, the left button is filled in, and the right button is outlined.', 'Block pattern description', 'saturn'),
+        'categories' => ['hero'],
+        'keywords' => ['test'],
+        'content' => "<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column {\"width\":70} -->\n<div class=\"wp-block-column\" style=\"flex-basis:80%\"><!-- wp:paragraph {\"customFontSize\":28} -->\n<p style=\"font-size:28px\">Driving empathy maps and possibly surprise and delight. Target mobile-first design with the aim to build ROI.</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column -->\n\n<!-- wp:column {\"width\":33.33} -->\n<div class=\"wp-block-column\" style=\"flex-basis:33.33%\"></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->\n\n<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:paragraph -->\n<p>Informing innovation and then surprise and delight. Driving custom solutions and possibly think outside the box. Create awareness with a goal to funnel users. Lead relevant and engaging content with the possibility to infiltrate new markets.</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column -->\n\n<!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:paragraph -->\n<p>Amplifying innovation with the possibility to target the low hanging fruit. Consider dark social but innovate. Creating a holistic approach in order to be on brand. Leading empathy maps but be CMSable. Repurposing branding.</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->",
+    ]);
 }
-add_action( 'init', 'mels_patterns_register_block_patterns' );
+add_action('init', 'saturn_patterns_register_block_patterns');

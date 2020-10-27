@@ -21,10 +21,6 @@ if (have_posts()): while (have_posts()): the_post(); ?>
                     yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
                 }
 
-                if (function_exists('the_ratings')) {
-                    the_ratings();
-                }
-
                 /**
                  * Jetpack sharing buttons
                  */

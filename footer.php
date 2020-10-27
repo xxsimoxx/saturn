@@ -20,12 +20,5 @@
 
 <?php wp_footer(); ?>
 
-<div class="shapes-bg skrollable skrollable-between" data-bottom-top="transform:translateY(300px);" data--100-end="transform:translateY(1000px);" style="transform: translateY(0px);">
-    <div class="shapes-wrap shapes-background-parallax" style="transform: translate3d(0px, 0px, 0px) rotate(0.0001deg); transform-style: preserve-3d; backface-visibility: hidden; position: relative; pointer-events: none;">
-        <div data-depth="0.30" class="shape-white layer" style="transform: translate3d(-17.8px, -11.7px, 0px) rotate(46deg); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"></div>
-        <div data-depth="0.20" class="shape-white-reverse layer" style="transform: translate3d(18.6px, -0.7px, 0px) rotate(46deg); transform-style: preserve-3d; backface-visibility: hidden; position: absolute; display: block; left: 0px; top: 0px;"></div>
-    </div>
-</div>
-
 </body>
 </html>

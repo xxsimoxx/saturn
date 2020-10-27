@@ -6,12 +6,6 @@
     box-sizing: border-box;
 }
 
-/*
-html {
-    overflow-y: scroll;
-}
-/**/
-
 body {
     font-family: var(--font_default);
     font-family: var(--body_font);
@@ -269,21 +263,6 @@ header nav ul li > a:not(:only-child):after {
     font-family: Helvetica, Arial, sans-serif;
 	opacity: 0.75;
 	content: ' \23F7';
-
-    /*
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-
-    -webkit-mask-image: url(../../img/icon-menu-down.svg);
-    mask-image: url(../../img/icon-menu-down.svg);
-    background-color: var(--header_menu_text_colour);
-
-    line-height: 1;
-    vertical-align: middle;
-    margin: 0 0 0 4px;
-    /**/
 }
 
 
@@ -365,23 +344,6 @@ header.header-sticky nav.nav-scrolled .custom-logo {
 
 
 
-/**
- * Sticky Header (floated)
- */
-/*
-header.header-floated nav {
-    top: 16px;
-    left: 16px;
-    right: 16px;
-}
-header.header-floated nav.nav-scrolled {
-    top: 0;
-    left: 0;
-    right: 0;
-}
-/**/
-
-
 
 /**
  * Sticky Header (padded)
@@ -438,9 +400,7 @@ header nav ul > li > ul {
     min-width: 240px;
     height: auto;
     border-radius: 2px;
-
-    -webkit-box-shadow: 0 16px 32px rgba(0, 0, 0, 0.10);
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.10);
 
     will-change: transform, opacity;
 }
@@ -456,10 +416,8 @@ header nav ul > li:hover > ul {
     display: block;
     margin: 0 0 0 0;
 
-    -webkit-animation-duration: 0.25s;
-            animation-duration: 0.25s;
-    -webkit-animation-name: slidein;
-            animation-name: slidein;
+    animation-duration: 0.25s;
+    animation-name: slidein;
 }
 
 header ul.sub-menu ul.sub-menu {
@@ -467,16 +425,6 @@ header ul.sub-menu ul.sub-menu {
     left: 240px;
 }
 
-@-webkit-keyframes slidein {
-    from {
-        opacity: 0;
-        margin: -16px 0 0 0;
-    }
-    to {
-        opacity: 1;
-        margin: 0 0 0 0;
-    }
-}
 @keyframes slidein {
     from {
         opacity: 0;
@@ -929,10 +877,7 @@ header nav .menu-item.menu-toggle {
 
 @media only screen and (max-width: 768px) {
     .flex-fixed .flex-item {
-        -webkit-box-flex: 1;
-        -webkit-flex: 1 1 auto;
-            -ms-flex: 1 1 auto;
-                flex: 1 1 auto;
+        flex: 1 1 auto;
     }
 
     .gallery .buttons {
@@ -1138,16 +1083,14 @@ iframe {
     height: 12px;
     background-color: #bdc3c7;
     border-radius: 100%;
-    -webkit-transform: scale(0.75);
-            transform: scale(0.75);
+    transform: scale(0.75);
     transition: all 0.25s ease;
     cursor: pointer;
 }
 .slider .slide-control li.active,
 .slider .slide-control li:hover {
     background-color: #7f8c8d;
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
 }
 
 
@@ -1274,13 +1217,10 @@ iframe {
     padding: 0 24px;
 }
 .flex-equal-width {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    flex: 1;
 }
 .flex-equal-width .flex-grid-item {
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
+    flex-basis: 100%;
 }
 .flex-small p {
     font-size: 15px;
