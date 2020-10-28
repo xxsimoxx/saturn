@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var sidebar = document.querySelector('#side-menu'),
             overlay = document.querySelector('#overlay');
 
-        if (event.target.className === 'side-menu-close') {
+        if (event.target.classList.contains('side-menu-close')) {
             event.preventDefault();
             sidebar.classList.toggle( "active" );
             overlay.classList.toggle( "active" );
