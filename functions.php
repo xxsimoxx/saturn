@@ -53,6 +53,7 @@ require_once 'includes/meta.php';
  * Custom post types
  */
 require_once 'includes/cpt-testimonials.php';
+require_once 'includes/cpt-slides.php';
 
 include 'modules/testimonials/testimonials.php';
 
