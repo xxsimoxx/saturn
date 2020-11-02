@@ -57,13 +57,18 @@ require_once 'includes/cpt-slides.php';
 
 include 'modules/testimonials/testimonials.php';
 
+// Saturn Module: Custom Post Types
+require_once 'includes/reviews.php';
+require_once 'includes/cpt-reviews.php';
+
 
 
 /**
- * Templates and template variables
+ * Templates, template variables and block patterns
  */
 require_once 'templates/blocks.php';
 require_once 'templates/header.php';
+require_once 'templates/patterns.php';
 
 
 
@@ -141,7 +146,8 @@ function supernova_enqueue() {
         wp_enqueue_style('google-fonts', supernova_google_fonts(), [], $version);
     }
 
-    wp_enqueue_style('supernova', get_stylesheet_directory_uri() . '/assets/css/main.css', [], $version);
+    wp_enqueue_style('saturn', get_stylesheet_directory_uri() . '/assets/css/main.css', [], $version);
+    wp_enqueue_style('patterns', get_stylesheet_directory_uri() . '/assets/css/patterns.css', [], $version);
 
     wp_enqueue_script('supernova-init', get_stylesheet_directory_uri() . '/js/init.js', [], $version, true);
 }
@@ -448,27 +454,3 @@ function supernova_google_fonts() {
 
     return $supernovaFonts;
 }
-
-
-
-
-/**
- * Register Custom Block Styles
- */
-function saturn_patterns_register_block_patterns() {
-    /**
-     * Register block patterns
-     */
-    register_block_pattern_category('hero', [
-        'label' => __('Hero', 'saturn')
-    ]);
-
-    register_block_pattern('saturn-gutenberg-block-patterns/intro-two-columns', [
-        'title' => __('Intro paragraph with two columns', 'saturn-gutenberg-block-patterns'),
-        'description' => _x('Two horizontal buttons, the left button is filled in, and the right button is outlined.', 'Block pattern description', 'saturn'),
-        'categories' => ['hero'],
-        'keywords' => ['test'],
-        'content' => "<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column {\"width\":70} -->\n<div class=\"wp-block-column\" style=\"flex-basis:80%\"><!-- wp:paragraph {\"customFontSize\":28} -->\n<p style=\"font-size:28px\">Driving empathy maps and possibly surprise and delight. Target mobile-first design with the aim to build ROI.</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column -->\n\n<!-- wp:column {\"width\":33.33} -->\n<div class=\"wp-block-column\" style=\"flex-basis:33.33%\"></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->\n\n<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:paragraph -->\n<p>Informing innovation and then surprise and delight. Driving custom solutions and possibly think outside the box. Create awareness with a goal to funnel users. Lead relevant and engaging content with the possibility to infiltrate new markets.</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column -->\n\n<!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:paragraph -->\n<p>Amplifying innovation with the possibility to target the low hanging fruit. Consider dark social but innovate. Creating a holistic approach in order to be on brand. Leading empathy maps but be CMSable. Repurposing branding.</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->",
-    ]);
-}
-add_action('init', 'saturn_patterns_register_block_patterns');

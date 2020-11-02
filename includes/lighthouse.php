@@ -60,3 +60,25 @@ function supernova_remove_pingback_url($output, $show) {
 
     return $output;
 }
+
+
+
+/**
+ * Remove Yoast SEO Social Profiles From All Users
+ */
+add_filter('user_contactmethods', 'saturn_remove_yoast_user_social');
+
+function saturn_remove_yoast_user_social ($contactmethods) {
+    unset($contactmethods['facebook']);
+    unset($contactmethods['instagram']);
+    unset($contactmethods['linkedin']);
+    unset($contactmethods['myspace']);
+    unset($contactmethods['pinterest']);
+    unset($contactmethods['soundcloud']);
+    unset($contactmethods['tumblr']);
+    unset($contactmethods['twitter']);
+    unset($contactmethods['youtube']);
+    unset($contactmethods['wikipedia']);
+
+    return $contactmethods;
+}

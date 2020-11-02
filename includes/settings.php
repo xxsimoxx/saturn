@@ -38,7 +38,21 @@ function saturn_settings() {
                 update_option('tracking_gtm', sanitize_text_field($_POST['tracking_gtm']));
                 update_option('google_fonts_api', sanitize_text_field($_POST['google_fonts_api']));
 
+                update_option('wppd_google_places_api', sanitize_text_field($_POST['wppd_google_places_api']));
+                update_option('wppd_google_place_id', sanitize_text_field($_POST['wppd_google_place_id']));
+
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
+            } else if (isset($_POST['import_reviews'])) {
+                $wppd_google_places_api = get_option('wppd_google_places_api');
+                $wppd_google_place_id = get_option('wppd_google_place_id');
+
+                if ((string) $wppd_google_places_api !== '' && (string) $wppd_google_place_id !== '') {
+                    wppd_import_reviews();
+
+                    echo '<div class="updated notice is-dismissible"><p>Reviews imported successfully!</p></div>';
+                } else {
+                    echo '<div class="updated notice is-dismissible"><p>Reviews not imported! Missing Google Places API or Place ID.</p></div>';
+                }
             }
             ?>
             <h3>Saturn Tools &amp; Integrations</h3>
@@ -125,6 +139,22 @@ function saturn_settings() {
                                 </p>
                             </td>
                         </tr>
+                        <tr>
+                            <th scope="row"><label for="wppd_google_places_api">Google Places API<br><small>Google Business Reviews</small></label></th>
+                            <td>
+                                <p>
+                                    <input type="text" name="wppd_google_places_api" value="<?php echo get_option('wppd_google_places_api'); ?>" class="regular-text">
+                                    <br><small>Google Places API Key</small>
+                                    <br><small>Get your <a href="https://console.cloud.google.com/home">Google API key</a>.</small>
+                                </p>
+                                <p>
+                                    <input type="text" name="wppd_google_place_id" value="<?php echo get_option('wppd_google_place_id'); ?>" class="regular-text">
+                                    <input type="submit" name="import_reviews" class="button button-secondary" value="Import Reviews">
+                                    <br><small>Google Place ID</small>
+                                    <br><small>Find your <a href="https://developers.google.com/places/place-id">Google Place ID</a>.</small>
+                                </p>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -164,6 +194,13 @@ function saturn_settings() {
 
                 update_option('heading_font', (string) $_POST['heading_font']);
                 update_option('body_font', (string) $_POST['body_font']);
+
+                // Flickity options
+                update_option('flickity_wrapAround', (int) $_POST['flickity_wrapAround']);
+                update_option('flickity_groupCells', (int) $_POST['flickity_groupCells']);
+                update_option('flickity_groupCellsValue', (int) $_POST['flickity_groupCellsValue']);
+                update_option('flickity_autoPlay', (int) $_POST['flickity_autoPlay']);
+                //
 
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
@@ -473,6 +510,32 @@ function saturn_settings() {
                                     <select name="body_font" id="body-font">
                                         <option value="0">Select a body font...</option>
                                     </select> Body (content, copy) font
+                                </p>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th scope="row"><label>Slider Settings</label></th>
+                            <td>
+                                <p>
+                                    <b>Flickity Options</b>
+                                </p>
+                                <p>
+                                    <input type="checkbox" id="flickity_wrapAround" name="flickity_wrapAround" value="1" <?php echo ((int) get_option('flickity_wrapAround') === 1) ? 'checked' : ''; ?>>
+                                    <label for="flickity_wrapAround"><code class="codor"><a href="https://flickity.metafizzy.co/options.html#wraparound">wrapAround</a></code> (bool)</label>
+                                    <br>
+                                    <input type="checkbox" id="flickity_groupCells" name="flickity_groupCells" value="1" <?php echo ((int) get_option('flickity_groupCells') === 1) ? 'checked' : ''; ?>>
+                                    <label for="flickity_groupCells"><code class="codor"><a href="https://flickity.metafizzy.co/options.html#groupcells">groupCells</a></code> (bool)</label>
+                                    <br>
+                                    <input type="number" id="flickity_groupCellsValue" name="flickity_groupCellsValue" placeholder="1" value="<?php echo (int) get_option('flickity_groupCellsValue'); ?>">
+                                    <label for="flickity_groupCellsValue"><code class="codor"><a href="https://flickity.metafizzy.co/options.html#groupcells">groupCells</a></code> (int)</label>
+                                    <br>
+                                    <input type="number" id="flickity_autoPlay" name="flickity_autoPlay" placeholder="3000" value="<?php echo (int) get_option('flickity_autoPlay'); ?>">
+                                    <label for="flickity_autoPlay">
+                                        <code class="codor"><a href="https://flickity.metafizzy.co/options.html#autoplay">autoPlay</a></code> (int, milliseconds)
+                                        <br><small>Uses <code class="codor">pauseAutoPlayOnHover: true</code></small>
+                                    </label>
                                 </p>
                             </td>
                         </tr>

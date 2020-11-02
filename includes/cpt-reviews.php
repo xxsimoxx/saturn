@@ -1,0 +1,56 @@
+<?php
+function wppd_cpt_reviews() {
+	$labels = [
+		'name'                  => 'Reviews',
+		'singular_name'         => 'Review',
+		'menu_name'             => 'Reviews',
+		'name_admin_bar'        => 'Review',
+		'archives'              => 'Review Archives',
+		'attributes'            => 'Review Attributes',
+		'parent_item_colon'     => 'Parent Review:',
+		'all_items'             => 'All Reviews',
+		'add_new_item'          => 'Add New Review',
+		'add_new'               => 'Add New',
+		'new_item'              => 'New Review',
+		'edit_item'             => 'Edit Review',
+		'update_item'           => 'Update Review',
+		'view_item'             => 'View Review',
+		'view_items'            => 'View Reviews',
+		'search_items'          => 'Search Review',
+		'not_found'             => 'Not found',
+		'not_found_in_trash'    => 'Not found in Trash',
+		'featured_image'        => 'Featured Image',
+		'set_featured_image'    => 'Set featured image',
+		'remove_featured_image' => 'Remove featured image',
+		'use_featured_image'    => 'Use as featured image',
+		'insert_into_item'      => 'Insert into review',
+		'uploaded_to_this_item' => 'Uploaded to this review',
+		'items_list'            => 'Reviews list',
+		'items_list_navigation' => 'Reviews list navigation',
+		'filter_items_list'     => 'Filter reviews list',
+	];
+	$args = [
+		'label'                 => 'Review',
+		'description'           => 'Reviews',
+		'labels'                => $labels,
+		'supports'              => ['title', 'editor', 'thumbnail', 'custom-fields'],
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 21,
+		'menu_icon'             => 'dashicons-format-quote',
+		'show_in_admin_bar'     => false,
+		'show_in_nav_menus'     => false,
+		'can_export'            => true,
+		'has_archive'           => false,
+		'exclude_from_search'   => true,
+		'publicly_queryable'    => true,
+		'rewrite'               => false,
+		'capability_type'       => 'post',
+		'show_in_rest'          => true,
+	];
+	register_post_type('review', $args);
+}
+
+add_action('init', 'wppd_cpt_reviews', 0);

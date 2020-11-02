@@ -1,3 +1,15 @@
+function supernovaGetContrast(hexcolor) {
+    hexcolor = hexcolor.replace('#', '');
+
+    return (parseInt(hexcolor, 16) > 0xffffff/2) ? 'black' : 'white';
+}
+function supernovaResetColorWell() {
+    this.style.backgroundColor = 'white';
+    this.style.color = 'black';
+}
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('repeater-add')) {
         /**
@@ -52,4 +64,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+
+    /**
+     * Color Well Vanilla JS
+     */
+    if (document.querySelector('.color-well')) {
+        [].forEach.call(document.querySelectorAll('.color-well'), function (colorWell) {
+            colorWell.style.backgroundColor = colorWell.value;
+            colorWell.style.color = supernovaGetContrast(colorWell.value);
+
+            colorWell.addEventListener('input', supernovaResetColorWell, false);
+            colorWell.addEventListener('click', supernovaResetColorWell, false);
+            colorWell.addEventListener('touch', supernovaResetColorWell, false);
+
+            colorWell.addEventListener('blur', function () {
+                this.style.backgroundColor = this.value;
+                this.style.color = supernovaGetContrast(this.value);
+            });
+        });
+    }
+
+
+
+    /**
+     * Thin UI Popovers
+     */
+    if (document.querySelector('[data-popover-target]')) {
+        // Create an array of all popover toggle buttons on the page
+        let popoverButtonsArray = [].slice.call(document.querySelectorAll('[data-popover-target]'));
+
+        // Assign toggle buttons to corosponding popover
+        popoverButtonsArray.forEach((currentValue, currentIndex, listObj) => {
+            let targetIdName = popoverButtonsArray[currentIndex].dataset.popoverTarget; // get the id from dataset
+            let targetPopover = document.getElementById(targetIdName); // get the element based on id
+            let targetCloseButton = targetPopover.querySelector('.thin-ui-popover-close-button'); // popover close icon
+
+            // Assign all the buttons to open and close their popovers
+            popoverButtonsArray[currentIndex].addEventListener('click', () => {
+                // Hide other popovers
+                let popoverTriggers = document.querySelectorAll('.thin-ui-popover');
+                [].forEach.call(popoverTriggers, function (el) {
+                    el.classList.add('hide');
+                });
+
+                targetPopover.classList.toggle('hide');
+            });
+
+            // Make the close icon close the popover
+            targetCloseButton.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                targetPopover.classList.toggle('hide');
+            });
+        });
+    }
 });
