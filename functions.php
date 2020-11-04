@@ -61,6 +61,10 @@ include 'modules/testimonials/testimonials.php';
 require_once 'includes/reviews.php';
 require_once 'includes/cpt-reviews.php';
 
+// Saturn Module: Saturn Slider
+require_once 'blocks/slider/index.php';
+require_once 'modules/slider/slider.php';
+
 
 
 /**
@@ -115,6 +119,7 @@ function is_post_type($type) {
 add_action('admin_enqueue_scripts', 'supernova_admin_scripts');
 function supernova_admin_scripts() {
     wp_enqueue_style('supernova', get_stylesheet_directory_uri() . '/assets/css/admin.css', ['wp-codemirror']);
+    wp_enqueue_style('thin-ui', get_stylesheet_directory_uri() . '/assets/css/thin-ui.css', [], '2.0.0');
 
     wp_enqueue_script('supernova', get_stylesheet_directory_uri() . '/js/supernova.js', ['wp-theme-plugin-editor'], false, true);
 

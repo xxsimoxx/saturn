@@ -81,6 +81,69 @@
     font-size: 14px;
 }
 
+.codor {
+    font-family: "Cascadia Code", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    font-weight: 400;
+    font-size: 13px;
+
+    padding: 0 2px;
+    margin: 0 1px;
+    background: transparent;
+    color: #0366d6;
+}
+small .codor {
+    font-size: 11px;
+}
+
+
+
+.nav-tab span {
+    vertical-align: top;
+    border-radius: 2px;
+    padding: 2px 4px;
+    font-weight: 400;
+    font-size: 9px;
+    color: #ffffff;
+}
+.nav-tab span.new {
+    background-color: #1abc9c;
+}
+.nav-tab span.themes {
+    background-color: #9b59b6;
+}
+.nav-tab span.admin {
+    background-color: #c0392b;
+}
+
+
+
+.color-well {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    width: 96px;
+}
+
+
+
+.wp-block[aria-label="Block: Supernova Slider"],
+.wp-block[data-type="wppd/footer-signature"] {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 12px;
+    background-color: #eaf5ff;
+    color: #0366d6;
+    padding: 24px;
+    cursor: default;
+}
+.wp-block[data-type="wppd/footer-signature"]:after {
+    content: "WP Saturn Shortcode Block";
+    position: absolute;
+    left: auto;
+    right: 6px;
+    top: 6px;
+    font-size: 12px;
+    color: #999999;
+}
+
+
 
 
 .CodeMirror {

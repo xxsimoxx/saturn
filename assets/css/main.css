@@ -132,7 +132,7 @@ header.wrap nav {
 .single-post .wrap-inner.wrap-inner-has-sidebar {
     max-width: var(--content_width);
 }
-.single-post .wrap-inner.wrap-inner-has-sidebar .col-4 {
+.single-post .wrap-inner.wrap-inner-has-sidebar .thin-ui-col-4 {
     padding-left: 48px;
 }
 .single-post .wrap-inner p {

@@ -90,32 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Thin UI Popovers
      */
-    if (document.querySelector('[data-popover-target]')) {
-        // Create an array of all popover toggle buttons on the page
-        let popoverButtonsArray = [].slice.call(document.querySelectorAll('[data-popover-target]'));
-
-        // Assign toggle buttons to corosponding popover
-        popoverButtonsArray.forEach((currentValue, currentIndex, listObj) => {
-            let targetIdName = popoverButtonsArray[currentIndex].dataset.popoverTarget; // get the id from dataset
-            let targetPopover = document.getElementById(targetIdName); // get the element based on id
-            let targetCloseButton = targetPopover.querySelector('.thin-ui-popover-close-button'); // popover close icon
-
-            // Assign all the buttons to open and close their popovers
-            popoverButtonsArray[currentIndex].addEventListener('click', () => {
-                // Hide other popovers
-                let popoverTriggers = document.querySelectorAll('.thin-ui-popover');
-                [].forEach.call(popoverTriggers, function (el) {
-                    el.classList.add('hide');
-                });
-
-                targetPopover.classList.toggle('hide');
-            });
-
-            // Make the close icon close the popover
-            targetCloseButton.addEventListener('click', (event) => {
+    if (document.querySelector('button[name="popover"]')) {
+        [].forEach.call(document.querySelectorAll('button[name="popover"]'), (popover) => {
+            popover.addEventListener('click', (event) => {
                 event.preventDefault();
-
-                targetPopover.classList.toggle('hide');
             });
         });
     }

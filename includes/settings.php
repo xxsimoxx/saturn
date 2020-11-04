@@ -409,21 +409,17 @@ function saturn_settings() {
                             <th scope="row"><label>External Stylesheets</label></th>
                             <td>
                                 <p>Any URL's added here will be added as <code>&lt;link&gt;s</code> in order, and before the CSS in the editor.</p>
-                                <p>
-                                    <span data-popover-target="popover-examples" class="thin-ui-button thin-ui-button-secondary thin-ui-button-mini">&#129300; See Examples</span>
-                                </p>
-                                <div class="thin-ui-popover hide" data-popover="top" id="popover-examples">
-                                    <button class="thin-ui-popover-close-button" aria-label="Close">
-                                        <span aria="hidden">❌</span>
-                                    </button>
+
+                                <label class="thin-ui-popover">
+                                    <button name="popover" class="button button-secondary">&#129300; See Examples</button>
                                     <div class="thin-ui-popover-body">
-                                        <p>Example resource URL:</p>
+                                        <h3>Example resource URL:</h3>
                                         <p>
                                             1. <code>https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&amp;display=swap</code><br>
                                             2. <code>https://cdn.example.com/fonts/brandon-grotesque.css</code>
                                         </p>
                                     </div>
-                                </div>
+                                </label>
 
                                 <div id="repeater-fields">
                                     <?php
