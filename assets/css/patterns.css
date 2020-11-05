@@ -42,3 +42,75 @@
     font-size: 15px;
     padding: 14px 32px;
 }
+
+
+
+/**
+ * Advanced Intro #1
+ */
+.wp-block-columns.saturn-advanced-intro-1,
+.wp-block-columns.saturn-advanced-intro-1 .wp-block-column {
+    position: relative;
+}
+.wp-block-columns.saturn-advanced-intro-1 .wp-block-column:first-child {
+    font-weight: 300;
+    line-height: 1.5;
+}
+.wp-block-columns.saturn-advanced-intro-1 .wp-block-column:first-child:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 24px;
+    height: 3px;
+    background-color: #8E8E8E;
+}
+.wp-block-columns.saturn-advanced-intro-1 .wp-block-column:first-child:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 64px;
+    background-color: #8E8E8E;
+}
+.wp-block-columns.saturn-advanced-intro-1 .wp-block-column:last-child {
+    line-height: 2;
+    font-weight: 300;
+    padding: 0 24px;
+}
+
+
+
+/**
+ * Special Title
+ */
+.special-title {
+    position: relative;
+    margin-bottom: 2rem;
+	font-size: 45px;
+	font-weight: 300;
+    line-height: 1.1;
+}
+.special-title small {
+	color: #8E8E8E;
+    display: block;
+    font-size: 1rem;
+    margin-top: 1rem;
+    letter-spacing: 3px;
+	margin-bottom: 0;
+	text-transform: uppercase;
+}
+.special-title::after {
+    transform: translateX(50%);
+}
+.special-title::after {
+    content: '';
+    display: block;
+    width: 100%;
+    position: relative;
+    border-left: 1px solid #8E8E8E;
+    height: 3em;
+    max-height: 7rem;
+    margin-top: 1rem;
+}
