@@ -94,9 +94,6 @@ function simple_slider_helper($ids, $mobileIds, $height, $zoom, $fullheight, $fu
                     }
                     $hero = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), $heroSize);
                     $hero = $hero[0];
-                    if ((string) get_post_meta(get_the_ID(), '_hero_property_image', true) !== '') {
-                        $hero = get_post_meta(get_the_ID(), '_hero_property_image', true);
-                    }
 
                     $dataVideo = '';
                     $slideContent = do_shortcode(get_the_content(get_the_ID()));
@@ -120,64 +117,4 @@ function simple_slider_helper($ids, $mobileIds, $height, $zoom, $fullheight, $fu
     </div>';
 
     return $out;
-}
-
-
-
-function show_flickity_gallery($propertyId) {
-    $imageArray = get_post_meta($propertyId, 'detail_images_array', true);
-    $imageArray = array_map('trim', explode(',', $imageArray));
-    $imageArray = array_filter($imageArray);
-
-    $imageTitle = get_the_title($propertyId);
-
-    $wrapAround = ((int) get_option('flickity_wrapAround') === 1) ? 'true' : 'false';
-    $groupCells = ((int) get_option('flickity_groupCells') === 1) ? 'true' : 'false';
-    $groupCellsValue = ((int) get_option('flickity_groupCellsValue') > 0) ? (int) get_option('flickity_groupCellsValue') : 'false';
-    $autoPlay = ((int) get_option('flickity_autoPlay') > 0) ? (int) get_option('flickity_autoPlay') : 'false';
-
-    $out = '<div class="flickity-carousel supernova-fullwidth" data-flickity=\'{ "contain": true, "imagesLoaded": true, "adaptiveHeight": false, "lazyLoad": true, "pageDots": false, "wrapAround": ' . $wrapAround . ', "groupCells": ' . $groupCells . ', "groupCells": ' . $groupCellsValue . ', "fullscreen": true, "autoplay": ' . $autoPlay . ' }\'>';
-        foreach ($imageArray as $imageUri) {
-            $imageUri = wppd_image_downsize($imageUri, false, ['h' => '720']);
-
-            $out .= '<div class="carousel-cell">
-                <img loading="eager" src="' . $imageUri . '" height="480" alt="' . $imageTitle . '" title="' . $imageTitle . '">
-            </div>';
-        }
-    $out .= '</div>';
-
-    echo $out;
-}
-
-function show_flickity_parsley_gallery($propertyId) {
-    $imageArray = get_post_meta($propertyId, 'detail_images_array', true);
-    $imageArray = array_map('trim', explode(',', $imageArray));
-    $imageArray = array_filter($imageArray);
-
-    $imageTitle = get_the_title($propertyId);
-
-    $autoPlay = ((int) get_option('flickity_autoPlay') > 0) ? (int) get_option('flickity_autoPlay') : 'false';
-
-    $out = '<div class="flickity-carousel-parsley--wrap">';
-
-    $out .= '<div class="flickity-carousel flickity-carousel-parsley supernova-fullwidth" data-flickity=\'{ "contain": true, "imagesLoaded": true, "adaptiveHeight": false, "lazyLoad": true, "pageDots": false, "wrapAround": true, "groupCells": true, "groupCells": 1, "fullscreen": true, "autoplay": ' . $autoPlay . ' }\'>';
-        foreach ($imageArray as $imageUri) {
-            $imageUri = wppd_remove_var($imageUri, 'w');
-            $imageUri = wppd_remove_var($imageUri, 'h');
-            $imageUri = wppd_add_var($imageUri, 'w', '1920');
-            $imageUri = wppd_add_var($imageUri, 'h', '1440');
-
-            $out .= '<div class="carousel-cell">
-                <img loading="eager" src="' . $imageUri . '" height="720" alt="' . $imageTitle . '" title="' . $imageTitle . '">
-            </div>';
-        }
-    $out .= '</div>';
-    $out .= '<div class="flickity-carousel-parsley--elements">
-        <ul>
-            <li class="flickity-view-fullscreen--wrap"><a href="#" id="flickity-view-fullscreen">Gallery</a></li>
-            <li>' . get_map_modal($propertyId) . '</li>
-    </div>';
-    $out .= '</div>';
-
-    echo $out;
 }

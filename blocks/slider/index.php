@@ -17,7 +17,7 @@ add_filter('block_categories', 'supernova_plugin_block_categories', 10, 2);
 function supernova_block_enqueue_block_editor_assets() {
     wp_enqueue_script(
         'supernova-slider-block-script',
-        plugins_url('supernova-slider-block.js', __FILE__),
+        get_stylesheet_directory_uri() . '/blocks/slider/supernova-slider-block.js',
         ['wp-blocks', 'wp-element', 'wp-i18n', 'wp-editor', 'wp-components']
     );
 }

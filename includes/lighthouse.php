@@ -10,9 +10,6 @@ function supernova_disable_emojis_tinymce($plugins) {
 add_action('init', 'supernova_init', 3);
 
 function supernova_init() {
-    remove_action('set_comment_cookies', 'wp_set_comment_cookies');
-    remove_filter('the_content', 'prepend_attachment');
-
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('wp_print_styles', 'print_emoji_styles');
     remove_action('admin_print_scripts', 'print_emoji_detection_script');
@@ -37,29 +34,6 @@ global $wp_taxonomies;
 
 unset($wp_taxonomies['link_category']);
 unset($wp_taxonomies['post_format']);
-
-remove_filter('the_title', 'capital_P_dangit', 11);
-remove_filter('the_content', 'capital_P_dangit', 11);
-remove_filter('comment_text', 'capital_P_dangit', 31);
-
-remove_action('do_pings', 'do_all_pings');
-add_filter('bloginfo_url', 'supernova_remove_pingback_url', 10, 2);
-add_filter('wp_headers', 'supernova_remove_x_pingback');
-
-add_filter('use_default_gallery_style', '__return_false');
-
-function supernova_remove_x_pingback($headers) {
-    unset($headers['X-Pingback']);
-
-    return $headers;
-}
-function supernova_remove_pingback_url($output, $show) {
-    if ($show == 'pingback_url') {
-        $output = '';
-    }
-
-    return $output;
-}
 
 
 

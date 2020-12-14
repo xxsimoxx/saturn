@@ -759,14 +759,14 @@ function saturn_settings() {
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
-            <h3>GDPR Settings</h3>
+            <h3>GDPR/Privacy Policy Settings</h3>
 
             <form method="post" action="">
-                <p>Let the user know about your Privacy Policy with a short consent request.</p>
+                <p>Let the user know about your <b>GDPR/Privacy Policy</b> with a floating bottom right element.</p>
                 <table class="form-table">
                     <tbody>
                         <tr>
-                            <th scope="row"><label>GDPR Privacy Policy</label></th>
+                            <th scope="row"><label>GDPR/Privacy Policy</label></th>
                             <td>
                                 <p>
                                     <?php
@@ -781,7 +781,7 @@ function saturn_settings() {
                                         'selected' => $privacy_policy_page_id
                                     ]);
                                     ?>
-                                    <br><small>This is the GDPR Privacy Policy page.</small>
+                                    <br><small>This is the GDPR/Privacy Policy page.</small>
                                 </p>
                             </td>
                         </tr>

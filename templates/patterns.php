@@ -1,6 +1,9 @@
 <?php
 /**
  * Register Custom Block Styles
+ *
+ * https://wordpress.com/blog/2020/10/28/introducing-patterns/
+ *
  */
 function saturn_patterns_register_block_patterns() {
     /**
