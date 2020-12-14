@@ -13,26 +13,3 @@
  * @source https://unpkg.com/flickity-fullscreen@1.1.1/fullscreen.js
  */
 !function(e,t){"function"==typeof define&&define.amd?define(["flickity/js/index"],t):"object"==typeof module&&module.exports?module.exports=t(require("flickity")):t(e.Flickity)}(window,function(e){"use strict";function t(e,t){this.name=e,this.createButton(),this.createIcon(),this.onClick=function(){t[e+"Fullscreen"]()},this.clickHandler=this.onClick.bind(this)}function i(e){return e[0].toUpperCase()+e.slice(1)}e.createMethods.push("_createFullscreen");var n=e.prototype;n._createFullscreen=function(){this.isFullscreen=!1,this.options.fullscreen&&(this.viewFullscreenButton=new t("view",this),this.exitFullscreenButton=new t("exit",this),this.on("activate",this._changeFullscreenActive),this.on("deactivate",this._changeFullscreenActive))},n._changeFullscreenActive=function(){var e=this.isActive?"appendChild":"removeChild";this.element[e](this.viewFullscreenButton.element),this.element[e](this.exitFullscreenButton.element);var t=this.isActive?"activate":"deactivate";this.viewFullscreenButton[t](),this.exitFullscreenButton[t]()},n.viewFullscreen=function(){this._changeFullscreen(!0),this.focus()},n.exitFullscreen=function(){this._changeFullscreen(!1)},n._changeFullscreen=function(e){if(this.isFullscreen!=e){this.isFullscreen=e;var t=e?"add":"remove";document.documentElement.classList[t]("is-flickity-fullscreen"),this.element.classList[t]("is-fullscreen"),this.resize(),this.isFullscreen&&this.reposition(),this.dispatchEvent("fullscreenChange",null,[e])}},n.toggleFullscreen=function(){this._changeFullscreen(!this.isFullscreen)};var s=n.setGallerySize;n.setGallerySize=function(){this.options.setGallerySize&&(this.isFullscreen?this.viewport.style.height="":s.call(this))},e.keyboardHandlers[27]=function(){this.exitFullscreen()},t.prototype.createButton=function(){var e=this.element=document.createElement("button");e.className="flickity-button flickity-fullscreen-button flickity-fullscreen-button-"+this.name,e.setAttribute("type","button");var t=i(this.name+" full-screen");e.setAttribute("aria-label",t),e.title=t};var l="http://www.w3.org/2000/svg",c={view:"M15,20,7,28h5v4H0V20H4v5l8-8Zm5-5,8-8v5h4V0H20V4h5l-8,8Z",exit:"M32,3l-7,7h5v4H18V2h4V7l7-7ZM3,32l7-7v5h4V18H2v4H7L0,29Z"};return t.prototype.createIcon=function(){var e=document.createElementNS(l,"svg");e.setAttribute("class","flickity-button-icon"),e.setAttribute("viewBox","0 0 32 32");var t=document.createElementNS(l,"path"),i=c[this.name];t.setAttribute("d",i),e.appendChild(t),this.element.appendChild(e)},t.prototype.activate=function(){this.element.addEventListener("click",this.clickHandler)},t.prototype.deactivate=function(){this.element.removeEventListener("click",this.clickHandler)},e.FullscreenButton=t,e});
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Workaround for Microsoft Edge Legacy
-    if (document.querySelector('.slide video')) {
-        document.querySelector('.slide video').play();
-    }
-
-
-
-    /**
-     * Flickity (Parsley) carousel fullscreen toggle
-     */
-    if (document.getElementById('flickity-view-fullscreen')) {
-        document.getElementById('flickity-view-fullscreen').addEventListener('click', function (event) {
-            event.preventDefault();
-
-            let flkty = new Flickity('.flickity-carousel-parsley', {
-                fullscreen: true
-            });
-            flkty.viewFullscreen();
-        });
-    }
-}, false);

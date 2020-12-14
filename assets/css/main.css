@@ -11,7 +11,7 @@ body {
     font-family: var(--body_font);
     position: relative;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.75;
     color: #2c3e50;
     color: var(--body-text);
     background-color: #ffffff;
@@ -134,9 +134,6 @@ header.wrap nav {
 }
 .single-post .wrap-inner.wrap-inner-has-sidebar .thin-ui-col-4 {
     padding-left: 48px;
-}
-.single-post .wrap-inner p {
-    font-size: 16px;
 }
 
 header.wrap nav,
@@ -1433,10 +1430,20 @@ figure {
 
 
 
+
+.wp-block-media-text__media,
+.wp-block-image {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-perspective: 800px;
+    perspective: 800px;
+}
+
 .animation {
     opacity: 0;
     transform: translateY(-2rem);
-    transition: opacity 1s, transform 1.3s;
+    transition: opacity 1s cubic-bezier(0.175, 0.885, 0.320, 1.075);
 }
 .animated {
     opacity: 1;

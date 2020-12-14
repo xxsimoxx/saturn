@@ -91,11 +91,13 @@
 	font-size: 45px;
 	font-weight: 300;
     line-height: 1.1;
+    letter-spacing: -0.04em;
 }
 .special-title small {
 	color: #8E8E8E;
     display: block;
     font-size: 1rem;
+    font-weight: 400;
     margin-top: 1rem;
     letter-spacing: 3px;
 	margin-bottom: 0;
