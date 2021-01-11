@@ -338,10 +338,7 @@ function saturn_settings() {
                                     <select name="header_type" id="header-type">
                                         <option value="0">Select a navigation bar type...</option>
                                         <option value="1" <?php if ((int) get_option('header_type') === 1) echo 'selected'; ?>>Top navigation bar</option>
-                                        <option value="3" <?php if ((int) get_option('header_type') === 3) echo 'selected'; ?>>Sticky (overlaid) navigation bar</option>
-                                        <option value="5" <?php if ((int) get_option('header_type') === 5) echo 'selected'; ?>>Sticky (overlaid, floated) navigation bar</option>
-                                        <option value="6" <?php if ((int) get_option('header_type') === 6) echo 'selected'; ?>>Sticky (overlaid, floated, transparent) navigation bar</option>
-                                        <option value="7" <?php if ((int) get_option('header_type') === 7) echo 'selected'; ?>>Sticky (overlaid, floated, transparent, forced white) navigation bar</option>
+                                        <option value="2" <?php if ((int) get_option('header_type') === 2) echo 'selected'; ?>>Sticky (overlaid, modern) navigation bar</option>
                                     </select>
                                     <label> with </label>
                                     <select name="navicon_type" id="navicon_type">

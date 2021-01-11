@@ -317,28 +317,12 @@ header .custom-logo-link {
 /**
  * Sticky Header
  */
-header.header-sticky nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 29;
-
+header nav {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
 
-    border-bottom: 0;
     padding: 8px 24px 8px 24px;
 
-    will-change: transform;
-
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    transition: all 0.3s;
 }
-header.header-sticky nav.nav-scrolled .custom-logo {
-    max-height: 60px;
-}
-
 
 
 
@@ -365,20 +349,24 @@ header.header-rounded nav .sub-menu {
 }
 
 
+.header-sticky-modern {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.header-sticky-modern,
+.header-sticky-modern nav {
+    will-change: transform;
 
-/**
- * Sticky Header (floated, transparent)
- */
-header.header-sticky.header-transparent nav:not(.nav-scrolled),
-.page-template-page-landing header.header-sticky.header-transparent-forced-white nav:not(.nav-scrolled) {
-    box-shadow: none;
-    background-color: transparent;
+    backface-visibility: hidden;
+    transition: all 0.25s ease-in-out;
 }
-.page-template-page-landing header.header-sticky.header-transparent-forced-white nav:not(.nav-scrolled) > ul:not(.sub-menu) > li:not(.current_page_item) > a {
-    color: #ffffff;
-}
-.page-template-page-landing header.header-sticky.header-transparent-forced-white nav:not(.nav-scrolled) > ul:not(.sub-menu) > li:not(.current_page_item) > a:hover {
-    color: var(--header_menu_hover_colour);
+
+header.header-sticky-modern nav,
+header.header-sticky-modern nav.nav-scrolled {
+    top: auto;
+    left: auto;
+    right: auto;
 }
 
 

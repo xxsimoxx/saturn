@@ -35,19 +35,7 @@ function get_supernova_header() {
             $headerClass = 'header-top';
             break;
         case 2:
-            $headerClass = '';
-            break;
-        case 3:
-            $headerClass = 'header-sticky';
-            break;
-        case 5:
-            $headerClass = 'header-sticky header-floated';
-            break;
-        case 6:
-            $headerClass = 'header-sticky header-floated header-transparent';
-            break;
-        case 7:
-            $headerClass = 'header-sticky header-floated header-transparent-forced-white';
+            $headerClass = 'header-sticky-modern';
             break;
     }
 
