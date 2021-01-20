@@ -3,6 +3,8 @@ add_action('admin_menu', 'saturn_settings_menu');
 
 function saturn_settings_menu() {
     add_menu_page('Saturn', 'Saturn', 'manage_options', 'saturn-settings', 'saturn_settings', 'dashicons-star-filled', 4);
+
+    add_menu_page('Reusable Blocks', 'Reusable Blocks', 'edit_posts', 'edit.php?post_type=wp_block', '', 'dashicons-editor-table', 22);
 }
 
 function saturn_settings() {
@@ -56,58 +58,6 @@ function saturn_settings() {
             }
             ?>
             <h3>Saturn Tools &amp; Integrations</h3>
-
-            <p>We recommend installing the following battle-tested plugins to add new features or improve existing theme functionality.</p>
-            <?php
-            $recommendedPlugins = [
-                [
-                    'name' => 'Yoast SEO',
-                    'slug' => 'wordpress-seo',
-                    'file' => 'wordpress-seo/wp-seo.php'
-                ],
-        		[
-        			'name' => 'Yoast Duplicate Post',
-        			'slug' => 'duplicate-post',
-        			'file' => 'duplicate-post/postman-smtp.php'
-        		],
-                [
-        			'name' => 'CMS Tree Page View',
-        			'slug' => 'cms-tree-page-view',
-                    'file' => 'cms-tree-page-view/index.php'
-        		],
-        		[
-        			'name' => 'Intuitive Custom Post Order',
-        			'slug' => 'intuitive-custom-post-order',
-        			'file' => 'intuitive-custom-post-order/intuitive-custom-post-order.php'
-        		],
-        		[
-        			'name' => 'Post SMTP Mailer/Email Log',
-        			'slug' => 'post-smtp',
-        			'file' => 'post-smtp/postman-smtp.php'
-        		],
-        		[
-        			'name' => 'Block for Font Awesome',
-        			'slug' => 'block-for-font-awesome',
-        			'file' => 'block-for-font-awesome/block-for-font-awesome.php'
-        		],
-        		[
-        			'name' => 'Jetpack – WP Security, Backup, Speed, & Growth',
-        			'slug' => 'jetpack',
-        			'file' => 'jetpack/jetpack.php'
-        		],
-            ];
-
-            supernova_register_required_plugins($recommendedPlugins);
-            ?>
-
-            <p>
-                <small>
-                    ✔️ - Installed and active<br>
-                    ✖️ - Installed and inactive<br>
-                    ❌ - Not installed
-                </small>
-            </p>
-            <hr>
 
             <form method="post" action="">
                 <table class="form-table">
@@ -614,6 +564,8 @@ function saturn_settings() {
                 update_option('supernova_side_panel_modal', (int) $_POST['supernova_side_panel_modal']);
                 update_option('supernova_side_panel_block_id', (int) $_POST['supernova_side_panel_block_id']);
 
+                update_option('use_leaflet', (int) $_POST['use_leaflet']);
+
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
@@ -741,6 +693,16 @@ function saturn_settings() {
                                     echo '</select>
                                     <br><small><a href="' . admin_url('edit.php?post_type=wp_block') . '">Select your side panel reusable block or create one now</a>.</small>';
                                     ?>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>LeafletJS</label></th>
+                            <td>
+                                <p>
+                                    <input type="checkbox" id="use_leaflet" name="use_leaflet" value="1" <?php echo ((int) get_option('use_leaflet') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_leaflet">Use LeafletJS</label>
+                                    <br><small>Use LeafletJS library for OpenStreetMap maps.</small>
                                 </p>
                             </td>
                         </tr>

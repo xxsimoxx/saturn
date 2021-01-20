@@ -1,4 +1,66 @@
 <?php
+require_once get_template_directory() . '/classes/class-tgm-plugin-activation.php';
+
+add_action('tgmpa_register', 'saturn_tgmpa_register_required_plugins');
+
+function saturn_tgmpa_register_required_plugins() {
+    $plugins = [
+		// This is an example of how to include a plugin bundled with a theme.
+        /*
+		[
+			'name' => 'TGM Example Plugin', // The plugin name.
+			'slug' => 'tgm-example-plugin', // The plugin slug (typically the folder name).
+			'source' => get_template_directory() . '/lib/plugins/tgm-example-plugin.zip', // The plugin source.
+			'required' => true, // If false, the plugin is only 'recommended' instead of required.
+			'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+			'external_url' => '', // If set, overrides default API URL and points to an external URL.
+			'is_callable' => '', // If set, this callable will be be checked for availability to determine if a plugin is active.
+		],
+        /**/
+
+		[
+			'name' => 'GitHub Updater',
+			'slug' => 'github-updater',
+            'source' => 'https://github.com/afragen/github-updater/archive/master.zip',
+            'external_url' => 'https://github.com/afragen/github-updater',
+			'required' => true
+        ],
+		[
+			'name' => 'CMS Tree Page View',
+			'slug' => 'cms-tree-page-view',
+			'required' => false
+		],
+		[
+			'name' => 'Block for Font Awesome',
+			'slug' => 'block-for-font-awesome',
+			'required' => false 
+		],
+		[
+			'name' => 'Post SMTP Mailer/Email Log',
+			'slug' => 'post-smtp',
+			'required' => false 
+		]
+	];
+
+	$config = [
+		'id' => 'saturn',
+		'default_path' => '',
+		'menu' => 'tgmpa-install-plugins',
+		'parent_slug' => 'themes.php',
+		'capability' => 'edit_theme_options',
+		'has_notices' => true,
+		'dismissable' => true,
+		'dismiss_msg' => '',
+		'is_automatic' => false,
+		'message' => ''
+	];
+
+	tgmpa($plugins, $config);
+}
+
+
 /**
  * Filter hook to set which plugins or themes should override WP.org for updating
  * 
@@ -10,36 +72,6 @@ add_filter('github_updater_override_dot_org', function () {
         'saturn' // theme slug
     ];
 });
-
-
-
-function supernova_register_required_plugins($pluginArray) {
-    $action = 'install-plugin';
-
-    foreach ($pluginArray as $recommendedPlugin) {
-        $name = $recommendedPlugin['name'];
-        $slug = $recommendedPlugin['slug'];
-        $file = $recommendedPlugin['file'];
-
-        $link = wp_nonce_url(
-            add_query_arg([
-                'action' => $action,
-                'plugin' => $slug
-            ],
-            admin_url('update.php')),
-            $action . '_' . $slug
-        );
-
-        $status = ' ❌';
-        $buttonStatus = '';
-        if (file_exists(WP_PLUGIN_DIR . '/' . $file)) {
-            $status = (is_plugin_active($file)) ? ' ✔️' : ' ✖️';
-            $buttonStatus = (is_plugin_active($file)) ? 'button-active' : 'button-inactive';
-        }
-
-        echo '<a href="' . $link . '" class="button button-secondary ' . $buttonStatus . '">' . $name . $status . '</a> ';
-    }
-}
 
 
 
@@ -150,6 +182,14 @@ function supernova_enqueue() {
     if ((int) get_option('use_native_fonts') !== 1) {
         wp_enqueue_style('google-fonts', supernova_google_fonts(), [], $version);
     }
+
+    if ((int) get_option('use_leaflet') === 1) {
+        wp_enqueue_style('leaflet', get_stylesheet_directory_uri() . '/assets/js/leaflet/leaflet.css', [], '1.7.1');
+
+        wp_enqueue_script('leaflet', get_stylesheet_directory_uri() . '/assets/js/leaflet/leaflet.js', [], '1.7.1', true);
+        wp_enqueue_script('leaflet-bundle', get_stylesheet_directory_uri() . '/assets/js/leaflet-bundle.min.js', ['leaflet'], $version, true);
+    }
+
 
     wp_enqueue_style('saturn', get_stylesheet_directory_uri() . '/assets/css/main.css', [], $version);
     wp_enqueue_style('patterns', get_stylesheet_directory_uri() . '/assets/css/patterns.css', [], $version);
