@@ -167,7 +167,8 @@ function saturn_settings() {
                                 <p>
                                     <select name="content_width">
                                         <option value="0">Select a content width...</option>
-                                        <option value="1024" <?php if ((int) get_option('content_width') === 1024) echo 'selected'; ?>>Classic (1024px, most compatible)</option>
+                                        <option value="960" <?php if ((int) get_option('content_width') === 960) echo 'selected'; ?>>Narrow (960px)</option>
+                                        <option value="1024" <?php if ((int) get_option('content_width') === 1024) echo 'selected'; ?>>Classic (1024px)</option>
                                         <option value="1170" <?php if ((int) get_option('content_width') === 1170) echo 'selected'; ?>>Bootstrapped (1170px, recommended)</option>
                                         <option value="1280" <?php if ((int) get_option('content_width') === 1280) echo 'selected'; ?>>Large (1280px)</option>
                                     </select>
