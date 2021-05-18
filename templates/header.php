@@ -45,6 +45,12 @@ function get_supernova_header() {
     if ((int) get_option('rounded_nav') === 1) {
         $headerClass .= ' header-rounded';
     }
+    if ((int) get_option('transparent_nav') === 1) {
+        $headerClass .= ' header-transparent';
+    }
+    if ((int) get_option('noshadow_nav') === 1) {
+        $headerClass .= ' header-noshadow';
+    }
 
 
     $out .= '<header class="' . $headerClass . ' ' . $headerBoxedNav . '">

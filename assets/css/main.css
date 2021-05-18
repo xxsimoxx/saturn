@@ -167,9 +167,6 @@ header.wrap nav,
     height: auto;
 }
 
-.wrap.wrap--landing-page {
-    clear: both;
-}
 
 @media all and (max-width: 768px) {
     .wrap.wrap--landing-page {
@@ -376,6 +373,18 @@ header.header-sticky-modern nav.nav-scrolled {
     right: auto;
 }
 
+header.header-transparent nav,
+header.header-transparent nav.nav-scrolled {
+    box-shadow: none;
+    background: none;
+    background-color: transparent;
+}
+
+header.header-noshadow nav,
+header.header-noshadow nav.nav-scrolled {
+    box-shadow: none;
+}
+
 
 
 /**
@@ -446,7 +455,6 @@ img.aligncenter {
 
 footer {
     position: relative;
-    clear: both;
 
     font-size: 14px;
     text-align: left;
@@ -1401,18 +1409,6 @@ figure {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
 }
 
-/**
- * WooCommerce Table Override for Thin UI
- */
-.woocommerce .col2-set .col-1,
-.woocommerce-page .col2-set .col-1,
-.woocommerce .col2-set .col-2,
-.woocommerce-page .col2-set .col-2 {
-    flex-basis: auto !important;
-    max-width: none !important;
-}
-
-
 
 
 /**
@@ -1421,6 +1417,18 @@ figure {
 .wp-block-table.is-style-stripes td,
 .wp-block-table.is-style-stripes th {
     padding: 8px 16px;
+}
+
+
+
+.supernova-anim-in {
+    transform: translateY(4rem) translateZ(0);
+    transition: transform cubic-bezier(0.19, 1, 0.22, 1) 2s,opacity cubic-bezier(0.19, 1, 0.22, 1) 2s;
+    opacity: 0.5;
+}
+.supernova-anim-in.is-changed {
+    transform: translateY(0rem) translateZ(0);
+    opacity: 1;
 }
 
 
