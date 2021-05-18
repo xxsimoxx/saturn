@@ -5,26 +5,11 @@ add_action('tgmpa_register', 'saturn_tgmpa_register_required_plugins');
 
 function saturn_tgmpa_register_required_plugins() {
     $plugins = [
-		// This is an example of how to include a plugin bundled with a theme.
-        /*
-		[
-			'name' => 'TGM Example Plugin', // The plugin name.
-			'slug' => 'tgm-example-plugin', // The plugin slug (typically the folder name).
-			'source' => get_template_directory() . '/lib/plugins/tgm-example-plugin.zip', // The plugin source.
-			'required' => true, // If false, the plugin is only 'recommended' instead of required.
-			'version' => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
-			'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			'external_url' => '', // If set, overrides default API URL and points to an external URL.
-			'is_callable' => '', // If set, this callable will be be checked for availability to determine if a plugin is active.
-		],
-        /**/
-
 		[
 			'name' => 'GitHub Updater',
 			'slug' => 'github-updater',
-            'source' => 'https://github.com/afragen/github-updater/archive/master.zip',
-            'external_url' => 'https://github.com/afragen/github-updater',
+            'source' => 'https://github.com/afragen/git-updater/archive/master.zip',
+            'external_url' => 'https://github.com/afragen/git-updater',
 			'required' => true
         ],
 		[
@@ -66,7 +51,7 @@ function saturn_tgmpa_register_required_plugins() {
  * 
  * @return array
  */
-add_filter('github_updater_override_dot_org', function () {
+add_filter('gu_override_dot_org', function () {
     return [
         'wp-saturn/wp-saturn.php', // plugin format
         'saturn' // theme slug
@@ -109,7 +94,7 @@ require_once 'templates/patterns.php';
 
 
 /**
- * Supernova Module Loader
+ * Saturn Module Loader
  *
  * Loop through all modules array, check for enabled option and include the file
  */
@@ -148,20 +133,22 @@ function is_post_type($type) {
 
 
 // enqueue admin scripts and styles
-add_action('admin_enqueue_scripts', 'supernova_admin_scripts');
-function supernova_admin_scripts() {
-    wp_enqueue_style('supernova', get_stylesheet_directory_uri() . '/assets/css/admin.css', ['wp-codemirror']);
+add_action('admin_enqueue_scripts', 'saturn_admin_scripts');
+function saturn_admin_scripts() {
+    wp_enqueue_style('saturn', get_stylesheet_directory_uri() . '/assets/css/admin.css', ['wp-codemirror']);
     wp_enqueue_style('thin-ui', get_stylesheet_directory_uri() . '/assets/css/thin-ui.css', [], '2.0.0');
 
-    wp_enqueue_script('supernova', get_stylesheet_directory_uri() . '/js/supernova.js', ['wp-theme-plugin-editor'], false, true);
+    wp_enqueue_script('saturn', get_stylesheet_directory_uri() . '/js/supernova.js', ['wp-theme-plugin-editor'], false, true);
 
     // CodeMirror for Custom CSS
     $cm_settings['codeEditor'] = wp_enqueue_code_editor([]);
 
-    wp_localize_script('supernova', 'cm_settings', $cm_settings);
+    wp_add_inline_script('saturn', 'const cm_settings = ' . json_encode([
+        'codeEditor' => $cm_settings
+    ]), 'before');
 }
 
-function supernova_enqueue() {
+function saturn_enqueue() {
     $version = wp_get_theme()->get('Version');
 
     // External stylesheets
@@ -180,7 +167,7 @@ function supernova_enqueue() {
     }
 
     if ((int) get_option('use_native_fonts') !== 1) {
-        wp_enqueue_style('google-fonts', supernova_google_fonts(), [], $version);
+        wp_enqueue_style('google-fonts', saturn_google_fonts(), [], $version);
     }
 
     if ((int) get_option('use_leaflet') === 1) {
@@ -196,15 +183,10 @@ function supernova_enqueue() {
 
     wp_enqueue_script('supernova-init', get_stylesheet_directory_uri() . '/js/init.js', [], $version, true);
 }
-add_action('wp_enqueue_scripts', 'supernova_enqueue');
+add_action('wp_enqueue_scripts', 'saturn_enqueue');
 
 function supernova_setup() {
-    global $content_width;
-
-    $contentWidth = (int) get_option('content_width');
-    if (!isset($content_width)) {
-        $content_width = $contentWidth;
-    }
+    $content_width = (int) get_option('content_width');
 
 	add_theme_support('title-tag');
 	add_theme_support('post-thumbnails');
@@ -215,7 +197,13 @@ function supernova_setup() {
     add_theme_support('align-wide');
     add_theme_support('responsive-embeds');
     add_theme_support('editor-styles');
+    add_theme_support('wp-block-styles');
+
     add_theme_support('core-block-patterns');
+
+    add_theme_support('custom-line-height');
+    add_theme_support('custom-spacing');
+    add_theme_support('woocommerce');
 
     add_image_size('homepage_hero', 1440, 900, true);
 
@@ -265,26 +253,11 @@ function supernova_setup() {
     remove_action('wp_head', 'parent_post_rel_link_wp_head', 10, 0);
     remove_action('wp_head', 'start_post_rel_link_wp_head', 10, 0);
     remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
+
+    // Remove issues with prefetching adding extra views
     remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10,0);
 }
 add_action('after_setup_theme', 'supernova_setup');
-
-
-
-function supernova_disable_srcset($sources) {
-    return false;
-}
-//add_filter('wp_calculate_image_srcset', 'supernova_disable_srcset');
-
-
-
-function supernova_remove_default_image_sizes($sizes) {
-    unset($sizes['1536x1536']);
-    unset($sizes['2048x2048']);
-
-    return $sizes;
-}
-//add_filter('intermediate_image_sizes_advanced', 'supernova_remove_default_image_sizes');
 
 
 
@@ -396,8 +369,6 @@ function setSupernovaPostViews($postID) {
         update_post_meta($postID, $count_key, $count);
     }
 }
-// Remove issues with prefetching adding extra views
-remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 
 
@@ -421,7 +392,7 @@ add_action('wp_footer', 'supernova_footer', 10, 0);
  * @var    int    $block_id ID of reusable block
  * @return string
  */
-function supernova_get_reusable_block($block_id = '') {
+function saturn_get_reusable_block($block_id = '') {
     if (empty($block_id)) {
         return;
     }
@@ -432,12 +403,12 @@ function supernova_get_reusable_block($block_id = '') {
 }
 
 /**
- * Build a custom shortcode using the supernova_get_reusable_block() function
+ * Build a custom shortcode using the saturn_get_reusable_block() function
  *
  * @var    array $atts Shortcode attributes
  * @return string
  */
-function supernova_reusable_block_shortcode($atts) {
+function saturn_reusable_block_shortcode($atts) {
     extract(shortcode_atts([
         'id' => ''
     ], $atts));
@@ -446,15 +417,15 @@ function supernova_reusable_block_shortcode($atts) {
         return;
     }
 
-    $content = supernova_get_reusable_block($id);
+    $content = saturn_get_reusable_block($id);
 
     return $content;
 }
-add_shortcode('reusable', 'supernova_reusable_block_shortcode');
+add_shortcode('reusable', 'saturn_reusable_block_shortcode');
 
 
 
-function supernova_footer_signature() {
+function saturn_footer_signature() {
     $out = '<div class="footer-signature wrap">
         <small>
             Crafted by <a href="https://getbutterfly.com/">getButterfly</a>. &copy;' . date('Y') . '. All rights reserved.&nbsp;';
@@ -469,33 +440,24 @@ function supernova_footer_signature() {
 
     return $out;
 }
-add_shortcode('footer-signature', 'supernova_footer_signature');
-
-
-
-function supernova_remove_jp_sharing() {
-    if ( is_singular( 'post' ) && function_exists( 'sharing_display' ) ) {
-        remove_filter( 'the_content', 'sharing_display', 19 );
-        remove_filter( 'the_excerpt', 'sharing_display', 19 );
-    }
-}
-add_action( 'loop_start', 'supernova_remove_jp_sharing' );
+add_shortcode('footer-signature', 'saturn_footer_signature');
 
 
 
 /**
  * Build Google fonts string
  */
-function supernova_google_fonts() {
+function saturn_google_fonts() {
     $fontArray = [];
 
     $fontArray[] = ((string) get_option('heading_font') !== '0') ? 'family=' . get_option('heading_font') . ':wght@300;400;500;700' : '';
     $fontArray[] = ((string) get_option('body_font') !== '0') ? 'family=' . get_option('body_font') . ':wght@300;400;500;700' : '';
 
     $fontArray = array_filter($fontArray);
+    $fontArray = array_unique($fontArray);
     $fontArray = str_replace(' ', '+', $fontArray);
 
-    $supernovaFonts = 'https://fonts.googleapis.com/css2?' . urlencode(implode('&', $fontArray)) . '&display=swap';
+    $saturnFonts = 'https://fonts.googleapis.com/css2?' . urlencode(implode('&', $fontArray)) . '&display=swap';
 
-    return $supernovaFonts;
+    return $saturnFonts;
 }

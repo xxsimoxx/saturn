@@ -34,7 +34,7 @@ function supernova_slider_block_main() {
         return $asc;
     }
 
-    function supernova_slider_render( $attributes, $content ) {
+    function supernova_slider_render($attributes, $content) {
 		$out = '';
 
         // Slide ID(s)
