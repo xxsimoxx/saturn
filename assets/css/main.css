@@ -136,12 +136,6 @@ header.wrap nav {
 .single-post .wrap-inner {
     max-width: 920px;
 }
-.single-post .wrap-inner.wrap-inner-has-sidebar {
-    max-width: var(--content_width);
-}
-.single-post .wrap-inner.wrap-inner-has-sidebar .thin-ui-col-4 {
-    padding-left: 48px;
-}
 
 header.wrap nav,
 .wrap {
@@ -953,10 +947,6 @@ h1.entry-title {
     padding: 24px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.10);
 }
-.wrap-inner-has-sidebar h1.entry-title {
-    text-align: left;
-}
-
 
 
 .supernova-blog-item {

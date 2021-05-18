@@ -5,44 +5,44 @@ add_action('tgmpa_register', 'saturn_tgmpa_register_required_plugins');
 
 function saturn_tgmpa_register_required_plugins() {
     $plugins = [
-		[
-			'name' => 'GitHub Updater',
-			'slug' => 'github-updater',
+        [
+            'name' => 'Git Updater',
+            'slug' => 'git-updater',
             'source' => 'https://github.com/afragen/git-updater/archive/master.zip',
             'external_url' => 'https://github.com/afragen/git-updater',
-			'required' => true
+            'required' => true
         ],
-		[
-			'name' => 'CMS Tree Page View',
-			'slug' => 'cms-tree-page-view',
-			'required' => false
-		],
-		[
-			'name' => 'Block for Font Awesome',
-			'slug' => 'block-for-font-awesome',
-			'required' => false 
-		],
-		[
-			'name' => 'Post SMTP Mailer/Email Log',
-			'slug' => 'post-smtp',
-			'required' => false 
-		]
-	];
+        [
+            'name' => 'CMS Tree Page View',
+            'slug' => 'cms-tree-page-view',
+            'required' => false
+        ],
+        [
+            'name' => 'Block for Font Awesome',
+            'slug' => 'block-for-font-awesome',
+            'required' => false 
+        ],
+        [
+            'name' => 'Post SMTP Mailer/Email Log',
+            'slug' => 'post-smtp',
+            'required' => false 
+        ]
+    ];
 
-	$config = [
-		'id' => 'saturn',
-		'default_path' => '',
-		'menu' => 'tgmpa-install-plugins',
-		'parent_slug' => 'themes.php',
-		'capability' => 'edit_theme_options',
-		'has_notices' => true,
-		'dismissable' => true,
-		'dismiss_msg' => '',
-		'is_automatic' => false,
-		'message' => ''
-	];
+    $config = [
+        'id' => 'saturn',
+        'default_path' => '',
+        'menu' => 'tgmpa-install-plugins',
+        'parent_slug' => 'themes.php',
+        'capability' => 'edit_theme_options',
+        'has_notices' => true,
+        'dismissable' => true,
+        'dismiss_msg' => '',
+        'is_automatic' => false,
+        'message' => ''
+    ];
 
-	tgmpa($plugins, $config);
+    tgmpa($plugins, $config);
 }
 
 
@@ -136,7 +136,6 @@ function is_post_type($type) {
 add_action('admin_enqueue_scripts', 'saturn_admin_scripts');
 function saturn_admin_scripts() {
     wp_enqueue_style('saturn', get_stylesheet_directory_uri() . '/assets/css/admin.css', ['wp-codemirror']);
-    wp_enqueue_style('thin-ui', get_stylesheet_directory_uri() . '/assets/css/thin-ui.css', [], '2.0.0');
 
     wp_enqueue_script('saturn', get_stylesheet_directory_uri() . '/js/supernova.js', ['wp-theme-plugin-editor'], false, true);
 
