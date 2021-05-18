@@ -50,23 +50,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-     * Details/summary HTML element
-     * Only open one element at a time
+     * Observe and animate all elements having a class of .supernova-anim-in
+     * 
+     * @url https://alligator.io/js/intersection-observer/
      */
-    if (document.querySelector('details')) {
-        // Fetch all the details elements
-        const details = document.querySelectorAll('details');
+    if (document.querySelector('.supernova-anim-in')) {
+        const options = {
+            root: null, // use the document's viewport as the container
+            rootMargin: '0px', // % or px - offsets added to each side of the intersection 
+            threshold: 0.5 // percentage of the target element which is visible
+        }
 
-        // Add onclick listeners
-        details.forEach((targetDetail) => {
-            targetDetail.addEventListener('click', () => {
-                // Close all details that are not targetDetail
-                details.forEach((detail) => {
-                    if (detail !== targetDetail) {
-                        detail.removeAttribute('open');
-                    }
-                });
+        let callback = (entries) => {
+            entries.forEach(entry => {
+                // If entry (box) is visible - according with the params set in `options`
+                // then adds `isVisible` class to box
+                // otherwise removes `isVisible` class
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-changed');
+                    observer.unobserve(entry.target);
+                } else {
+                    //entry.target.classList.remove('is-changed');
+                }
             });
-        });
+        }
+
+        // Create the intersection observer instance by calling its constructor and passing it a
+        // callback function to be run whenever a threshold is crossed in one direction or the other:
+        let observer = new IntersectionObserver(callback, options);
+
+        // Get all the `.box` from DOM and attach the observer to these
+        document.querySelectorAll('.supernova-anim-in').forEach(box => { observer.observe(box) });
     }
 }, false);
