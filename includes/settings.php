@@ -124,6 +124,8 @@ function saturn_settings() {
                 update_option('boxed_nav', (int) $_POST['boxed_nav']);
                 update_option('rounded_nav', (int) $_POST['rounded_nav']);
                 update_option('padded_nav', (int) $_POST['padded_nav']);
+                update_option('transparent_nav', (int) $_POST['transparent_nav']);
+                update_option('noshadow_nav', (int) $_POST['noshadow_nav']);
 
                 update_option('header_type', (int) $_POST['header_type']);
                 update_option('navicon_type', (int) $_POST['navicon_type']);
@@ -284,6 +286,10 @@ function saturn_settings() {
                                     <label for="rounded_nav">Rounded</label>
                                     <input type="checkbox" id="padded_nav" name="padded_nav" value="1" <?php echo ((int) get_option('padded_nav') === 1) ? 'checked' : ''; ?>>
                                     <label for="padded_nav">Padded</label>
+                                    <input type="checkbox" id="transparent_nav" name="transparent_nav" value="1" <?php echo ((int) get_option('transparent_nav') === 1) ? 'checked' : ''; ?>>
+                                    <label for="transparent_nav">Transparent</label>
+                                    <input type="checkbox" id="noshadow_nav" name="noshadow_nav" value="1" <?php echo ((int) get_option('noshadow_nav') === 1) ? 'checked' : ''; ?>>
+                                    <label for="noshadow_nav">No Shadow</label>
                                 </p>
                                 <p>
                                     <select name="header_type" id="header-type">
