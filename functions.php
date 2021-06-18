@@ -1,4 +1,16 @@
 <?php
+/**
+ * Load theme updater functions.
+ * Action is used so that child themes can easily disable.
+ */
+
+function saturn_theme_updater() {
+    require get_template_directory() . '/updater/theme-updater.php';
+}
+add_action('after_setup_theme', 'saturn_theme_updater');
+
+
+
 require_once get_template_directory() . '/classes/class-tgm-plugin-activation.php';
 
 add_action('tgmpa_register', 'saturn_tgmpa_register_required_plugins');
@@ -73,10 +85,6 @@ require_once 'includes/cpt-testimonials.php';
 require_once 'includes/cpt-slides.php';
 
 include 'modules/testimonials/testimonials.php';
-
-// Saturn Module: Custom Post Types
-require_once 'includes/reviews.php';
-require_once 'includes/cpt-reviews.php';
 
 // Saturn Module: Saturn Slider
 require_once 'blocks/slider/index.php';

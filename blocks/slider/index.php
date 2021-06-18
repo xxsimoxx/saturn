@@ -12,7 +12,7 @@ function supernova_plugin_block_categories($categories, $post) {
         ]
     );
 }
-add_filter('block_categories', 'supernova_plugin_block_categories', 10, 2);
+add_filter('block_categories_all', 'supernova_plugin_block_categories', 10, 2);
 
 function supernova_block_enqueue_block_editor_assets() {
     wp_enqueue_script(

@@ -40,21 +40,10 @@ function saturn_settings() {
                 update_option('tracking_gtm', sanitize_text_field($_POST['tracking_gtm']));
                 update_option('google_fonts_api', sanitize_text_field($_POST['google_fonts_api']));
 
-                update_option('wppd_google_places_api', sanitize_text_field($_POST['wppd_google_places_api']));
-                update_option('wppd_google_place_id', sanitize_text_field($_POST['wppd_google_place_id']));
+                delete_option('wppd_google_places_api');
+                delete_option('wppd_google_place_id');
 
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
-            } else if (isset($_POST['import_reviews'])) {
-                $wppd_google_places_api = get_option('wppd_google_places_api');
-                $wppd_google_place_id = get_option('wppd_google_place_id');
-
-                if ((string) $wppd_google_places_api !== '' && (string) $wppd_google_place_id !== '') {
-                    wppd_import_reviews();
-
-                    echo '<div class="updated notice is-dismissible"><p>Reviews imported successfully!</p></div>';
-                } else {
-                    echo '<div class="updated notice is-dismissible"><p>Reviews not imported! Missing Google Places API or Place ID.</p></div>';
-                }
             }
             ?>
             <h3>Saturn Tools &amp; Integrations</h3>
@@ -86,22 +75,6 @@ function saturn_settings() {
                                 <p>
                                     <input type="text" id="google_fonts_api" name="google_fonts_api" class="regular-text" value="<?php echo get_option('google_fonts_api'); ?>">
                                     <br><small>Use your Google Fonts API key here. <a href="https://developers.google.com/fonts/docs/developer_api">Get a key</a>.</small>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="wppd_google_places_api">Google Places API<br><small>Google Business Reviews</small></label></th>
-                            <td>
-                                <p>
-                                    <input type="text" name="wppd_google_places_api" value="<?php echo get_option('wppd_google_places_api'); ?>" class="regular-text">
-                                    <br><small>Google Places API Key</small>
-                                    <br><small>Get your <a href="https://console.cloud.google.com/home">Google API key</a>.</small>
-                                </p>
-                                <p>
-                                    <input type="text" name="wppd_google_place_id" value="<?php echo get_option('wppd_google_place_id'); ?>" class="regular-text">
-                                    <input type="submit" name="import_reviews" class="button button-secondary" value="Import Reviews">
-                                    <br><small>Google Place ID</small>
-                                    <br><small>Find your <a href="https://developers.google.com/places/place-id">Google Place ID</a>.</small>
                                 </p>
                             </td>
                         </tr>
