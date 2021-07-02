@@ -27,7 +27,7 @@ class EDD_Theme_Updater {
 	function __construct( $args = array(), $strings = array() ) {
 
 		$defaults = array(
-			'remote_api_url' => 'http://easydigitaldownloads.com',
+			'remote_api_url' => 'https://getbutterfly.com',
 			'request_data'   => array(),
 			'theme_slug'     => get_template(), // use get_stylesheet() for child theme updates
 			'item_name'      => '',
@@ -121,8 +121,8 @@ class EDD_Theme_Updater {
 
 			if ( version_compare( $this->version, $update_data['new_version'], '<' ) ) {
 				$value->response[ $this->theme_slug ] = $update_data;
-			} else {
-				$value->no_update[ $this->theme_slug ] = $update_data;
+			//} else {
+			//	$value->no_update[ $this->theme_slug ] = $update_data;
 			}
 		}
 

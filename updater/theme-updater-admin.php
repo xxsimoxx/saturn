@@ -31,7 +31,7 @@ class EDD_Theme_Updater_Admin {
 		$config = wp_parse_args(
 			$config,
 			array(
-				'remote_api_url' => 'http://easydigitaldownloads.com',
+				'remote_api_url' => 'https://getbutterfly.com',
 				'theme_slug'     => get_template(),
 				'item_name'      => '',
 				'license'        => '',
