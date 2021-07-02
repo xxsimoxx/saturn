@@ -51,7 +51,7 @@ class EDD_Theme_Updater {
 		$this->strings        = $strings;
 		$this->item_id        = $args['item_id'];
 
-		add_filter( 'site_transient_update_themes',        array( $this, 'theme_update_transient' ) );
+		add_filter( 'site_transient_update_themes',        array( $this, 'theme_update_transient' ), 10, 99 );
 		add_filter( 'delete_site_transient_update_themes', array( $this, 'delete_theme_update_transient' ) );
 		add_action( 'load-update-core.php',                array( $this, 'delete_theme_update_transient' ) );
 		add_action( 'load-themes.php',                     array( $this, 'delete_theme_update_transient' ) );
@@ -121,8 +121,8 @@ class EDD_Theme_Updater {
 
 			if ( version_compare( $this->version, $update_data['new_version'], '<' ) ) {
 				$value->response[ $this->theme_slug ] = $update_data;
-			//} else {
-			//	$value->no_update[ $this->theme_slug ] = $update_data;
+			} else {
+				$value->no_update[ $this->theme_slug ] = $update_data;
 			}
 		}
 
