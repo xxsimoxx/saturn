@@ -1,74 +1,40 @@
 <?php
 /**
- * Load theme updater functions.
- * Action is used so that child themes can easily disable.
+ * Freemius SDK Updater
  */
+if (!function_exists('saturn_fs')) {
+    function saturn_fs() {
+        global $saturn_fs;
 
-function saturn_theme_updater() {
-    require get_template_directory() . '/updater/theme-updater.php';
+        if (!isset($saturn_fs)) {
+            require_once dirname(__FILE__) . '/freemius/start.php';
+
+            $saturn_fs = fs_dynamic_init([
+                'id'                  => '8662',
+                'slug'                => 'saturn',
+                'type'                => 'theme',
+                'public_key'          => 'pk_5867b3d32b6550d76076caf2a9400',
+                'is_premium'          => true,
+                'is_premium_only'     => true,
+                'has_addons'          => false,
+                'has_paid_plans'      => true,
+                'is_org_compliant'    => false,
+                'menu'                => [
+                    'slug'           => 'saturn-settings',
+                    'first-path'     => 'admin.php?page=saturn-settings',
+                    'support'        => false,
+                    'contact'        => false
+                ]
+            ]);
+        }
+
+        return $saturn_fs;
+    }
+
+    saturn_fs();
+
+    do_action('saturn_fs_loaded');
 }
-add_action('after_setup_theme', 'saturn_theme_updater');
-
-
-
-require_once get_template_directory() . '/classes/class-tgm-plugin-activation.php';
-
-add_action('tgmpa_register', 'saturn_tgmpa_register_required_plugins');
-
-function saturn_tgmpa_register_required_plugins() {
-    $plugins = [
-        [
-            'name' => 'Git Updater',
-            'slug' => 'git-updater',
-            'source' => 'https://github.com/afragen/git-updater/archive/master.zip',
-            'external_url' => 'https://github.com/afragen/git-updater',
-            'required' => true
-        ],
-        [
-            'name' => 'CMS Tree Page View',
-            'slug' => 'cms-tree-page-view',
-            'required' => false
-        ],
-        [
-            'name' => 'Block for Font Awesome',
-            'slug' => 'block-for-font-awesome',
-            'required' => false 
-        ],
-        [
-            'name' => 'Post SMTP Mailer/Email Log',
-            'slug' => 'post-smtp',
-            'required' => false 
-        ]
-    ];
-
-    $config = [
-        'id' => 'saturn',
-        'default_path' => '',
-        'menu' => 'tgmpa-install-plugins',
-        'parent_slug' => 'themes.php',
-        'capability' => 'edit_theme_options',
-        'has_notices' => true,
-        'dismissable' => true,
-        'dismiss_msg' => '',
-        'is_automatic' => false,
-        'message' => ''
-    ];
-
-    tgmpa($plugins, $config);
-}
-
-
-/**
- * Filter hook to set which plugins or themes should override WP.org for updating
- * 
- * @return array
- */
-add_filter('gu_override_dot_org', function () {
-    return [
-        'wp-saturn/wp-saturn.php', // plugin format
-        'saturn' // theme slug
-    ];
-});
 
 
 
