@@ -1,43 +1,4 @@
 <?php
-/**
- * Freemius SDK Updater
- */
-if (!function_exists('saturn_fs')) {
-    function saturn_fs() {
-        global $saturn_fs;
-
-        if (!isset($saturn_fs)) {
-            require_once dirname(__FILE__) . '/freemius/start.php';
-
-            $saturn_fs = fs_dynamic_init([
-                'id'                  => '8662',
-                'slug'                => 'saturn',
-                'type'                => 'theme',
-                'public_key'          => 'pk_5867b3d32b6550d76076caf2a9400',
-                'is_premium'          => true,
-                'is_premium_only'     => true,
-                'has_addons'          => false,
-                'has_paid_plans'      => true,
-                'is_org_compliant'    => false,
-                'menu'                => [
-                    'slug'           => 'saturn-settings',
-                    'first-path'     => 'admin.php?page=saturn-settings',
-                    'support'        => false,
-                    'contact'        => false
-                ]
-            ]);
-        }
-
-        return $saturn_fs;
-    }
-
-    saturn_fs();
-
-    do_action('saturn_fs_loaded');
-}
-
-
-
 require_once 'includes/lighthouse.php';
 require_once 'includes/settings.php';
 require_once 'includes/meta.php';
