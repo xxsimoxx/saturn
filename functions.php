@@ -70,16 +70,11 @@ function is_post_type($type) {
 // enqueue admin scripts and styles
 add_action('admin_enqueue_scripts', 'saturn_admin_scripts');
 function saturn_admin_scripts() {
-    wp_enqueue_style('saturn', get_stylesheet_directory_uri() . '/assets/css/admin.css', ['wp-codemirror']);
+    $version = wp_get_theme()->get('Version');
 
-    wp_enqueue_script('saturn', get_stylesheet_directory_uri() . '/js/supernova.js', ['wp-theme-plugin-editor'], false, true);
+    wp_enqueue_style('saturn', get_stylesheet_directory_uri() . '/assets/css/admin.css', [], $version);
 
-    // CodeMirror for Custom CSS
-    $cm_settings['codeEditor'] = wp_enqueue_code_editor([]);
-
-    wp_add_inline_script('saturn', 'const cm_settings = ' . json_encode([
-        'codeEditor' => $cm_settings
-    ]), 'before');
+    wp_enqueue_script('saturn', get_stylesheet_directory_uri() . '/js/supernova.js', [], $version, true);
 }
 
 function saturn_enqueue() {

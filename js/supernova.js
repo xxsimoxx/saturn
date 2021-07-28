@@ -31,41 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    if (document.getElementById('supernova_custom_css')) {
-        wp.codeEditor.initialize(document.getElementById('supernova_custom_css'), {
-            'codemirror': {
-                'mode': 'css',
-                'indentUnit': 4,
-                'indentWithTabs': true,
-                'lineNumbers': true,
-            }
-        });
-    }
-
-    if (document.getElementById('supernova_custom_html')) {
-        wp.codeEditor.initialize(document.getElementById('supernova_custom_html'), {
-            'codemirror': {
-                'mode': 'htmlmixed',
-                'indentUnit': 4,
-                'indentWithTabs': true,
-                'lineNumbers': true,
-            }
-        });
-    }
-
-    if (document.getElementById('supernova_custom_html_footer')) {
-        wp.codeEditor.initialize(document.getElementById('supernova_custom_html_footer'), {
-            'codemirror': {
-                'mode': 'htmlmixed',
-                'indentUnit': 4,
-                'indentWithTabs': true,
-                'lineNumbers': true,
-            }
-        });
-    }
-
-
-
     /**
      * Color Well Vanilla JS
      */
