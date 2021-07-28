@@ -1,6 +1,92 @@
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-ExtraLight.246d958a8f00b70fd8373b499ffdd833.woff2) format("woff2");
+    font-weight: 100;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCodeItalic-ExtraLightItalic.1a0ec15f06b624eb3da176895e671784.woff2) format("woff2");
+    font-weight: 100;
+    font-style: italic
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-Light.f9a90689f67330fcbc8329fca9e04cce.woff2) format("woff2");
+    font-weight: 200;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCodeItalic-LightItalic.66cba8520899e3f68ed032179f5e2b45.woff2) format("woff2");
+    font-weight: 200;
+    font-style: italic
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-SemiLight.ea2e95c37b0f5966785b45a4e16df742.woff2) format("woff2");
+    font-weight: 300;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCodeItalic-SemiLightItalic.87e850014afd7905f61a3295a82456ad.woff2) format("woff2");
+    font-weight: 300;
+    font-style: italic
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-Regular.0d4299331ef64628d2edd3a41fa31f8e.woff2) format("woff2");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCodeItalic-Italic.9e0f253dc384b90bf59b6711dee9fb97.woff2) format("woff2");
+    font-weight: 400;
+    font-style: italic
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-SemiBold.07d0a66738f7faa0ce59108ee20e2aaa.woff2) format("woff2");
+    font-weight: 500;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCodeItalic-SemiBoldItalic.55ba4fd79396f8b2bcbc0dbb14277aa2.woff2) format("woff2");
+    font-weight: 500;
+    font-style: italic
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-Bold.7c0323504cdb7b7ba935922fd44b1046.woff2) format("woff2");
+    font-weight: 700;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCodeItalic-BoldItalic.d9fb0be28df4f4ecfc3af7b68d72b4a4.woff2) format("woff2");
+    font-weight: 700;
+    font-style: italic
+}
+
+
+
 .supernova-code,
 .supernova-code-light {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: "Cascadia Code Web", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 .supernova-code {
@@ -82,7 +168,7 @@
 }
 
 .codor {
-    font-family: "Cascadia Code", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    font-family: "Cascadia Code Web", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
     font-weight: 400;
     font-size: 13px;
 
@@ -118,7 +204,7 @@ small .codor {
 
 
 .color-well {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: "Cascadia Code Web", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     width: 96px;
 }
 
@@ -126,7 +212,7 @@ small .codor {
 
 .wp-block[aria-label="Block: Supernova Slider"],
 .wp-block[data-type="wppd/footer-signature"] {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: "Cascadia Code Web", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 12px;
     background-color: #eaf5ff;
     color: #0366d6;
@@ -142,17 +228,3 @@ small .codor {
     font-size: 12px;
     color: #999999;
 }
-
-
-
-
-.CodeMirror {
-    height: auto !important;
-}
-.CodeMirror pre {
-    font-size: 12px;
-}
-
-
-
-.CodeMirror{background-color:#263238!important;color:rgba(233,237,237,1)!important}.CodeMirror-guttermarker,.CodeMirror-guttermarker-subtle,.CodeMirror-gutters,.CodeMirror-linenumber{color:#537f7e!important}.CodeMirror-gutters{background:#263238!important;border:none!important}.CodeMirror-cursor{border-left:1px solid #f8f8f0!important}div.CodeMirror-selected{background:rgba(255,255,255,.15)!important}.CodeMirror-focused div.CodeMirror-selected{background:rgba(255,255,255,.1)!important}.CodeMirror-line::selection,.CodeMirror-line>span::selection,.CodeMirror-line>span>span::selection{background:rgba(255,255,255,.1)!important}.CodeMirror-line::-moz-selection,.CodeMirror-line>span::-moz-selection,.CodeMirror-line>span>span::-moz-selection{background:rgba(255,255,255,.1)!important}.CodeMirror-activeline-background{background:rgba(0,0,0,0)!important}.cm-keyword{color:rgba(199,146,234,1)!important}.cm-def,.cm-operator{color:rgba(233,237,237,1)!important}.cm-meta,.cm-string-2,.cm-tag,.cm-variable-2{color:#80cbc4!important}.cm-builtin,.cm-qualifier,.cm-type,.cm-variable-3{color:#decb6b!important}.cm-atom,.cm-number{color:#f77669!important}.cm-string{color:#c3e88d!important}.cm-comment{color:#546e7a!important}.cm-variable{color:#82b1ff!important}.cm-attribute{color:#ffcb6b!important}.cm-property{color:#80cbae!important}.cm-tag{color:rgba(255,83,112,1)!important}.cm-error{color:rgba(255,255,255,1)!important;background-color:#ec5f67!important}.CodeMirror-matchingbracket{text-decoration:underline!important;color:#fff!important}
