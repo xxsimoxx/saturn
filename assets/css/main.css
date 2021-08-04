@@ -352,13 +352,6 @@ header.header-rounded nav .sub-menu {
     top: 0;
     z-index: 2;
 }
-.header-sticky-modern,
-.header-sticky-modern nav {
-    will-change: transform;
-
-    backface-visibility: hidden;
-    transition: all 0.25s ease-in-out;
-}
 
 header.header-sticky-modern nav,
 header.header-sticky-modern nav.nav-scrolled {
