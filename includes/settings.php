@@ -116,6 +116,7 @@ function saturn_settings() {
                 update_option('supernova_external_css', $_POST['supernova_external_css']);
 
                 update_option('use_native_fonts', (int) $_POST['use_native_fonts']);
+                update_option('use_icofont', (int) $_POST['use_icofont']);
 
                 update_option('heading_font', (string) $_POST['heading_font']);
                 update_option('body_font', (string) $_POST['body_font']);
@@ -366,6 +367,15 @@ function saturn_settings() {
 
                                 <p>
                                     <a href="#" class="button button-secondary" id="repeater-add">Add another resource</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Icon Fonts</label></th>
+                            <td>
+                                <p>
+                                    <input type="checkbox" id="use_icofont" name="use_icofont" value="1" <?php echo ((int) get_option('use_icofont') === 1) ? 'checked' : ''; ?>> <label for="use_icofont">Use Icofont</label>
+                                    <br><small><a href="https://icofont.com/">https://icofont.com/</a></small>
                                 </p>
                             </td>
                         </tr>

@@ -99,6 +99,10 @@ function saturn_enqueue() {
         wp_enqueue_style('google-fonts', saturn_google_fonts(), [], $version);
     }
 
+    if ((int) get_option('use_icofont') === 1) {
+        wp_enqueue_style('icofont', get_stylesheet_directory_uri() . '/assets/fonts/icofont/icofont.min.css', [], $version);
+    }
+
     if ((int) get_option('use_leaflet') === 1) {
         wp_enqueue_style('leaflet', get_stylesheet_directory_uri() . '/assets/js/leaflet/leaflet.css', [], '1.7.1');
 
