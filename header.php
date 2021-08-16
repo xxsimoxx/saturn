@@ -84,5 +84,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     ?>
 </div>
 
-<?php
-echo get_supernova_header();
+<i id="up"></i>
+<div id="saturn-scroll">
+
+<?php echo get_supernova_header(); ?>

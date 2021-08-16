@@ -555,6 +555,8 @@ function saturn_settings() {
                 update_option('supernova_side_panel_block_id', (int) $_POST['supernova_side_panel_block_id']);
 
                 update_option('use_leaflet', (int) $_POST['use_leaflet']);
+                update_option('use_cursor', (int) $_POST['use_cursor']);
+                update_option('use_butter', (int) $_POST['use_butter']);
 
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
@@ -693,6 +695,24 @@ function saturn_settings() {
                                     <input type="checkbox" id="use_leaflet" name="use_leaflet" value="1" <?php echo ((int) get_option('use_leaflet') === 1) ? 'checked' : ''; ?>>
                                     <label for="use_leaflet">Use LeafletJS</label>
                                     <br><small>Use LeafletJS library for OpenStreetMap maps.</small>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Dynamic Cursor</label></th>
+                            <td>
+                                <p>
+                                    <input type="checkbox" id="use_cursor" name="use_cursor" value="1" <?php echo ((int) get_option('use_cursor') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_cursor">Use Dynamic Cursor</label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Smooth Scroll</label></th>
+                            <td>
+                                <p>
+                                    <input type="checkbox" id="use_butter" name="use_butter" value="1" <?php echo ((int) get_option('use_butter') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_butter">Use Smooth Scroll</label>
                                 </p>
                             </td>
                         </tr>

@@ -11,7 +11,7 @@
     transform: translateX(100vw);
     background-color: #ffffff;
     transition: 750ms cubic-bezier(0.17, 0.84, 0.44, 1) all;
-    font-family: var(--heading_font);
+    font-family: var(--body_font);
 }
 
 #site-menu[data-modal] {
@@ -25,7 +25,7 @@
     bottom: auto;
     transform: translate(-50%, -100vh);
     transition: 750ms cubic-bezier(0.17, 0.84, 0.44, 1) all;
-    font-family: var(--heading_font);
+    font-family: var(--body_font);
 }
 
 @media all and (max-width: 768px) {
@@ -68,6 +68,8 @@
 .site-menu-content ul li a {
     text-decoration: none;
     font-size: 24px;
+    font-weight: 300;
+    line-height: 2;
 }
 body.no-scroll {
     overflow: hidden;

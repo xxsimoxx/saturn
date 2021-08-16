@@ -20,5 +20,9 @@
 
 <?php wp_footer(); ?>
 
+</div>
+
+<a href="#up" class="saturn--up"><i class="icofont-arrow-up"></i></a>
+
 </body>
 </html>

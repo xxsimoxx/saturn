@@ -82,4 +82,123 @@ document.addEventListener('DOMContentLoaded', () => {
         // Get all the `.box` from DOM and attach the observer to these
         document.querySelectorAll('.supernova-anim-in').forEach(box => { observer.observe(box) });
     }
+
+
+
+    /**
+     * Dynamic cursor
+     */
+    if (document.querySelector('.has-cursor')) {
+        const cursorSettings = {
+            'class': 'dynamicCursor',
+            'size': '18',
+            'expandedSize': '40',
+            'expandSpeed': 0.4,
+            'background': 'rgba(161, 142, 218, 0.25)',
+            'opacity': '1',
+            'transitionTime': '1.4s',
+            'transitionEase': 'cubic-bezier(0.075, 0.820, 0.165, 1.000)',
+            'borderWidth': '0',
+            'borderColor': 'black',
+            'iconSize': '11px',
+            'iconColor': 'black',
+            'triggerElements': {
+                'trigger': {
+                    'className': 'trigger',
+                    'icon': '+'
+                }
+            }
+        }
+
+
+        function dynamicCursor(options) {
+            cursor = document.createElement('div');
+            let cursorIcon = document.createElement('div');
+
+            cursorIcon.classList.add('cursorIcon');
+            cursorIcon.style.position = 'absolute';
+            cursorIcon.style.fontFamily = 'monospace';
+            cursorIcon.style.textAlign = 'center'
+            cursorIcon.style.top = '50%';
+            cursorIcon.style.width = '100%';
+            cursorIcon.style.transform = 'translateY(-50%)';
+            cursorIcon.style.color = options.iconColor;
+            cursorIcon.style.fontSize = options.iconSize;
+            cursorIcon.style.opacity = 0;
+            cursorIcon.style.transition = `opacity ${options.expandSpeed}s`;
+
+            cursor.classList.add(options.class);
+            cursor.style.boxSizing = 'border-box';
+            cursor.style.width = `${options.size}px`;
+            cursor.style.height = `${options.size}px`;
+            cursor.style.borderRadius = `${options.expandedSize}px`;
+            cursor.style.opacity = 0;
+
+            cursor.style.pointerEvents = 'none';
+            cursor.style.zIndex = 999;
+            cursor.style.transition = `transform ${options.transitionTime} ${options.transitionEase}, width ${options.expandSpeed}s .2s, height ${options.expandSpeed}s .2s, opacity 1s .2s`;
+            cursor.style.border = `${options.borderWidth}px solid ${options.borderColor}`;
+            cursor.style.position = 'fixed';
+            cursor.style.background = options.background;
+
+            cursor.appendChild(cursorIcon);
+            document.body.appendChild(cursor);
+
+            setTimeout(function () {
+                cursor.style.opacity = options.opacity;
+            }, 500)
+
+            var idle;
+
+            document.onmousemove = e => {
+                x = e.clientX;
+                y = e.clientY;
+
+                cursor.style.opacity = options.opacity;
+                clearInterval(idle)
+
+                idle = setTimeout(function () {
+                    cursor.style.opacity = 0;
+                }, 4000)
+
+                cursor.style.top = '0';
+                cursor.style.left = '0';
+                cursor.style.transform = `translateX(calc(${x}px - 50%)) translateY(calc(${y}px - 50%))`;
+            }
+
+            if (document.querySelector(`a`)) {
+                let icon = options.triggerElements.trigger.icon;
+
+                [].forEach.call(document.querySelectorAll(`a`), trigger => {
+                    trigger.addEventListener('mouseover', () => {
+                        cursor.style.width = `${options.expandedSize}px`;
+                        cursor.style.height = `${options.expandedSize}px`;
+                        cursorIcon.innerHTML = icon;
+                        cursorIcon.style.opacity = 1;
+                    });
+
+                    trigger.addEventListener('mouseout', () => {
+                        cursor.style.width = `${options.size}px`;
+                        cursor.style.height = `${options.size}px`;
+                        cursorIcon.style.opacity = 0;
+                    });
+                });
+            }
+        }
+
+        dynamicCursor(cursorSettings);
+    }
+
+    /**
+     * Butter.js
+     */
+    if (document.querySelector('.has-butter')) {
+        const options = {
+            wrapperId: 'saturn-scroll',
+            wrapperDamper: 0.10,
+            cancelOnTouch: true
+        };
+        butter.init(options);
+    }
+
 }, false);
