@@ -14,8 +14,10 @@ require_once 'includes/cpt-slides.php';
 include 'modules/testimonials/testimonials.php';
 
 // Saturn Module: Saturn Slider
-require_once 'blocks/slider/index.php';
-require_once 'modules/slider/slider.php';
+if ((int) get_option('use_flickity') === 1) {
+    require_once 'blocks/slider/index.php';
+    require_once 'modules/slider/slider.php';
+}
 
 
 
@@ -143,6 +145,7 @@ function supernova_setup() {
     add_theme_support('woocommerce');
 
     add_image_size('homepage_hero', 1440, 900, true);
+    add_image_size('homepage_grid', 640, 400, true);
 
 	add_theme_support('html5', [
 		'script',
