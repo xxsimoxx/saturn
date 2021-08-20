@@ -11,6 +11,7 @@
  
   font-family: "IcoFont";
 font-weight: normal;
+font-display: swap;
 font-style: "Regular";
 src: url("./fonts/icofont.woff2") format("woff2"),
 url("./fonts/icofont.woff") format("woff");
@@ -10632,87 +10633,56 @@ url("./fonts/icofont.woff") format("woff");
 
 .icofont-spin
 {
-  -webkit-animation: icofont-spin 2s infinite linear;
   animation: icofont-spin 2s infinite linear;
   display: inline-block;
 }
 
 .icofont-pulse
 {
-  -webkit-animation: icofont-spin 1s infinite steps(8);
   animation: icofont-spin 1s infinite steps(8);
   display: inline-block;
-}
-
-@-webkit-keyframes icofont-spin
-{
-  0%
-  {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100%
-  {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
 }
 
 @keyframes icofont-spin
 {
   0%
   {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   100%
   {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 
 .icofont-rotate-90
 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
-  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
 .icofont-rotate-180
 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-  -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 .icofont-rotate-270
 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
-  -webkit-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 
 .icofont-flip-horizontal
 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
-  -webkit-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 
 .icofont-flip-vertical
 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
-  -webkit-transform: scale(1, -1);
   transform: scale(1, -1);
 }
 
 .icofont-flip-horizontal.icofont-flip-vertical
 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
-  -webkit-transform: scale(-1, -1);
   transform: scale(-1, -1);
 }
 
@@ -10722,7 +10692,6 @@ url("./fonts/icofont.woff") format("woff");
 	:root .icofont-flip-horizontal,
 	:root .icofont-flip-vertical
 {
-  -webkit-filter: none;
   filter: none;
   display: inline-block;
 }
