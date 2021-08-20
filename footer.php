@@ -22,7 +22,9 @@
 
 </div>
 
-<a href="#up" class="saturn--up"><i class="icofont-arrow-up"></i></a>
+<?php if ((int) get_option('use_icofont') === 1) { ?>
+    <a href="#up" class="saturn--up"><i class="icofont-arrow-up"></i></a>
+<?php } ?>
 
 </body>
 </html>
