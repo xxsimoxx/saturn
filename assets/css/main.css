@@ -8,7 +8,77 @@
 
 html {
     scroll-behavior: smooth;
+
+    --bg: var(--body-background), #ffffff;
+    --bg-header-nav: var(--header_background_colour);
+    --color-header-menu-text: var(--header_menu_text_colour);
+    --color-heading: rgb(27, 168, 14); 
+    --color-text: var(--body-text), #2c3e50;
+;
 }
+html[data-theme="dark"] {
+    --bg: #0d1117;
+    --bg-header-nav: #161b22;
+    --color-header-menu-text: #ffffff;
+    --color-heading: #3b4db3; 
+    --color-text: #c9d1d9;
+}
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6 {
+    color: #ffffff;
+}
+
+
+input[name="theme"] { /* styling for input element */
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.toggle-container label { /* styling for labels */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    width: 32px;
+    height: 18px;
+    background: #cccccc;
+    color: #ffffff;
+    border-radius: 48px;
+    position: relative;
+    font-size: 10px;
+}
+
+.toggle-container label:after { /* styling for labels - on toggle */
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 100%;
+    transition: 0.3s;
+}
+
+input[name="theme"]:checked + label { /* conditional check while toggling */
+    background: #555555;
+}
+
+input[name="theme"]:checked + label:after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+}
+
+
+
+
 
 body {
     font-family: var(--font_default);
@@ -17,9 +87,8 @@ body {
     font-size: 16px;
     line-height: 1.75;
     color: #2c3e50;
-    color: var(--body-text);
-    background-color: #ffffff;
-    background-color: var(--body-background);
+    color: var(--color-text);
+    background-color: var(--bg);
     margin: 0;
     overflow-x: hidden;
 }
@@ -218,10 +287,10 @@ header nav {
     position: relative;
     z-index: 5;
     padding: 24px 0 0 0;
-    background-color: var(--header_background_colour);
+    background-color: var(--bg-header-nav);
 }
 header nav .sub-menu {
-    background-color: var(--header_background_colour);
+    background-color: var(--bg-header-nav);
 }
 header nav ul {
     display: flex;
@@ -243,7 +312,7 @@ header nav ul li a {
     font-weight: 400;
     font-size: 14px;
     text-decoration: none;
-    color: var(--header_menu_text_colour);
+    color: var(--color-header-menu-text);
     display: inline-block;
     padding: 24px 0 16px 22px;
     white-space: nowrap;
@@ -270,7 +339,7 @@ header nav ul#menu-secondary-pipes-menu li a {
 
 
 #menu-primary-menu > li > ul {
-    background-color: var(--header_background_colour);
+    background-color: var(--bg-header-nav);
 }
 
 .current-menu-parent > a,
@@ -447,7 +516,7 @@ footer {
     color: #ffffff;
 }
 footer > .wrap {
-    padding: 32px 64px;
+    padding: 32px 0;
 }
 @media all and (max-width: 768px) {
     footer > .wrap {

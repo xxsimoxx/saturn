@@ -72,20 +72,45 @@ function supernova_custom_menu_item($items, $args) {
         }
         $items .= $current_items;
 
-        if ((int) get_option('navicon_type') === 1) {
-            // Black icon
+        if ((int) get_option('use_icofont') === 1) {
             $items .= '<li class="menu-item menu-toggle">
                 <a href="#">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAQAAAADIDABVAAAAAnRSTlMAAQGU/a4AAAAXSURBVHjaY/j//z8DOj7AwAzGlIoDMQD2pDpdsSi2QgAAAABJRU5ErkJggg==" alt="Menu" class="side-menu-close">
+                    <i class="icofont-navigation-menu side-menu-close" style="font-size: 24px;"></i>
                 </a>
             </li>';
-        } else if ((int) get_option('navicon_type') === 2) {
-            // White icon
-            $items .= '<li class="menu-item menu-toggle">
-                <a href="#">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAQAAAADIDABVAAAAAnRSTlMAAHaTzTgAAAAUSURBVHjaY2DAAuz//wFjSsWBAAB9UA1dOzf0zgAAAABJRU5ErkJggg==" alt="Menu" class="side-menu-close">
-                </a>
-            </li>';
+        } else {
+            if ((int) get_option('navicon_type') === 1) {
+                // Black icon
+                $items .= '<li class="menu-item menu-toggle">
+                    <a href="#">
+                        <i class="icofont-navigation-menu side-menu-close"></i>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAQAAAADIDABVAAAAAnRSTlMAAQGU/a4AAAAXSURBVHjaY/j//z8DOj7AwAzGlIoDMQD2pDpdsSi2QgAAAABJRU5ErkJggg==" alt="Menu" class="side-menu-close">
+                    </a>
+                </li>';
+            } else if ((int) get_option('navicon_type') === 2) {
+                // White icon
+                $items .= '<li class="menu-item menu-toggle">
+                    <a href="#">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAQAAAADIDABVAAAAAnRSTlMAAHaTzTgAAAAUSURBVHjaY2DAAuz//wFjSsWBAAB9UA1dOzf0zgAAAABJRU5ErkJggg==" alt="Menu" class="side-menu-close">
+                    </a>
+                </li>';
+            }
+        }
+
+        if ((int) get_option('use_dark_mode') === 1) {
+            if ((int) get_option('use_icofont') === 1) {
+                $items .= '<li class="menu-item menu-theme-container">
+                    <a class="toggle-container" href="#">
+                        <input type="checkbox" id="switch" name="theme"><label for="switch" aria-label="Dark Mode"><i class="icofont-sun"></i><i class="icofont-moon"></i></label>
+                    </a>
+                </li>';
+            } else {
+                $items .= '<li class="menu-item menu-theme-container">
+                    <a class="toggle-container" href="#">
+                        <input type="checkbox" id="switch" name="theme"><label for="switch" aria-label="Dark Mode"></label>
+                    </a>
+                </li>';
+            }
         }
     }
 

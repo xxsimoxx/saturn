@@ -201,4 +201,48 @@ document.addEventListener('DOMContentLoaded', () => {
         butter.init(options);
     }
 
+
+    if (document.getElementById('switch')) {
+        let theme = localStorage.getItem('data-theme');
+
+        const checkboxes = document.querySelectorAll('input[name="theme"]');
+        const changeThemeToDark = () => {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('data-theme', 'dark');
+        }
+
+        const changeThemeToLight = () => {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('data-theme', 'light');
+        }
+
+        if (theme === 'dark') {
+            changeThemeToDark();
+
+            [].forEach.call(document.querySelectorAll('input[name="theme"]'), checkboxEach => {
+                checkboxEach.checked = true;
+            });
+        }
+
+        [].forEach.call(checkboxes, checkbox => {
+            checkbox.addEventListener('change', () => {
+                let theme = localStorage.getItem('data-theme');
+
+                if (theme === 'dark') {
+                    changeThemeToLight();
+
+                    [].forEach.call(document.querySelectorAll('input[name="theme"]'), checkboxEach => {
+                        checkboxEach.checked = false;
+                    });
+                } else {
+                    changeThemeToDark();
+
+                    [].forEach.call(document.querySelectorAll('input[name="theme"]'), checkboxEach => {
+                        checkboxEach.checked = true;
+                    });
+                }
+            });
+        });
+    }
+
 }, false);

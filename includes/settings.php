@@ -555,8 +555,10 @@ function saturn_settings() {
                 update_option('supernova_side_panel_block_id', (int) $_POST['supernova_side_panel_block_id']);
 
                 update_option('use_leaflet', (int) $_POST['use_leaflet']);
+                update_option('use_flickity', (int) $_POST['use_flickity']);
                 update_option('use_cursor', (int) $_POST['use_cursor']);
                 update_option('use_butter', (int) $_POST['use_butter']);
+                update_option('use_dark_mode', (int) $_POST['use_dark_mode']);
 
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
@@ -699,6 +701,15 @@ function saturn_settings() {
                             </td>
                         </tr>
                         <tr>
+                            <th scope="row"><label>Flickity Slider/Carousel</label></th>
+                            <td>
+                                <p>
+                                    <input type="checkbox" id="use_flickity" name="use_flickity" value="1" <?php echo ((int) get_option('use_flickity') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_flickity">Use Flickity Slider/Carousel</label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
                             <th scope="row"><label>Dynamic Cursor</label></th>
                             <td>
                                 <p>
@@ -713,6 +724,15 @@ function saturn_settings() {
                                 <p>
                                     <input type="checkbox" id="use_butter" name="use_butter" value="1" <?php echo ((int) get_option('use_butter') === 1) ? 'checked' : ''; ?>>
                                     <label for="use_butter">Use Smooth Scroll</label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Dark Mode</label></th>
+                            <td>
+                                <p>
+                                    <input type="checkbox" id="use_dark_mode" name="use_dark_mode" value="1" <?php echo ((int) get_option('use_dark_mode') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_dark_mode">Use Dark Mode</label>
                                 </p>
                             </td>
                         </tr>
