@@ -76,6 +76,52 @@ function supernova_testimonial_blocks() {
 
 
 /**
+ * Supernova Testimonials (Blocks, Alt)
+ */
+function supernova_testimonial_blocks_alt() {
+    $args = [
+        'post_type' => 'testimonial',
+        'posts_per_page' => -1,
+        'order' => 'ASC',
+        'orderby' => 'menu_order'
+    ];
+    $testimonials = new WP_Query($args);
+
+    $out = '';
+
+    if ($testimonials->have_posts()) {
+        $out .= '<div class="wp-block-columns" style="flex-wrap: wrap;">';
+
+            while ($testimonials->have_posts()) {
+                $testimonials->the_post();
+
+                $testimonialID = $testimonials->post->ID;
+
+                $testimonialAuthor = get_post_meta($testimonialID, 'testimonial-author', true);
+                $testimonialEmail = get_post_meta($testimonialID, 'testimonial-email', true);
+                $testimonialContent = wpautop(get_the_content($testimonialID));
+
+                $out .= '<div class="wp-block-column" style="flex-basis: 31.33%;">
+                    <p>' . $testimonialContent . '</p>
+                    <div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:16% auto">
+                        <figure class="wp-block-media-text__media">' . get_avatar($testimonialEmail, 64) . '</figure>
+                        <div class="wp-block-media-text__content">
+                            <p style="line-height:1"><strong>' . get_the_title($testimonialID) . '</strong></p>
+                            <p class="has-small-font-size" style="line-height:1">' . $testimonialAuthor . '</p>
+                        </div>
+                    </div>
+                </div>';
+            }
+
+        $out .= '</div>';
+    }
+
+    return $out;
+}
+
+
+
+/**
  * Supernova Testimonial Carousel
  */
 function supernova_testimonial_carousel($atts, $content = null) {
@@ -155,6 +201,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
 add_shortcode('supernova-testimonials', 'supernova_testimonials');
 add_shortcode('supernova-testimonial-carousel', 'supernova_testimonial_carousel');
 add_shortcode('supernova-testimonial-blocks', 'supernova_testimonial_blocks');
+add_shortcode('supernova-testimonial-blocks-alt', 'supernova_testimonial_blocks_alt');
 
 
 

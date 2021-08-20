@@ -34,11 +34,16 @@ function testimonial_build_meta_box($post) {
 	wp_nonce_field(basename(__FILE__), 'testimonial_meta_box_nonce');
 
     $currentTestimonialAuthor = get_post_meta($post->ID, 'testimonial-author', true);
+    $currentTestimonialEmail = get_post_meta($post->ID, 'testimonial-email', true);
 	?>
     <div class="inside">
         <p>
             <label for="testimonial-author">Author/Cite</label>
             <input type="text" name="testimonial_author" id="testimonial-author" class="regular-text" style="width: 100%;" value="<?php echo $currentTestimonialAuthor; ?>">
+        </p>
+        <p>
+            <label for="testimonial-email">Email</label>
+            <input type="email" name="testimonial_email" id="testimonial-email" class="regular-text" style="width: 100%;" value="<?php echo $currentTestimonialEmail; ?>">
         </p>
 	</div>
 	<?php
@@ -61,8 +66,10 @@ function testimonial_save_meta_box_data($post_id) {
 	}
 
     $testimonialAuthor = isset($_POST['testimonial_author']) ? trim($_POST['testimonial_author']) : '';
+    $testimonialEmail = isset($_POST['testimonial_email']) ? trim($_POST['testimonial_email']) : '';
 
     update_post_meta($post_id, 'testimonial-author', $testimonialAuthor);
+    update_post_meta($post_id, 'testimonial-email', $testimonialEmail);
 }
 
 /**
