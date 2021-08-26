@@ -78,10 +78,14 @@ function supernova_testimonial_blocks() {
 /**
  * Supernova Testimonials (Blocks, Alt)
  */
-function supernova_testimonial_blocks_alt() {
+function saturn_testimonial_blocks_carousel() {
+    $attributes = shortcode_atts([
+        'count' => 12
+    ], $atts);
+
     $args = [
         'post_type' => 'testimonial',
-        'posts_per_page' => -1,
+        'posts_per_page' => (int) $attributes['count'],
         'order' => 'ASC',
         'orderby' => 'menu_order'
     ];
@@ -90,7 +94,7 @@ function supernova_testimonial_blocks_alt() {
     $out = '';
 
     if ($testimonials->have_posts()) {
-        $out .= '<div class="wp-block-columns" style="flex-wrap: wrap;">';
+        $out .= '<section class="saturn-testimonial-blocks-carousel main-carousel" data-flickity=\'{"controls": true, "draggable": true, "wrapAround": true, "setGaallerySize": true }\'>';
 
             while ($testimonials->have_posts()) {
                 $testimonials->the_post();
@@ -101,10 +105,10 @@ function supernova_testimonial_blocks_alt() {
                 $testimonialEmail = get_post_meta($testimonialID, 'testimonial-email', true);
                 $testimonialContent = wpautop(get_the_content($testimonialID));
 
-                $out .= '<div class="wp-block-column" style="flex-basis: 31.33%;">
-                    <p>' . $testimonialContent . '</p>
-                    <div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:16% auto">
-                        <figure class="wp-block-media-text__media">' . get_avatar($testimonialEmail, 64) . '</figure>
+                $out .= '<div class="carousel-cell">
+                    ' . $testimonialContent . '
+                    <div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:16% auto;">
+                        <figure class="wp-block-media-text__media">' . get_the_post_thumbnail($testimonialID, [48, 48]) . '</figure>
                         <div class="wp-block-media-text__content">
                             <p style="line-height:1"><strong>' . get_the_title($testimonialID) . '</strong></p>
                             <p class="has-small-font-size" style="line-height:1">' . $testimonialAuthor . '</p>
@@ -113,7 +117,7 @@ function supernova_testimonial_blocks_alt() {
                 </div>';
             }
 
-        $out .= '</div>';
+        $out .= '</section>';
     }
 
     return $out;
@@ -201,7 +205,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
 add_shortcode('supernova-testimonials', 'supernova_testimonials');
 add_shortcode('supernova-testimonial-carousel', 'supernova_testimonial_carousel');
 add_shortcode('supernova-testimonial-blocks', 'supernova_testimonial_blocks');
-add_shortcode('supernova-testimonial-blocks-alt', 'supernova_testimonial_blocks_alt');
+add_shortcode('saturn-testimonial-blocks-carousel', 'saturn_testimonial_blocks_carousel');
 
 
 
