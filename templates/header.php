@@ -52,6 +52,10 @@ function get_supernova_header() {
         $headerClass .= ' header-noshadow';
     }
 
+    if ((int) get_option('use_organic_underline') === 1) {
+        $headerClass .= ' header-organic';
+    }
+
 
     $out .= '<header class="' . $headerClass . ' ' . $headerBoxedNav . '">
         <nav>

@@ -493,6 +493,55 @@ header ul.sub-menu ul.sub-menu {
 
 
 
+/**
+ * Organic Underline
+ *
+ * Add an expanding underline for all menu items, except for the logo.
+ * Add an Icofont submenu hint, instead of the default Unicode one.
+ */
+header.header-organic nav ul li a {
+    padding: 0 0 6px 48px;
+    position: relative;
+}
+header.header-organic nav ul li:not(.menu-logo-container) a {
+    text-transform: uppercase;
+}
+
+header.header-organic nav ul > li > ul > li a {
+    padding: 8px 16px 8px 16px;
+}
+header.header-organic nav ul li a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 1px;
+    background: var(--header_menu_text_colour);
+    transition: width .3s ease-in-out;
+}
+header.header-organic nav ul li > a:not(:only-child)::after {
+    content: "";
+}
+header.header-organic nav ul li a:hover::after {
+    width: 100%;
+}
+
+header.header-organic nav ul li.menu-logo-container a:hover::after,
+header.header-organic nav ul li.menu-theme-container a:hover::after {
+    width: 0;
+}
+
+header.header-organic nav ul li > a:not(:only-child)::before {
+    content: "\ea9e ";
+    font-family: 'IcoFont';
+    font-size: 20px;
+    display: inline-block;
+    opacity: 0.5;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+
+
 .aligncenter {
     text-align: center;
 }
