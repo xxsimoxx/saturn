@@ -33,6 +33,9 @@ function saturn_settings() {
             <p style="font-size: 18px;">Saturn is our flagship theme, enhanced for <b>speed</b>, <b>security</b>, <b>performance</b>, improved <b>search engine experience</b> and <b>high conversion ratio</b>.</p>
             <p style="font-size: 18px;">The underlying Saturn code is lightning fast, secure and SEO-friendly with full block editor support and 100% compatibility with Yoast SEO, Jetpack, SendGrid, Cloudflare and more.</p>
 
+            <p>Use this GitHub.com Access Token for your Git Updater plugin:</p>
+            <p><code>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</code></p>
+
             <p><small>Saturn v<?php echo wp_get_theme()->get('Version'); ?></small></p>
         <?php } else if ($tab === 'tools') {
             if (isset($_POST['supernova_save'])) {
@@ -496,7 +499,7 @@ function saturn_settings() {
                             <th scope="row"><label>Custom CSS Rules</label></th>
                             <td>
                                 <p>
-                                    <textarea name="supernova_custom_css" id="supernova_custom_css" class="large-text code supernova-code" rows="32"><?php echo stripslashes(get_option('supernova_custom_css')); ?></textarea>
+                                    <textarea name="supernova_custom_css" id="supernova_custom_css" class="large-text code saturn-code" rows="32"><?php echo stripslashes(get_option('supernova_custom_css')); ?></textarea>
                                 </p>
                             </td>
                         </tr>
@@ -523,7 +526,7 @@ function saturn_settings() {
                             <th scope="row"><label>Custom HTML/JS (<code>&lt;head&gt;</code>)</label></th>
                             <td>
                                 <p>
-                                    <textarea name="supernova_custom_html" id="supernova_custom_html" class="large-text code supernova-code" rows="24"><?php echo html_entity_decode(get_option('supernova_custom_html')); ?></textarea>
+                                    <textarea name="supernova_custom_html" id="supernova_custom_html" class="large-text code saturn-code" rows="24"><?php echo html_entity_decode(get_option('supernova_custom_html')); ?></textarea>
                                 </p>
                             </td>
                         </tr>
@@ -531,7 +534,7 @@ function saturn_settings() {
                             <th scope="row"><label>Custom HTML/JS (footer)</label></th>
                             <td>
                                 <p>
-                                    <textarea name="supernova_custom_html_footer" id="supernova_custom_html_footer" class="large-text code supernova-code" rows="24"><?php echo html_entity_decode(get_option('supernova_custom_html_footer')); ?></textarea>
+                                    <textarea name="supernova_custom_html_footer" id="supernova_custom_html_footer" class="large-text code saturn-code" rows="24"><?php echo html_entity_decode(get_option('supernova_custom_html_footer')); ?></textarea>
                                 </p>
                             </td>
                         </tr>
