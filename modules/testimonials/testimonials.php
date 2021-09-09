@@ -94,7 +94,7 @@ function saturn_testimonial_blocks_carousel() {
     $out = '';
 
     if ($testimonials->have_posts()) {
-        $out .= '<section class="saturn-testimonial-blocks-carousel main-carousel" data-flickity=\'{"controls": true, "draggable": true, "wrapAround": true, "setGaallerySize": true }\'>';
+        $out .= '<section class="saturn-testimonial-blocks-carousel main-carousel" data-flickity=\'{"controls": true, "draggable": true, "wrapAround": true }\'>';
 
             while ($testimonials->have_posts()) {
                 $testimonials->the_post();
