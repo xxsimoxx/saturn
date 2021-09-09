@@ -84,11 +84,7 @@
 
 
 
-.supernova-code {
-    font-family: "Cascadia Code Web", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-}
-
-.supernova-code {
+.saturn-code {
     background-color: #1a2023;
     border: 0 none;
     color: #ecf0f1;
@@ -96,14 +92,14 @@
     word-wrap: normal;
     white-space: pre;
 }
-.supernova-welcome {
+.saturn-welcome {
     margin: 64px 0 48px 0;
     font-size: 48px;
     font-weight: 300;
     color: #000000;
 }
 
-.supernova-wrap {
+.saturn-wrap {
     max-width: 1170px;
 }
 
@@ -160,7 +156,6 @@
 }
 
 .codor {
-    font-family: "Cascadia Code Web", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
     font-weight: 400;
     font-size: 13px;
 
@@ -196,7 +191,6 @@ small .codor {
 
 
 .color-well {
-    font-family: "Cascadia Code Web", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     width: 96px;
 }
 
@@ -204,7 +198,6 @@ small .codor {
 
 .wp-block[aria-label="Block: Supernova Slider"],
 .wp-block[data-type="wppd/footer-signature"] {
-    font-family: "Cascadia Code Web", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 12px;
     background-color: #eaf5ff;
     color: #0366d6;
@@ -219,6 +212,20 @@ small .codor {
     top: 6px;
     font-size: 12px;
     color: #999999;
+}
+
+
+
+/**
+ * Code
+ */
+code
+.codor,
+.color-well,
+.saturn-code,
+.wp-block[aria-label="Block: Supernova Slider"],
+.wp-block[data-type="wppd/footer-signature"] {
+    font-family: "Cascadia Code Web", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 
