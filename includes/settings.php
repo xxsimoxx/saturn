@@ -27,7 +27,7 @@ function saturn_settings() {
         </h2>
 
         <?php if ($tab === 'welcome') { ?>
-            <h2 class="supernova-welcome">Welcome to Saturn</h2>
+            <h2 class="saturn-welcome">Welcome to Saturn</h2>
 
             <p style="font-size: 18px;">Thank you for choosing Saturn theme for WordPress! You are now to build your block-powered website!</p>
             <p style="font-size: 18px;">Saturn is our flagship theme, enhanced for <b>speed</b>, <b>security</b>, <b>performance</b>, improved <b>search engine experience</b> and <b>high conversion ratio</b>.</p>
