@@ -220,3 +220,16 @@ small .codor {
     font-size: 12px;
     color: #999999;
 }
+
+
+
+/**
+ * Saturn Icons (back-end only)
+ */
+.saturn-icon {}
+.saturn-icon-12 {
+    height: 12px;
+}
+.saturn-icon-padded {
+    padding: 0 6px;
+}
