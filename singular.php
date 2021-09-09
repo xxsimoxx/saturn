@@ -18,6 +18,8 @@ if (have_posts()): while (have_posts()): the_post(); ?>
                 echo sharing_display();
             }
 
+            do_action('before_post_content', get_the_ID());
+
             the_content();
 
             setSupernovaPostViews(get_the_ID());
