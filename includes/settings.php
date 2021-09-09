@@ -560,6 +560,8 @@ function saturn_settings() {
                 update_option('use_butter', (int) $_POST['use_butter']);
                 update_option('use_dark_mode', (int) $_POST['use_dark_mode']);
 
+                update_option('use_organic_underline', (int) $_POST['use_organic_underline']);
+
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
@@ -656,7 +658,7 @@ function saturn_settings() {
                                     <input type="checkbox" id="use_side_panel" name="use_side_panel" value="1" <?php echo ((int) get_option('use_side_panel') === 1) ? 'checked' : ''; ?>>
                                     <label for="use_side_panel">Enable side panel</label>
                                     <br>
-                                    &#11169; <input type="checkbox" id="supernova_side_panel_modal" name="supernova_side_panel_modal" value="1" <?php echo ((int) get_option('supernova_side_panel_modal') === 1) ? 'checked' : ''; ?>>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 377 377" class="saturn-icon saturn-icon-padded saturn-icon-12"><path d="m275 216-22 21 45 45H52V0H22v312h276l-44 44 21 21 80-80z"/></svg> <input type="checkbox" id="supernova_side_panel_modal" name="supernova_side_panel_modal" value="1" <?php echo ((int) get_option('supernova_side_panel_modal') === 1) ? 'checked' : ''; ?>>
                                     <label for="supernova_side_panel_modal">Enable modal popup mode</label>
                                     <br><small>A configurable right side off-canvas panel.</small>
                                     <br><small>Use the <code>toggle-nav</code> class to create a panel trigger.</small>
@@ -733,6 +735,15 @@ function saturn_settings() {
                                 <p>
                                     <input type="checkbox" id="use_dark_mode" name="use_dark_mode" value="1" <?php echo ((int) get_option('use_dark_mode') === 1) ? 'checked' : ''; ?>>
                                     <label for="use_dark_mode">Use Dark Mode</label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Design Modules</label></th>
+                            <td>
+                                <p>
+                                    <input type="checkbox" id="use_organic_underline" name="use_organic_underline" value="1" <?php echo ((int) get_option('use_organic_underline') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_organic_underline">Use <em>Organic</em> underline for primary navigation items (requires Icofont)</label>
                                 </p>
                             </td>
                         </tr>
