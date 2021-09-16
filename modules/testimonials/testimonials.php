@@ -103,14 +103,17 @@ function saturn_testimonial_blocks_carousel() {
 
                 $testimonialAuthor = get_post_meta($testimonialID, 'testimonial-author', true);
                 $testimonialEmail = get_post_meta($testimonialID, 'testimonial-email', true);
+                $testimonialLinkedIn = get_post_meta($testimonialID, 'testimonial-linkedin', true);
                 $testimonialContent = wpautop(get_the_content($testimonialID));
+
+                $testimonialLinkedIn = ((string) $testimonialLinkedIn !== '') ? ' <a class="saturn-testimonial--linkedin" href="' . $testimonialLinkedIn . '" rel="external noopener" target="_blank"><i class="icofont-linkedin"></i></a>' : '';
 
                 $out .= '<div class="carousel-cell">
                     ' . $testimonialContent . '
-                    <div class="wp-block-media-text is-stacked-on-mobile" style="grid-template-columns:16% auto;">
+                    <div class="wp-block-media-text" style="grid-template-columns:16% auto;">
                         <figure class="wp-block-media-text__media">' . get_the_post_thumbnail($testimonialID, [48, 48]) . '</figure>
                         <div class="wp-block-media-text__content">
-                            <p style="line-height:1"><strong>' . get_the_title($testimonialID) . '</strong></p>
+                            <p style="line-height:1"><strong>' . get_the_title($testimonialID) . '</strong>' . $testimonialLinkedIn . '</p>
                             <p class="has-small-font-size" style="line-height:1">' . $testimonialAuthor . '</p>
                         </div>
                     </div>

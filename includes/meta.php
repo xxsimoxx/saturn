@@ -35,6 +35,7 @@ function testimonial_build_meta_box($post) {
 
     $currentTestimonialAuthor = get_post_meta($post->ID, 'testimonial-author', true);
     $currentTestimonialEmail = get_post_meta($post->ID, 'testimonial-email', true);
+    $currentTestimonialLinkedIn = get_post_meta($post->ID, 'testimonial-linkedin', true);
 	?>
     <div class="inside">
         <p>
@@ -44,6 +45,10 @@ function testimonial_build_meta_box($post) {
         <p>
             <label for="testimonial-email">Email</label>
             <input type="email" name="testimonial_email" id="testimonial-email" class="regular-text" style="width: 100%;" value="<?php echo $currentTestimonialEmail; ?>">
+        </p>
+        <p>
+            <label for="testimonial-linkedin">LinkedIn URL</label>
+            <input type="email" name="testimonial_linkedin" id="testimonial-linkedin" class="regular-text" style="width: 100%;" value="<?php echo $currentTestimonialLinkedIn; ?>">
         </p>
 	</div>
 	<?php
@@ -67,9 +72,11 @@ function testimonial_save_meta_box_data($post_id) {
 
     $testimonialAuthor = isset($_POST['testimonial_author']) ? trim($_POST['testimonial_author']) : '';
     $testimonialEmail = isset($_POST['testimonial_email']) ? trim($_POST['testimonial_email']) : '';
+    $testimonialLinkedIn = isset($_POST['testimonial_linkedin']) ? trim($_POST['testimonial_linkedin']) : '';
 
     update_post_meta($post_id, 'testimonial-author', $testimonialAuthor);
     update_post_meta($post_id, 'testimonial-email', $testimonialEmail);
+    update_post_meta($post_id, 'testimonial-linkedin', $testimonialLinkedIn);
 }
 
 /**
