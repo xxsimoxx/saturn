@@ -1429,8 +1429,18 @@ figure {
     align-items: stretch;
     min-height: 100%;
 }
+@media only screen and (max-width: 768px) {
+    .saturn-testimonial-blocks-carousel .carousel-cell {
+        width: 100%;
+    }
+}
 .saturn-testimonial-blocks-carousel .wp-block-media-text {
     margin-top: auto
+}
+
+a.saturn-testimonial--linkedin {
+    text-decoration: none;
+    color: #0077b5;
 }
 
 
