@@ -564,6 +564,7 @@ function saturn_settings() {
                 update_option('use_dark_mode', (int) $_POST['use_dark_mode']);
 
                 update_option('use_organic_underline', (int) $_POST['use_organic_underline']);
+                update_option('use_back_to_top', (int) $_POST['use_back_to_top']);
 
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
@@ -747,6 +748,10 @@ function saturn_settings() {
                                 <p>
                                     <input type="checkbox" id="use_organic_underline" name="use_organic_underline" value="1" <?php echo ((int) get_option('use_organic_underline') === 1) ? 'checked' : ''; ?>>
                                     <label for="use_organic_underline">Use <em>Organic</em> underline for primary navigation items (requires Icofont)</label>
+                                </p>
+                                <p>
+                                    <input type="checkbox" id="use_back_to_top" name="use_back_to_top" value="1" <?php echo ((int) get_option('use_back_to_top') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_back_to_top">Use a bottom-right <em>back-to-top</em> arrow (requires Icofont)</label>
                                 </p>
                             </td>
                         </tr>
