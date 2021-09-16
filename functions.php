@@ -2,6 +2,7 @@
 require_once 'includes/lighthouse.php';
 require_once 'includes/settings.php';
 require_once 'includes/meta.php';
+require_once 'includes/user.php';
 
 
 
@@ -220,10 +221,6 @@ function supernova_snackbar() {
     echo $out;
 }
 
-if ((int) get_option('supernova_snackbar') && (int) get_option('supernova_snackbar_block_id') > 0) {
-    add_action('wp_footer', 'supernova_snackbar');
-}
-
 
 
 /**
@@ -324,6 +321,16 @@ function supernova_footer() {
     // Side Drawer
     if ((int) get_option('use_side_drawer') === 1 && function_exists('show_side_drawer')) {
         show_side_drawer();
+    }
+
+    // Snackbar
+    if ((int) get_option('supernova_snackbar') && (int) get_option('supernova_snackbar_block_id') > 0) {
+        supernova_snackbar();
+    }
+
+    // Back-to-top Arrow
+    if ((int) get_option('use_back_to_top') === 1 && (int) get_option('use_icofont') === 1) {
+        echo '<a href="#up" class="saturn--up"><i class="icofont-arrow-up"></i></a>';
     }
 
     // Custom HTML Code
