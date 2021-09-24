@@ -500,11 +500,8 @@ header ul.sub-menu ul.sub-menu {
  * Add an Icofont submenu hint, instead of the default Unicode one.
  */
 header.header-organic nav ul li a {
-    padding: 0 0 6px 48px;
+    padding: 0 0 6px 24px;
     position: relative;
-}
-header.header-organic nav ul li:not(.menu-logo-container) a {
-    text-transform: uppercase;
 }
 
 header.header-organic nav ul > li > ul > li a {
