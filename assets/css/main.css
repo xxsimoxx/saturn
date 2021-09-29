@@ -357,7 +357,8 @@ header nav ul#menu-secondary-pipes-menu li a {
 /**
  * Header Logo
  */
-header .pull-left {
+header .pull-left,
+header .menu-logo-container {
     margin-right: auto;
 }
 header .custom-logo {
