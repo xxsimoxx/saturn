@@ -1,15 +1,7 @@
 <?php
-function supernova_disable_emojis_tinymce($plugins) {
-    if (is_array($plugins)) {
-        return array_diff($plugins, ['wpemoji']);
-    } else {
-        return [];
-    }
-}
+add_action('init', 'saturn_init', 3);
 
-add_action('init', 'supernova_init', 3);
-
-function supernova_init() {
+function saturn_init() {
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('wp_print_styles', 'print_emoji_styles');
     remove_action('admin_print_scripts', 'print_emoji_detection_script');

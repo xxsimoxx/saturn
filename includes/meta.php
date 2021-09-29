@@ -4,8 +4,8 @@
  *
  * @param post $post The post object
  */
-function supernova_add_meta_boxes($post) {
-    add_meta_box('slide_meta_box', __('Slide Settings', 'supernova'), 'slide_build_meta_box', ['slide'], 'side', 'low');
+function saturn_add_meta_boxes($post) {
+    add_meta_box('slide_meta_box', __('Slide Settings', 'saturn'), 'slide_build_meta_box', ['slide'], 'side', 'low');
     /*
     add_meta_box(
         'agent_meta_box',
@@ -20,7 +20,7 @@ function supernova_add_meta_boxes($post) {
         ]
     );
     /**/
-    add_meta_box('testimonial_meta_box', __('Testimonial Settings', 'supernova'), 'testimonial_build_meta_box', ['testimonial'], 'side', 'low');
+    add_meta_box('testimonial_meta_box', __('Testimonial Settings', 'saturn'), 'testimonial_build_meta_box', ['testimonial'], 'side', 'low');
 }
 
 
@@ -124,24 +124,13 @@ function slide_save_meta_box_data($post_id) {
 /**
  * Hide WordPress Custom Fields section
  */
-function supernova_meta_boxes() {
+function saturn_meta_boxes() {
     remove_meta_box('postcustom', 'testimonial', 'normal');
 }
 
-add_action('admin_init', 'supernova_meta_boxes');
+add_action('admin_init', 'saturn_meta_boxes');
 
-add_action('add_meta_boxes', 'supernova_add_meta_boxes');
+add_action('add_meta_boxes', 'saturn_add_meta_boxes');
 
 add_action('save_post', 'testimonial_save_meta_box_data');
 add_action('save_post', 'slide_save_meta_box_data');
-
-
-
-
-/**
- * Remove Yoast SEO meta box from bid CPT
- */
-function supernova_remove_yoast_metabox() {
-    remove_meta_box('wpseo_meta', ['bid'], 'normal');
-}
-add_action('add_meta_boxes', 'supernova_remove_yoast_metabox', 11);

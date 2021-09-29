@@ -489,7 +489,7 @@ function saturn_settings() {
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
-            <h3><?php esc_html_e('Custom CSS', 'supernova'); ?></h3>
+            <h3><?php esc_html_e('Custom CSS', 'saturn'); ?></h3>
             <p>Add your own CSS code here to customise the appearance and layout of your site or use the <a href="<?php echo admin_url('customize.php'); ?>">WordPress Customizer</a> to add custom CSS rules.</p>
 
             <form method="post" action="">
@@ -516,7 +516,7 @@ function saturn_settings() {
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
-            <h3><?php esc_html_e('Custom HTML/JS', 'supernova'); ?></h3>
+            <h3><?php esc_html_e('Custom HTML/JS', 'saturn'); ?></h3>
             <p>Add your own HTML or JavaSscript code snippets or tracking snippets here to customize the appearance and layout of your site.</p>
 
             <form method="post" action="">
@@ -545,13 +545,13 @@ function saturn_settings() {
             </form>
         <?php } else if ($tab === 'modules') {
             if (isset($_POST['supernova_save'])) {
-                update_option('use_side_drawer', (int) $_POST['use_side_drawer']);
-                update_option('side_drawer_handle_title', $_POST['side_drawer_handle_title']);
-                update_option('supernova_drawer_block_id', (int) $_POST['supernova_drawer_block_id']);
+                delete_option('use_side_drawer');
+                delete_option('side_drawer_handle_title');
+                delete_option('supernova_drawer_block_id');
 
-                update_option('supernova_snackbar', (int) $_POST['supernova_snackbar']);
-                update_option('supernova_snackbar_block_id', (int) $_POST['supernova_snackbar_block_id']);
-                update_option('supernova_snackbar_scroll_value', (int) $_POST['supernova_snackbar_scroll_value']);
+                delete_option('supernova_snackbar');
+                delete_option('supernova_snackbar_block_id');
+                delete_option('supernova_snackbar_scroll_value');
 
                 update_option('use_side_panel', (int) $_POST['use_side_panel']);
                 update_option('supernova_side_panel_modal', (int) $_POST['supernova_side_panel_modal']);
@@ -575,86 +575,6 @@ function saturn_settings() {
             <form method="post" action="">
                 <table class="form-table">
                     <tbody>
-                        <tr>
-                            <th scope="row"><label>Side Drawer</label></th>
-                            <td>
-                                <p>
-                                    <input type="checkbox" id="use_side_drawer" name="use_side_drawer" value="1" <?php echo ((int) get_option('use_side_drawer') === 1) ? 'checked' : ''; ?>>
-                                    <label for="use_side_drawer">Enable side drawer</label>
-                                    <br>
-                                    <input type="text" name="side_drawer_handle_title" class="regular-text" placeholder="Side drawer handle title" value="<?php echo stripslashes(get_option('side_drawer_handle_title')); ?>">
-                                </p>
-                                <p>
-                                    <?php
-                                    $supernovaDrawerBlockID = get_option('supernova_drawer_block_id');
-
-                                    $args = [
-                                        'post_type' => 'wp_block',
-                                        'posts_per_page' => -1,
-                                        'order' => 'ASC',
-                                        'orderby' => 'title'
-                                    ];
-                                    $wpBlockQuery = new WP_Query($args);
-
-                                    echo '<select name="supernova_drawer_block_id" id="supernova_drawer_block_id">
-                                        <option value="">Select a reusable block...</option>';
-
-                                        if ($wpBlockQuery->have_posts()) {
-                                            while ($wpBlockQuery->have_posts()) {
-                                                $wpBlockQuery->the_post();
-
-                                                $selected = ((int) $supernovaDrawerBlockID === (int) get_the_ID()) ? 'selected' : '';
-                                                echo '<option value="' . get_the_ID() . '" ' . $selected . '>' . get_the_title() . '</option>';
-                                            }
-                                        }
-                                    echo '</select>
-                                    <br><small><a href="' . admin_url('edit.php?post_type=wp_block') . '">Select your Drawer reusable block or create one now</a>.</small>';
-                                    ?>
-                                </p>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row"><label>Snackbar</label></th>
-                            <td>
-                                <p>
-                                    <input type="checkbox" id="supernova_snackbar" name="supernova_snackbar" value="1" <?php echo ((int) get_option('supernova_snackbar') === 1) ? 'checked' : ''; ?>>
-                                    <label for="supernova_snackbar">Enable snackbar</label>
-                                </p>
-                                <p>
-                                    <?php
-                                    $supernovaSnackbarBlockID = get_option('supernova_snackbar_block_id');
-
-                                    $args = [
-                                        'post_type' => 'wp_block',
-                                        'posts_per_page' => -1,
-                                        'order' => 'ASC',
-                                        'orderby' => 'title'
-                                    ];
-                                    $wpBlockQuery = new WP_Query($args);
-
-                                    echo '<select name="supernova_snackbar_block_id" id="supernova_snackbar_block_id">
-                                        <option value="">Select a reusable block...</option>';
-
-                                        if ($wpBlockQuery->have_posts()) {
-                                            while ($wpBlockQuery->have_posts()) {
-                                                $wpBlockQuery->the_post();
-
-                                                $selected = ((int) $supernovaSnackbarBlockID === (int) get_the_ID()) ? 'selected' : '';
-                                                echo '<option value="' . get_the_ID() . '" ' . $selected . '>' . get_the_title() . '</option>';
-                                            }
-                                        }
-                                    echo '</select>
-                                    <br><small><a href="' . admin_url('edit.php?post_type=wp_block') . '">Select your Snackbar reusable block or create one now</a>.</small>';
-                                    ?>
-                                </p>
-                                <p>
-                                    <input type="number" name="supernova_snackbar_scroll_value" value="<?php echo get_option('supernova_snackbar_scroll_value'); ?>">px
-                                    <br><small>Show Snackbar after scrolling this many pixels. Enter <code>0</code> to show Snackbar immediately.</small>
-                                </p>
-                            </td>
-                        </tr>
-
                         <tr>
                             <th scope="row"><label>Side Panel</label></th>
                             <td>

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <?php if ((int) get_option('use_native_fonts') !== 1) { ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <?php } ?>
 
@@ -87,4 +88,4 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <i id="up"></i>
 <div id="saturn-scroll">
 
-<?php echo get_supernova_header(); ?>
+<?php echo get_saturn_header();

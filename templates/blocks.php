@@ -7,7 +7,7 @@
  * @param string $content Content to be cleaned
  * @return string $content Cleaned content
  */
-function supernova_paragraph_fix($content) {
+function saturn_paragraph_fix($content) {
     $removeArray = [
         '<p>[' => '[',
         ']</p>' => ']',
@@ -22,7 +22,7 @@ function supernova_paragraph_fix($content) {
 
 
 
-add_filter('the_content', 'supernova_paragraph_fix',10,1);
+add_filter('the_content', 'saturn_paragraph_fix',10,1);
 
 
 
@@ -94,11 +94,7 @@ function get_osm_map($atts) {
     return $out;
 }
 
-function supernova_clear() {
-    return '<div class="clearfix"></div>';
-}
-
-function supernova_fa($atts) {
+function saturn_fa($atts) {
     $attributes = shortcode_atts([
         'class' => ''
     ], $atts);
@@ -107,9 +103,7 @@ function supernova_fa($atts) {
 
     return '<i class="' . $class . '"></i>';
 }
-add_shortcode('fa', 'supernova_fa');
+add_shortcode('fa', 'saturn_fa');
 
-
-add_shortcode('clear', 'supernova_clear');
 
 add_shortcode('osm-map', 'get_osm_map');

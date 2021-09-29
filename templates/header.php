@@ -7,11 +7,11 @@
  *
  * @param int  $type  Header type.
  */
-function get_supernova_header() {
-    // Initialise container
+function get_saturn_header() {
+    // Initialize container
     $out = '';
 
-    // Initialise options
+    // Initialize options
     $headerBoxedNav = (int) get_option('boxed_nav');
     $headerType = (int) get_option('header_type');
 
@@ -67,7 +67,7 @@ function get_supernova_header() {
     return $out;
 }
 
-function supernova_custom_menu_item($items, $args) {
+function saturn_custom_menu_item($items, $args) {
     if ($args->theme_location === 'main-menu') {
         $current_items = $items;
         $items = '<li class="menu-logo-container"><a href="' . home_url() . '" class="menu-logo-large">' . get_bloginfo('name') . '</a></li>';
@@ -121,4 +121,4 @@ function supernova_custom_menu_item($items, $args) {
     return $items;
 }
 
-add_filter('wp_nav_menu_items', 'supernova_custom_menu_item', 10, 2);
+add_filter('wp_nav_menu_items', 'saturn_custom_menu_item', 10, 2);

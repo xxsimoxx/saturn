@@ -2,7 +2,7 @@
 /**
  * Register custom post type (testimonial)
  */
-function supernova_cpt_testimonials() {
+function saturn_cpt_testimonials() {
 	$labels = [
 		'name'                  => 'Testimonials',
 		'singular_name'         => 'Testimonial',
@@ -55,33 +55,33 @@ function supernova_cpt_testimonials() {
 	register_post_type('testimonial', $args);
 }
 
-add_action('init', 'supernova_cpt_testimonials', 0);
+add_action('init', 'saturn_cpt_testimonials', 0);
 
 /**
  * Register custom taxonomy for testimonials (testimonial type)
  */
-function supernova_type_testimonials() {
+function saturn_type_testimonials() {
     $labels = [
-		'name'                       => _x('Testimonial Types', 'Taxonomy General Name', 'supernova'),
-		'singular_name'              => _x('Testimonial Type', 'Taxonomy Singular Name', 'supernova'),
-		'menu_name'                  => __('Types', 'supernova'),
-		'all_items'                  => __('All Types', 'supernova'),
-		'parent_item'                => __('Parent Type', 'supernova'),
-		'parent_item_colon'          => __('Parent Type:', 'supernova'),
-		'new_item_name'              => __('New Type Name', 'supernova'),
-		'add_new_item'               => __('Add New Type', 'supernova'),
-		'edit_item'                  => __('Edit Type', 'supernova'),
-		'update_item'                => __('Update Type', 'supernova'),
-		'view_item'                  => __('View Type', 'supernova'),
-		'separate_items_with_commas' => __('Separate types with commas', 'supernova'),
-		'add_or_remove_items'        => __('Add or remove types', 'supernova'),
-		'choose_from_most_used'      => __('Choose from the most used', 'supernova'),
-		'popular_items'              => __('Popular Types', 'supernova'),
-		'search_items'               => __('Search Types', 'supernova'),
-		'not_found'                  => __('Not Found', 'supernova'),
-		'no_terms'                   => __('No types', 'supernova'),
-		'items_list'                 => __('Types list', 'supernova'),
-		'items_list_navigation'      => __('Types list navigation', 'supernova'),
+		'name'                       => _x('Testimonial Types', 'Taxonomy General Name', 'saturn'),
+		'singular_name'              => _x('Testimonial Type', 'Taxonomy Singular Name', 'saturn'),
+		'menu_name'                  => __('Types', 'saturn'),
+		'all_items'                  => __('All Types', 'saturn'),
+		'parent_item'                => __('Parent Type', 'saturn'),
+		'parent_item_colon'          => __('Parent Type:', 'saturn'),
+		'new_item_name'              => __('New Type Name', 'saturn'),
+		'add_new_item'               => __('Add New Type', 'saturn'),
+		'edit_item'                  => __('Edit Type', 'saturn'),
+		'update_item'                => __('Update Type', 'saturn'),
+		'view_item'                  => __('View Type', 'saturn'),
+		'separate_items_with_commas' => __('Separate types with commas', 'saturn'),
+		'add_or_remove_items'        => __('Add or remove types', 'saturn'),
+		'choose_from_most_used'      => __('Choose from the most used', 'saturn'),
+		'popular_items'              => __('Popular Types', 'saturn'),
+		'search_items'               => __('Search Types', 'saturn'),
+		'not_found'                  => __('Not Found', 'saturn'),
+		'no_terms'                   => __('No types', 'saturn'),
+		'items_list'                 => __('Types list', 'saturn'),
+		'items_list_navigation'      => __('Types list navigation', 'saturn'),
 	];
 	$args = [
 		'labels'                     => $labels,
@@ -97,4 +97,4 @@ function supernova_type_testimonials() {
 	register_taxonomy('testimonial_type', ['testimonial'], $args);
 
 }
-add_action('init', 'supernova_type_testimonials', 0);
+add_action('init', 'saturn_type_testimonials', 0);

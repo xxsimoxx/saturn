@@ -11,11 +11,11 @@
     var MenuItemsChoice  = wp.components.MenuItemsChoice;
     var ToggleControl = wp.components.ToggleControl;
 
-    registerBlockType('supernova/supernova-slider', {
-        title: 'Supernova Slider',
+    registerBlockType('saturn/saturn-slider', {
+        title: 'Saturn Slider',
         description: 'A full-featured slider block.',
         icon: 'slides',
-        category: 'supernova',
+        category: 'saturn',
         attributes: {
             ids: {
                 type: 'string',
@@ -73,7 +73,7 @@
                     el(
                         components.PanelBody, {
                             title: 'Slider Settings',
-                            className: 'supernova_block',
+                            className: 'saturn_block',
                             initialOpen: true,
                         },
 
@@ -137,7 +137,7 @@
                     el(
                         components.PanelBody, {
                             title: 'Advanced Slider Options',
-                            className: 'supernova_block',
+                            className: 'saturn_block',
                             initialOpen: false,
                         },
 
@@ -176,7 +176,7 @@
                     ),
                 ),
                 el(ServerSideRender, {
-                    block: 'supernova/supernova-slider',
+                    block: 'saturn/saturn-slider',
                     attributes: props.attributes
                 })
             ];

@@ -151,7 +151,7 @@
 
 
 
-.wp-block[aria-label="Block: Supernova Slider"] {
+.wp-block[aria-label="Block: Saturn Slider"] {
     font-size: 14px;
 }
 
@@ -196,7 +196,7 @@ small .codor {
 
 
 
-.wp-block[aria-label="Block: Supernova Slider"],
+.wp-block[aria-label="Block: Saturn Slider"],
 .wp-block[data-type="wppd/footer-signature"] {
     font-size: 12px;
     background-color: #eaf5ff;
@@ -223,7 +223,7 @@ code,
 .codor,
 .color-well,
 .saturn-code,
-.wp-block[aria-label="Block: Supernova Slider"],
+.wp-block[aria-label="Block: Saturn Slider"],
 .wp-block[data-type="wppd/footer-signature"] {
     font-family: "Cascadia Code Web", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
 }

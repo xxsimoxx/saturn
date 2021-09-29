@@ -1,9 +1,9 @@
-function supernovaGetContrast(hexcolor) {
+function saturnGetContrast(hexcolor) {
     hexcolor = hexcolor.replace('#', '');
 
     return (parseInt(hexcolor, 16) > 0xffffff/2) ? 'black' : 'white';
 }
-function supernovaResetColorWell() {
+function saturnResetColorWell() {
     this.style.backgroundColor = 'white';
     this.style.color = 'black';
 }
@@ -37,15 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.color-well')) {
         [].forEach.call(document.querySelectorAll('.color-well'), function (colorWell) {
             colorWell.style.backgroundColor = colorWell.value;
-            colorWell.style.color = supernovaGetContrast(colorWell.value);
+            colorWell.style.color = saturnGetContrast(colorWell.value);
 
-            colorWell.addEventListener('input', supernovaResetColorWell, false);
-            colorWell.addEventListener('click', supernovaResetColorWell, false);
-            colorWell.addEventListener('touch', supernovaResetColorWell, false);
+            colorWell.addEventListener('input', saturnResetColorWell, false);
+            colorWell.addEventListener('click', saturnResetColorWell, false);
+            colorWell.addEventListener('touch', saturnResetColorWell, false);
 
             colorWell.addEventListener('blur', function () {
                 this.style.backgroundColor = this.value;
-                this.style.color = supernovaGetContrast(this.value);
+                this.style.color = saturnGetContrast(this.value);
             });
         });
     }

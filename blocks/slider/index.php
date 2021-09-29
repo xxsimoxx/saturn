@@ -1,30 +1,30 @@
 <?php
-add_action('init', 'supernova_slider_block_main');
+add_action('init', 'saturn_slider_block_main');
 
-function supernova_plugin_block_categories($categories, $post) {
+function saturn_plugin_block_categories($categories, $post) {
     return array_merge(
         $categories, [
             [
-                'slug' => 'supernova',
-                'title' => 'Supernova',
+                'slug' => 'saturn',
+                'title' => 'Saturn',
                 'icon' => 'star-filled',
             ]
         ]
     );
 }
-add_filter('block_categories_all', 'supernova_plugin_block_categories', 10, 2);
+add_filter('block_categories_all', 'saturn_plugin_block_categories', 10, 2);
 
-function supernova_block_enqueue_block_editor_assets() {
+function saturn_block_enqueue_block_editor_assets() {
     wp_enqueue_script(
-        'supernova-slider-block-script',
-        get_stylesheet_directory_uri() . '/blocks/slider/supernova-slider-block.js',
+        'saturn-slider-block-script',
+        get_stylesheet_directory_uri() . '/blocks/slider/saturn-slider-block.js',
         ['wp-blocks', 'wp-element', 'wp-i18n', 'wp-editor', 'wp-components']
     );
 }
 
-add_action('enqueue_block_editor_assets', 'supernova_block_enqueue_block_editor_assets');
+add_action('enqueue_block_editor_assets', 'saturn_block_enqueue_block_editor_assets');
 
-function supernova_slider_block_main() {
+function saturn_slider_block_main() {
     function addShortcodeParam($key, $value) {
         if (trim($value) == '') {
             return '';
@@ -34,7 +34,7 @@ function supernova_slider_block_main() {
         return $asc;
     }
 
-    function supernova_slider_render($attributes, $content) {
+    function saturn_slider_render($attributes, $content) {
 		$out = '';
 
         // Slide ID(s)
@@ -81,8 +81,8 @@ function supernova_slider_block_main() {
 		return $out;
 	}
 
-    register_block_type('supernova/supernova-slider', [
-        'render_callback' => 'supernova_slider_render',
+    register_block_type('saturn/saturn-slider', [
+        'render_callback' => 'saturn_slider_render',
         'attributes' => [
             'ids' => [
                 'type' => 'string',

@@ -186,6 +186,10 @@ header nav ul li a,
     border-radius: 3px;
     height: auto;
 }
+.wp-block-button .wp-block-button__link.has-background:hover {
+    filter: brightness(0.95);
+}
+
 .wp-block-image {
     margin: 0;
 }
@@ -354,13 +358,7 @@ header nav ul#menu-secondary-pipes-menu li a {
  * Header Logo
  */
 header .pull-left {
-    margin-right: 24px;
-    float: left;
-    /**
-     * There's always an image inside this element, and setting font-size to 0
-     * removes the bottom padding/gap
-     */
-    font-size: 0;
+    margin-right: auto;
 }
 header .custom-logo {
     width: auto;
@@ -1319,35 +1317,6 @@ h2.supernova-search-header {
     .supernova-blog-item {
         flex-basis: 100%;
     }
-}
-
-
-
-/**
- * Supernova Snackbar
- */
-.snackbar {
-    background-color: #ffffff;
-    padding: 8px;
-    position: fixed;
-    z-index: 128;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: translateY(128px);
-    transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-    box-shadow: 0 0 48px rgba(0, 0, 0, 0.25);
-}
-.snackbar.snackbar--on {
-    transform: translateY(0);
-}
-
-.snackbar .wp-block-buttons .wp-block-button {
-    margin-bottom: 0;
-}
-.snackbar .wp-block-buttons .wp-block-button a:hover {
-    background-color: #000000;
-    color: #ffffff;
 }
 
 
