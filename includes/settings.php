@@ -120,6 +120,7 @@ function saturn_settings() {
 
                 update_option('use_native_fonts', (int) $_POST['use_native_fonts']);
                 update_option('use_icofont', (int) $_POST['use_icofont']);
+                update_option('use_cascadia_code_fonts', (int) $_POST['use_cascadia_code_fonts']);
 
                 update_option('heading_font', (string) $_POST['heading_font']);
                 update_option('body_font', (string) $_POST['body_font']);
@@ -387,6 +388,9 @@ function saturn_settings() {
                             <td>
                                 <p>
                                     <input type="checkbox" id="use_native_fonts" name="use_native_fonts" value="1" <?php echo ((int) get_option('use_native_fonts') === 1) ? 'checked' : ''; ?>> <label for="use_native_fonts">Use native OS fonts</label>
+                                </p>
+                                <p>
+                                    <input type="checkbox" id="use_cascadia_code_fonts" name="use_cascadia_code_fonts" value="1" <?php echo ((int) get_option('use_cascadia_code_fonts') === 1) ? 'checked' : ''; ?>> <label for="use_cascadia_code_fonts">Use Cascadia Code fonts</label>
                                 </p>
                                 <hr>
                                 <p>

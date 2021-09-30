@@ -112,14 +112,22 @@ a:hover {
     }
 }
 
+.wp-block-code,
 pre {
-    background-color: #eaf5ff;
-    border-radius: 3px;
-    padding: 2px 6px;
+    font-family: "Cascadia Code Web", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    padding: .8em 1em;
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: rgb(0 45 88 / 5%) 0px 14px 20px;
+    font-weight: 300;
+    background-color: #ecf0f1;
+    font-size: 14px;
 }
-code {
-    font: 12px SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-    color: #0366d6;
+.wp-block-code strong,
+.wp-block-code b,
+pre strong,
+pre b {
+    font-weight: 500;
 }
 
 

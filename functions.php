@@ -101,6 +101,10 @@ function saturn_enqueue() {
         wp_enqueue_style('icofont', get_stylesheet_directory_uri() . '/assets/fonts/icofont/icofont.min.css', [], $version);
     }
 
+    if ((int) get_option('use_cascadia_code_fonts') === 1) {
+        wp_enqueue_style('cascadia-code', get_stylesheet_directory_uri() . '/assets/css/code.css', [], $version);
+    }
+
     if ((int) get_option('use_butter') === 1) {
         wp_enqueue_script('butter', get_stylesheet_directory_uri() . '/js/butter/butter.min.js', [], $version, true);
     }
