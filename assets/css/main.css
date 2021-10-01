@@ -1496,6 +1496,17 @@ a.saturn-testimonial--linkedin {
 
 
 
+.magnet {
+    will-change: transform;
+    transition: transform 300ms ease;
+}
+.magnet a {
+    will-change: transform;
+    transition: transform 160ms cubic-bezier(0.3, 1, 0.7, 1);
+}
+
+
+
 
 /**
  * Font Awesome

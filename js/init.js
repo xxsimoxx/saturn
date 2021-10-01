@@ -212,4 +212,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    if (parseInt(saturn_ajax_var.use_splitting_js, 10) === 1) {
+        if (document.querySelector('[data-splitting]')) {
+            Splitting();
+        }
+    }
+
+    if (parseInt(saturn_ajax_var.use_magnetmouse_js, 10) === 1) {
+        if (document.querySelector('.magnet')) {
+            (function () {
+                const links = document.querySelectorAll('.magnet');
+
+                const animateMe = function (e) {
+                    const span = this.querySelector('a');
+                    const { offsetX: x, offsetY: y } = e,
+                        { offsetWidth: width, offsetHeight: height } = this;
+
+                    move = 30;
+                    xMove = x / width * (move * 2) - move;
+                    yMove = y / height * (move * 2) - move;
+
+                    span.style.transform = `translate(${xMove}px, ${yMove}px)`;
+
+                    if (e.type === 'mouseleave') span.style.transform = '';
+                };
+
+                links.forEach(link => link.addEventListener('mousemove', animateMe));
+                links.forEach(link => link.addEventListener('mouseleave', animateMe));
+            })();
+        }
+    }
+
 }, false);

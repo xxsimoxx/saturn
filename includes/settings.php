@@ -570,6 +570,10 @@ function saturn_settings() {
                 update_option('use_organic_underline', (int) $_POST['use_organic_underline']);
                 update_option('use_back_to_top', (int) $_POST['use_back_to_top']);
 
+                // JavaScript Libraries
+                update_option('use_splitting_js', (int) $_POST['use_splitting_js']);
+                update_option('use_magnetmouse_js', (int) $_POST['use_magnetmouse_js']);
+
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
@@ -676,6 +680,19 @@ function saturn_settings() {
                                 <p>
                                     <input type="checkbox" id="use_back_to_top" name="use_back_to_top" value="1" <?php echo ((int) get_option('use_back_to_top') === 1) ? 'checked' : ''; ?>>
                                     <label for="use_back_to_top">Use a bottom-right <em>back-to-top</em> arrow (requires Icofont)</label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>JavaScript Libraries</label></th>
+                            <td>
+                                <p>
+                                    <input class="wppd-ui-toggle" type="checkbox" id="use_splitting_js" name="use_splitting_js" value="1" <?php echo ((int) get_option('use_splitting_js') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_splitting_js">Enable <code>splitting.js</code> (<a href="https://github.com/shshaw/splitting">https://github.com/shshaw/splitting</a>)</label>
+                                </p>
+                                <p>
+                                    <input class="wppd-ui-toggle" type="checkbox" id="use_magnetmouse_js" name="use_magnetmouse_js" value="1" <?php echo ((int) get_option('use_magnetmouse_js') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_magnetmouse_js">Enable <code>Magnet Mouse</code></label>
                                 </p>
                             </td>
                         </tr>
