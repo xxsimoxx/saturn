@@ -109,6 +109,11 @@ function saturn_enqueue() {
         wp_enqueue_script('butter', get_stylesheet_directory_uri() . '/js/butter/butter.min.js', [], $version, true);
     }
 
+    // JavaScript Libraries
+    if ((int) get_option('use_splitting_js') === 1) {
+        wp_enqueue_script('splitting', get_stylesheet_directory_uri() . '/js/lib/splitting/splitting.min.js', [], '1.0.6', true);
+    }
+
     if ((int) get_option('use_leaflet') === 1) {
         wp_enqueue_style('leaflet', get_stylesheet_directory_uri() . '/assets/js/leaflet/leaflet.css', [], '1.7.1');
 
@@ -121,6 +126,12 @@ function saturn_enqueue() {
     wp_enqueue_style('patterns', get_stylesheet_directory_uri() . '/assets/css/patterns.css', [], $version);
 
     wp_enqueue_script('saturn-init', get_stylesheet_directory_uri() . '/js/init.js', [], $version, true);
+    wp_add_inline_script('saturn-init', 'const saturn_ajax_var = ' . json_encode([
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        'use_splitting_js' => (int) get_option('use_splitting_js'),
+        'use_magnetmouse_js' => (int) get_option('use_magnetmouse_js')
+    ]), 'before');
+
 }
 add_action('wp_enqueue_scripts', 'saturn_enqueue');
 
