@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const { offsetX: x, offsetY: y } = e,
                         { offsetWidth: width, offsetHeight: height } = this;
 
-                    move = 30;
+                    move = 32;
                     xMove = x / width * (move * 2) - move;
                     yMove = y / height * (move * 2) - move;
 
