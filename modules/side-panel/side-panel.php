@@ -1,6 +1,5 @@
 <?php
 function saturn_side_panel_enqueue() {
-    wp_enqueue_style('side-panel', get_stylesheet_directory_uri() . '/modules/side-panel/side-panel.css', [], '1.0.0');
     wp_enqueue_script('side-panel', get_stylesheet_directory_uri() . '/modules/side-panel/side-panel.js', [], '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'saturn_side_panel_enqueue');
