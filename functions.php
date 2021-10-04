@@ -23,11 +23,10 @@ if ((int) get_option('use_flickity') === 1) {
 
 
 /**
- * Templates, template variables and block patterns
+ * Templates and template variables
  */
 require_once 'templates/blocks.php';
 require_once 'templates/header.php';
-require_once 'templates/patterns.php';
 
 
 
@@ -123,7 +122,6 @@ function saturn_enqueue() {
 
 
     wp_enqueue_style('saturn', get_stylesheet_directory_uri() . '/assets/css/main.min.css', [], $version);
-    wp_enqueue_style('patterns', get_stylesheet_directory_uri() . '/assets/css/patterns.css', [], $version);
 
     wp_enqueue_script('saturn-init', get_stylesheet_directory_uri() . '/js/init.js', [], $version, true);
     wp_add_inline_script('saturn-init', 'const saturn_ajax_var = ' . json_encode([
