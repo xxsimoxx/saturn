@@ -1,3 +1,34 @@
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-SemiLight.ea2e95c37b0f5966785b45a4e16df742.woff2) format("woff2");
+    font-weight: 300;
+    font-style: normal
+}
+/*
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-Regular.0d4299331ef64628d2edd3a41fa31f8e.woff2) format("woff2");
+    font-weight: 400;
+    font-style: normal
+}
+/**/
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-SemiBold.07d0a66738f7faa0ce59108ee20e2aaa.woff2) format("woff2");
+    font-weight: 500;
+    font-style: normal
+}
+/*
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url(../fonts/cascadia-code-web/CascadiaCode-Bold.7c0323504cdb7b7ba935922fd44b1046.woff2) format("woff2");
+    font-weight: 700;
+    font-style: normal
+}
+/**/
+
+
+
 :root {
     --font_default: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Segoe UI Symbol", "Apple Color Emoji", "Segoe UI Emoji";
 }
@@ -122,6 +153,9 @@ pre {
     font-weight: 300;
     background-color: #ecf0f1;
     font-size: 14px;
+}
+.wp-block-code code {
+    font-family: "Cascadia Code Web", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
 }
 .wp-block-code strong,
 .wp-block-code b,
@@ -1503,6 +1537,113 @@ a.saturn-testimonial--linkedin {
 .magnet a {
     will-change: transform;
     transition: transform 160ms cubic-bezier(0.3, 1, 0.7, 1);
+}
+
+
+
+/**
+ * Side Panel
+ */
+#site-menu {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 128;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(100vw);
+    background-color: #ffffff;
+    transition: 750ms cubic-bezier(0.17, 0.84, 0.44, 1) all;
+    font-family: var(--body_font);
+}
+
+#site-menu[data-modal] {
+    min-width: 480px;
+    position: fixed;
+    z-index: 128;
+    height: auto;
+    top: 10%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -100vh);
+    transition: 750ms cubic-bezier(0.17, 0.84, 0.44, 1) all;
+    font-family: var(--body_font);
+}
+
+@media all and (max-width: 768px) {
+    #site-menu[data-modal] {
+        min-width: 320px;
+    }
+}
+
+#site-menu[data-modal].show-nav {
+    transform: translate(-50%, 10%);
+}
+
+#site-menu.show-nav {
+    transform: translateX(0);
+    box-shadow: -128px 0 256px rgba(0, 0, 0, 0.5);
+}
+.site-menu-content {
+    padding: 48px;
+}
+
+#site-menu[data-modal] .site-menu-content {
+    padding: 16px;
+}
+
+.site-menu-content ul {
+    padding: 0;
+    margin: 0;
+}
+.site-menu-content ul li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.site-menu-content a {
+    text-decoration: none;
+}
+.site-menu-content a:hover {
+    text-decoration: none;
+}
+.site-menu-content ul li a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 2;
+}
+body.no-scroll {
+    overflow: hidden;
+    height: 100vw;
+}
+
+#site-menu::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+#site-menu::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+#site-menu::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0 none #ffffff;
+    border-radius: 48px;
+}
+#site-menu::-webkit-scrollbar-thumb:hover,
+#site-menu::-webkit-scrollbar-thumb:active {
+    background-color: rgba(0, 0, 0, 1);
+}
+#site-menu::-webkit-scrollbar-track {
+    border-radius: 48px;
+}
+#site-menu::-webkit-scrollbar-corner {
+    background: transparent;
 }
 
 
