@@ -212,12 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (parseInt(saturn_ajax_var.use_splitting_js, 10) === 1) {
-        if (document.querySelector('[data-splitting]')) {
-            Splitting();
-        }
-    }
-
     if (parseInt(saturn_ajax_var.use_magnetmouse_js, 10) === 1) {
         if (document.querySelector('.magnet')) {
             (function () {
