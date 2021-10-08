@@ -41,7 +41,13 @@
 <?php wp_head(); ?>
 
 <style>
-<?php echo stripslashes(get_option('supernova_custom_css')); ?>
+<?php
+if ((int) get_option('use_minify_css') === 1) {
+    echo saturn_minify_css(stripslashes(get_option('supernova_custom_css')));
+} else {
+    echo stripslashes(get_option('supernova_custom_css'));
+}
+?>
 </style>
 
 <?php echo html_entity_decode(get_option('supernova_custom_html')); ?>

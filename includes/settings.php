@@ -487,6 +487,9 @@ function saturn_settings() {
             if (isset($_POST['supernova_save'])) {
                 update_option('supernova_custom_css', $_POST['supernova_custom_css']);
 
+                // Performance
+                update_option('use_minify_css', (int) $_POST['use_minify_css']);
+
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
@@ -501,6 +504,15 @@ function saturn_settings() {
                             <td>
                                 <p>
                                     <textarea name="supernova_custom_css" id="supernova_custom_css" class="large-text code saturn-code" rows="32"><?php echo stripslashes(get_option('supernova_custom_css')); ?></textarea>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Performance</label></th>
+                            <td>
+                                <p>
+                                    <input class="wppd-ui-toggle" type="checkbox" id="use_minify_css" name="use_minify_css" value="1" <?php echo ((int) get_option('use_minify_css') === 1) ? 'checked' : ''; ?>>
+                                    <label for="use_minify_css">Minify inline CSS</label>
                                 </p>
                             </td>
                         </tr>
