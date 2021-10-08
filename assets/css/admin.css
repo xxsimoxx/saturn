@@ -227,6 +227,9 @@ code,
 .wp-block[data-type="wppd/footer-signature"] {
     font-family: "Cascadia Code Web", SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
 }
+code {
+    font-size: inherit;
+}
 
 
 
