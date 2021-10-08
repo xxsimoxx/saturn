@@ -114,7 +114,7 @@ function saturn_enqueue() {
 
     wp_enqueue_style('saturn', get_stylesheet_directory_uri() . '/assets/css/main.min.css', [], $version);
 
-    wp_enqueue_script('saturn-init', get_stylesheet_directory_uri() . '/js/init.js', [], $version, true);
+    wp_enqueue_script('saturn-init', get_stylesheet_directory_uri() . '/js/init.min.js', [], $version, true);
     wp_add_inline_script('saturn-init', 'const saturn_ajax_var = ' . json_encode([
         'ajaxurl' => admin_url('admin-ajax.php'),
         'use_magnetmouse_js' => (int) get_option('use_magnetmouse_js')
