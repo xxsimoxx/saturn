@@ -264,9 +264,6 @@ header.wrap nav,
 }
 .wrap-inner {
     margin: 24px auto 0 auto;
-    padding-top: 84px;
-
-    scroll-behavior: smooth;
 }
 .wrap-content {
     min-height: 800px;
