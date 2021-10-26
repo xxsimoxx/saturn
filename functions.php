@@ -385,3 +385,12 @@ function saturn_google_fonts() {
 
     return $saturnFonts;
 }
+
+
+
+function saturn_mime_types($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+
+    return $mimes;
+}
+add_filter('upload_mimes', 'saturn_mime_types');
