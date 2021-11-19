@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Tiempos';
+    font-style: normal;
+    font-weight: normal;
+	font-display: swap;
+    src: url("TiemposHeadlineWeb-Regular.woff2") format("woff2"),
+		 url("TiemposHeadlineWeb-Regular.woff") format("woff");
+}
+@font-face {
+    font-family: 'Tiempos';
+    font-style: italic;
+    font-weight: normal;
+	font-display: swap;
+    src: url("TiemposHeadlineWeb-RegularItalic.woff2") format("woff2"),
+		 url("TiemposHeadlineWeb-RegularItalic.woff") format("woff");
+}

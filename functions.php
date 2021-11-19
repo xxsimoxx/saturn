@@ -93,6 +93,12 @@ function saturn_enqueue() {
         }
     }
 
+    if (count((array) get_option('use_local_font')) > 0) {
+        foreach ((array) get_option('use_local_font') as $local_font) {
+            wp_enqueue_style('saturn-local-font-' . $local_font, get_stylesheet_directory_uri() . '/assets/fonts/' . $local_font . '/style.css', [], $version);
+        }
+    }
+
     if ((int) get_option('use_native_fonts') !== 1) {
         wp_enqueue_style('google-fonts', saturn_google_fonts(), [], $version);
     }

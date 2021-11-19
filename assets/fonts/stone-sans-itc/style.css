@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Stone Sans ITC W01';
+    src: url('subset-StoneSansITCW01-Bold.woff2') format('woff2'),
+         url('subset-StoneSansITCW01-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Stone Sans ITC W01 Semi';
+    src: url('subset-StoneSansITCW01-SemiBold.woff2') format('woff2'),
+         url('subset-StoneSansITCW01-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'StoneSansITCStd';
+    src: url('subset-StoneSansITCStd-Medium.woff2') format('woff2'),
+         url('subset-StoneSansITCStd-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}

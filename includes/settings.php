@@ -120,7 +120,11 @@ function saturn_settings() {
 
                 update_option('use_native_fonts', (int) $_POST['use_native_fonts']);
                 update_option('use_icofont', (int) $_POST['use_icofont']);
+
                 delete_option('use_cascadia_code_fonts');
+
+                $local_font_array = array_map('sanitize_text_field', $_POST['use_local_font']);
+                update_option('use_local_font', $local_font_array);
 
                 update_option('heading_font', (string) $_POST['heading_font']);
                 update_option('body_font', (string) $_POST['body_font']);
@@ -390,6 +394,22 @@ function saturn_settings() {
                                     <input type="checkbox" id="use_native_fonts" name="use_native_fonts" value="1" <?php echo ((int) get_option('use_native_fonts') === 1) ? 'checked' : ''; ?>> <label for="use_native_fonts">Use native OS fonts</label>
                                 </p>
                                 <hr>
+                                <p>
+                                    <select name="use_local_font[]" id="local-font" multiple>
+                                        <option value="">Select a native Saturn font...</option>
+                                        <option value="benton-sans" <?php if (in_array('benton-sans', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Benton Sans</option>
+                                        <option value="cascadia-code" <?php if (in_array('cascadia-code', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Cascadia Code</option>
+                                        <option value="gilroy" <?php if (in_array('gilroy', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Gilroy</option>
+                                        <option value="finn" <?php if (in_array('finn', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Finn</option>
+                                        <option value="stone-sans-itc" <?php if (in_array('stone-sans-itc', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Stone Sans ITC</option>
+                                        <option value="tiempos" <?php if (in_array('tiempos', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Tiempos</option>
+                                    </select>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Google Fonts</label></th>
+                            <td>
                                 <p>
                                     <small>Note that the following weights will be automatically loaded: 300, 400, 500 and 700. Also note that if no heading font is selected, all fonts will be inherited from body.</small>
                                 </p>

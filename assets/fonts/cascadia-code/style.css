@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url("CascadiaCode-SemiLight.ea2e95c37b0f5966785b45a4e16df742.woff2") format("woff2");
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url("CascadiaCode-Regular.0d4299331ef64628d2edd3a41fa31f8e.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url("CascadiaCode-SemiBold.07d0a66738f7faa0ce59108ee20e2aaa.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Cascadia Code Web";
+    src: url("CascadiaCode-Bold.7c0323504cdb7b7ba935922fd44b1046.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}

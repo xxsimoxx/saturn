@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "Finn";
+    font-style: normal;
+    font-weight: normal;
+	font-display: swap;
+    src: url("finn-light.woff2") format("woff2"),
+         url("finn-light.woff") format("woff");
+}
+@font-face {
+    font-family: "Finn";
+    font-style: normal;
+    font-weight: bold;
+	font-display: swap;
+    src: url("finn-medium.woff2") format("woff2"),
+         url("finn-medium.woff") format("woff");
+}
