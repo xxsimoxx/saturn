@@ -37,6 +37,8 @@ function get_saturn_header() {
         case 2:
             $headerClass = 'header-sticky-modern';
             break;
+        default:
+            $headerClass = '';
     }
 
     if ((int) get_option('padded_nav') === 1) {
