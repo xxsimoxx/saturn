@@ -123,7 +123,7 @@ function saturn_settings() {
 
                 delete_option('use_cascadia_code_fonts');
 
-                $local_font_array = array_map('sanitize_text_field', $_POST['use_local_font']);
+                $local_font_array = (is_array($_POST['use_local_font'])) ? array_map('sanitize_text_field', $_POST['use_local_font']) : [];
                 update_option('use_local_font', $local_font_array);
 
                 update_option('heading_font', (string) $_POST['heading_font']);
@@ -401,6 +401,7 @@ function saturn_settings() {
                                         <option value="cascadia-code" <?php if (in_array('cascadia-code', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Cascadia Code</option>
                                         <option value="gilroy" <?php if (in_array('gilroy', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Gilroy</option>
                                         <option value="finn" <?php if (in_array('finn', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Finn</option>
+                                        <option value="recoleta" <?php if (in_array('recoleta', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Recoleta</option>
                                         <option value="stone-sans-itc" <?php if (in_array('stone-sans-itc', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Stone Sans ITC</option>
                                         <option value="tiempos" <?php if (in_array('tiempos', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Tiempos</option>
                                     </select>
