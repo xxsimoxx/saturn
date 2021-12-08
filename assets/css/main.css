@@ -804,9 +804,12 @@ footer .jtg-featured-title h5 {
     padding: 12px 0;
     text-decoration: none;
     color: #fafafa;
-    font-size: 15px;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 400;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+#side-menu .menu li.is-bold a {
+    font-weight: 700;
 }
 #side-menu a {
     text-decoration: none;
@@ -935,7 +938,10 @@ header nav .menu-item.menu-toggle {
 
 
 @media only screen and (max-width: 768px) {
-    .gallery .buttons {
+    .property-grid--carousel .flickity-prev-next-button.previous,
+    .property-grid--carousel .flickity-prev-next-button.next,
+    .gallery .buttons,
+    #site-menu {
         display: none;
     }
 }

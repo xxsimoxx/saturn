@@ -74,7 +74,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div id="overlay"></div>
 <div id="side-menu">
-    <a href="#" class="side-menu-close"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="svg-inline--fa fa-chevron-left fa-fw fa-w-10" data-icon="chevron-left" data-prefix="fas" viewBox="0 0 320 512"><defs/><path fill="currentColor" d="M34.5 239L229 44.7a24 24 0 0134 0l22.6 22.7a24 24 0 010 33.9L131.5 256l154 154.8a24 24 0 010 33.8l-22.7 22.7a24 24 0 01-34 0L34.6 273a24 24 0 010-34z"/></svg> Back to site</a>
+    <a href="#" class="side-menu-close"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="svg-inline--fa fa-chevron-left fa-fw fa-w-10" data-icon="chevron-left" data-prefix="fas" viewBox="0 0 320 512"><defs/><path fill="currentColor" d="M34.5 239L229 44.7a24 24 0 0134 0l22.6 22.7a24 24 0 010 33.9L131.5 256l154 154.8a24 24 0 010 33.8l-22.7 22.7a24 24 0 01-34 0L34.6 273a24 24 0 010-34z"/></svg> Back</a>
     <?php
     wp_nav_menu([
         'theme_location' => 'mobile-menu',
