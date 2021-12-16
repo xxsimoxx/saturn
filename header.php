@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
 
 <?php if ((int) get_option('use_native_fonts') !== 1) { ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +26,9 @@
 
     --content_width: <?php echo get_option('content_width'); ?>px;
     --primarycolor: <?php echo get_option('primary_colour'); ?>;
+
+    --saturn-ui-link-colour: <?php echo get_option('saturn_ui_link_colour'); ?>;
+    --saturn-ui-link-colour-hover: <?php echo get_option('saturn_ui_link_colour_hover'); ?>;
 
     --body-background: <?php echo get_option('body_background_colour'); ?>;
     --body-text: <?php echo get_option('body_text_colour'); ?>;
