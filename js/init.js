@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-     * Observe and animate all elements having a class of .supernova-anim-in
+     * Observe and animate all elements having a class of .saturn-anim-in
      * 
      * @url https://alligator.io/js/intersection-observer/
      */
-    if (document.querySelector('.supernova-anim-in')) {
+    if (document.querySelector('.saturn-anim-in')) {
         const options = {
             root: null, // use the document's viewport as the container
             rootMargin: '0px', // % or px - offsets added to each side of the intersection 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let observer = new IntersectionObserver(callback, options);
 
         // Get all the `.box` from DOM and attach the observer to these
-        document.querySelectorAll('.supernova-anim-in').forEach(box => { observer.observe(box) });
+        document.querySelectorAll('.saturn-anim-in').forEach(box => { observer.observe(box) });
     }
 
 

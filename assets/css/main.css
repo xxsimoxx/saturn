@@ -182,7 +182,7 @@ h6,
 header nav ul li a,
 #side-menu .menu li a,
 #side-menu .side-menu-close,
-.supernova-form input[type="submit"] {
+.saturn-form input[type="submit"] {
     font-family: var(--heading_font);
 }
 
@@ -880,9 +880,9 @@ body.overlaid {
 
 
 
-.wrap-content img.supernova-fullwidth,
-img.supernova-fullwidth,
-.supernova-fullwidth {
+.wrap-content img.saturn-fullwidth,
+img.saturn-fullwidth,
+.saturn-fullwidth {
     box-sizing: border-box;
     position: relative;
     width: 100vw;
@@ -947,27 +947,27 @@ header nav .menu-item.menu-toggle {
 }
 
 
-.supernova-form {
+.saturn-form {
     margin: 24px 0;
 }
-.supernova-form h3 {
+.saturn-form h3 {
     font-size: 24px;
     font-weight: 300;
     margin: 0;
     padding: 0 0 24px 0;
 }
-.supernova-form small {
+.saturn-form small {
     color: #7f8c8d;
 }
-.supernova-form label {
+.saturn-form label {
     display: block;
     font-size: 14px;
 }
-.supernova-form textarea,
-.supernova-form select,
-.supernova-form input[type="text"],
-.supernova-form input[type="email"],
-.supernova-form input[type="submit"] {
+.saturn-form textarea,
+.saturn-form select,
+.saturn-form input[type="text"],
+.saturn-form input[type="email"],
+.saturn-form input[type="submit"] {
     font-family: inherit;
     font-size: inherit;
     font-weight: 400;
@@ -976,12 +976,12 @@ header nav .menu-item.menu-toggle {
     border-radius: 3px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.10);
 }
-.supernova-form textarea,
-.supernova-form input[type="text"],
-.supernova-form input[type="email"] {
+.saturn-form textarea,
+.saturn-form input[type="text"],
+.saturn-form input[type="email"] {
     width: 100%;
 }
-.supernova-form input[type="submit"] {
+.saturn-form input[type="submit"] {
     padding: 12px 24px;
     background-color: var(--primarycolor);
     color: #ffffff;
@@ -989,18 +989,18 @@ header nav .menu-item.menu-toggle {
     font-weight: 500;
     cursor: pointer;
 }
-.supernova-form input[type="submit"]:hover {
+.saturn-form input[type="submit"]:hover {
     box-shadow: inset 0 99px 0 rgba(0, 0, 0, 0.15);
     color: #ffffff;
 }
 
-.supernova-form .confirmation {
+.saturn-form .confirmation {
     background-color: rgba(26, 188, 156, 0.25);
     padding: 24px;
     border-radius: 3px;
     font-size: 14px;
 }
-.supernova-form .fa-check {
+.saturn-form .fa-check {
     float: left;
     display: block;
     font-size: 32px;
@@ -1020,26 +1020,26 @@ h1.entry-title {
 }
 
 
-.supernova-blog-item {
+.saturn-blog-item {
     clear: both;
     padding: 24px;
 }
-.supernova-blog-item img {
+.saturn-blog-item img {
     border-radius: 2px;
     max-width: 100%;
     height: auto;
     margin: 0;
 }
-.supernova-blog-item h3 {
+.saturn-blog-item h3 {
     margin: 16px 0;
     padding: 0;
     font-weight: 500;
     font-size: 16px;
 }
-.supernova-blog-excerpt {
+.saturn-blog-excerpt {
     font-size: 14px;
 }
-.supernova-blog-read-more {
+.saturn-blog-read-more {
     text-decoration: none;
     font-size: 13px;
 }
@@ -1170,21 +1170,21 @@ iframe {
     flex-wrap: wrap;
     justify-content: center;
 }
-.supernova-blog-item {
+.saturn-blog-item {
     flex-basis: 50%;
 }
-.supernova-blog-item ul.post-categories {
+.saturn-blog-item ul.post-categories {
     margin: 0;
     padding: 0;
     list-style: none;
 }
-.supernova-blog-item ul.post-categories li {
+.saturn-blog-item ul.post-categories li {
     display: inline;
     margin: 0;
     padding: 0;
     list-style: none;
 }
-.supernova-blog-item ul.post-categories li a {
+.saturn-blog-item ul.post-categories li a {
     display: inline-block;
     font-size: 12px;
     font-weight: 300;
@@ -1195,7 +1195,7 @@ iframe {
     border-radius: 3px;
 }
 
-.supernova-blog-link {
+.saturn-blog-link {
     display: block;
     text-decoration: none;
     font-size: 20px;
@@ -1204,7 +1204,7 @@ iframe {
     padding: 0;
     line-height: 1.35;
 }
-.supernova-blog-meta {
+.saturn-blog-meta {
     display: block;
     margin: 0 0 8px 0;
     font-size: 12px;
@@ -1214,11 +1214,11 @@ iframe {
 
 
 
-.supernova-cat-pagination {
+.saturn-cat-pagination {
     padding: 24px;
     text-align: center;
 }
-.supernova-cat-pagination a {
+.saturn-cat-pagination a {
     display: inline-block;
     padding: 8px 16px;
     text-decoration: none;
@@ -1227,7 +1227,7 @@ iframe {
     color: #000000;
     font-size: 14px;
 }
-.supernova-cat-pagination a:hover {
+.saturn-cat-pagination a:hover {
     background-color: rgba(0, 0, 0, 0.15);
 }
 
@@ -1277,21 +1277,21 @@ div.wpcf7 {
 
 
 
-h2.supernova-search-header {
+h2.saturn-search-header {
     margin: 48px 0 0 0;
 }
-.supernova-search-result {
+.saturn-search-result {
     margin: 0 0 24px 0;
 }
-.supernova-search-result h3 {
+.saturn-search-result h3 {
     margin: 0;
 }
-.supernova-search-result h3 a {
+.saturn-search-result h3 a {
     color: var(--primarycolor);
     font-weight: 400;
 }
-.supernova-search-result a,
-.supernova-search-result h3 a {
+.saturn-search-result a,
+.saturn-search-result h3 a {
     text-decoration: none;
 }
 
@@ -1321,12 +1321,12 @@ h2.supernova-search-header {
 
 
 @media (max-width: 768px) {
-    .supernova-blog-item {
+    .saturn-blog-item {
         flex-basis: 50%;
     }
 }
 @media (max-width: 480px) {
-    .supernova-blog-item {
+    .saturn-blog-item {
         flex-basis: 100%;
     }
 }
@@ -1334,7 +1334,7 @@ h2.supernova-search-header {
 
 
 /**
- * Supernova Testimonial
+ * Saturn Testimonial
  */
 .testimonial-body {
     width: 100%;
@@ -1371,7 +1371,7 @@ h2.supernova-search-header {
     margin-right: -48px;
 }
 
-.wp-block-media-text.is-image-fill.supernova-testimonial-block figure.wp-block-media-text__media {
+.wp-block-media-text.is-image-fill.saturn-testimonial-block figure.wp-block-media-text__media {
     min-height: 200px;
 }
 
@@ -1475,12 +1475,12 @@ a.saturn-testimonial--linkedin {
 
 
 
-.supernova-anim-in {
+.saturn-anim-in {
     transform: translateY(4rem) translateZ(0);
     transition: transform cubic-bezier(0.19, 1, 0.22, 1) 2s,opacity cubic-bezier(0.19, 1, 0.22, 1) 2s;
     opacity: 0.5;
 }
-.supernova-anim-in.is-changed {
+.saturn-anim-in.is-changed {
     transform: translateY(0rem) translateZ(0);
     opacity: 1;
 }

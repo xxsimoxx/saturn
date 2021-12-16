@@ -57,7 +57,7 @@ function simple_slider_helper($ids, $mobileIds, $height, $zoom, $fullheight, $fu
     $interval = (int) $interval;
 
     $homepageHeroHeight = ((string) $fullheight === 'yes') ? 'fullvh' : '';
-    $homepageHeroWidth = ((string) $fullwidth === 'yes') ? 'supernova-fullwidth' : '';
+    $homepageHeroWidth = ((string) $fullwidth === 'yes') ? 'saturn-fullwidth' : '';
 
     $height = ($height > 0) ? $height : 600;
 

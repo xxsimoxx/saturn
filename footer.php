@@ -1,4 +1,4 @@
-<footer class="supernova-fullwidth">
+<footer class="alignfull">
     <div class="wrap">
         <?php
         if ((int) get_option('reusable_block_footer_id') > 0) {

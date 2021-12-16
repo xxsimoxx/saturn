@@ -1,8 +1,8 @@
 <?php
 /**
- * Supernova Testimonial Grid
+ * Saturn Testimonial Grid
  */
-function supernova_testimonials() {
+function saturn_testimonials() {
     $args = [
         'post_type' => 'testimonial',
         'posts_per_page' => -1,
@@ -27,7 +27,7 @@ function supernova_testimonials() {
             $out .= '<div class="flex-item-updated flex-item-padding testimonials-grid">
                 ' . $testimonialThumbnail . '
                 <cite>' . $testimonialContent . '</cite>
-                <p><em>&mdash; ' . $testimonialAuthor . '</em></p>
+                <p><em>&mdash; ' . $testimonialAuthor . '</em></p>
             </div>';
         }
     }
@@ -39,9 +39,9 @@ function supernova_testimonials() {
 
 
 /**
- * Supernova Testimonials (Blocks)
+ * Saturn Testimonials (Blocks)
  */
-function supernova_testimonial_blocks() {
+function saturn_testimonial_blocks() {
     $args = [
         'post_type' => 'testimonial',
         'posts_per_page' => -1,
@@ -76,7 +76,7 @@ function supernova_testimonial_blocks() {
 
 
 /**
- * Supernova Testimonials (Blocks, Alt)
+ * Saturn Testimonials (Blocks, Alt)
  */
 function saturn_testimonial_blocks_carousel() {
     $attributes = shortcode_atts([
@@ -129,9 +129,9 @@ function saturn_testimonial_blocks_carousel() {
 
 
 /**
- * Supernova Testimonial Carousel
+ * Saturn Testimonial Carousel
  */
-function supernova_testimonial_carousel($atts, $content = null) {
+function saturn_testimonial_carousel($atts, $content = null) {
     $attributes = shortcode_atts([
         'in' => '',
         'type' => '',
@@ -169,7 +169,7 @@ function supernova_testimonial_carousel($atts, $content = null) {
     $autoPlay = sanitize_title($attributes['autoplay']);
     $autoPlay = ($autoPlay !== '') ? $autoPlay : 'false';
 
-    $out = '<section class="supernova-testimonials" data-flickity=\'{"adaptiveHeight": true, "pageDots": false, "contain": true, "controls": true, "imagesLoaded": true, "draggable": true, "wrapAround": true, "groupCells": 1, "autoPlay": ' . $autoPlay . ' }\'>';
+    $out = '<section class="saturn-testimonials" data-flickity=\'{"adaptiveHeight": true, "pageDots": false, "contain": true, "controls": true, "imagesLoaded": true, "draggable": true, "wrapAround": true, "groupCells": 1, "autoPlay": ' . $autoPlay . ' }\'>';
 
         if ($testimonials->have_posts()) {
             while ($testimonials->have_posts()) {
@@ -205,9 +205,9 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 
 
-add_shortcode('supernova-testimonials', 'supernova_testimonials');
-add_shortcode('supernova-testimonial-carousel', 'supernova_testimonial_carousel');
-add_shortcode('supernova-testimonial-blocks', 'supernova_testimonial_blocks');
+add_shortcode('supernova-testimonials', 'saturn_testimonials');
+add_shortcode('supernova-testimonial-carousel', 'saturn_testimonial_carousel');
+add_shortcode('supernova-testimonial-blocks', 'saturn_testimonial_blocks');
 add_shortcode('saturn-testimonial-blocks-carousel', 'saturn_testimonial_blocks_carousel');
 
 

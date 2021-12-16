@@ -22,7 +22,7 @@ if (have_posts()): while (have_posts()): the_post(); ?>
 
             the_content();
 
-            setSupernovaPostViews(get_the_ID());
+            setSaturnPostViews(get_the_ID());
             ?>
         </div>
     </div>

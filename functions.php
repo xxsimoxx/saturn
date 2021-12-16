@@ -272,7 +272,7 @@ add_action('wp_body_open', 'saturn_body_open');
 
 
 
-function getSupernovaPostViews($postID) {
+function getSaturnPostViews($postID) {
     $count_key = 'post_views_count';
     $count = get_post_meta($postID, $count_key, true);
 
@@ -286,7 +286,7 @@ function getSupernovaPostViews($postID) {
     return $count . ' views';
 }
 
-function setSupernovaPostViews($postID) {
+function setSaturnPostViews($postID) {
     $count_key = 'post_views_count';
     $count = get_post_meta($postID, $count_key, true);
 
