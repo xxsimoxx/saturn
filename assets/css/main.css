@@ -94,10 +94,10 @@ body {
 }
 
 a {
-    color: #7f8c8d;
+    color: var(--saturn-ui-link-colour, #7f8c8d);
 }
 a:hover {
-    color: #2c3e50;
+    color: var(--saturn-ui-link-colour-hover, #2c3e50);
     text-decoration: none;
 }
 
@@ -1021,7 +1021,6 @@ h1.entry-title {
 
 
 .saturn-blog-item {
-    clear: both;
     padding: 24px;
 }
 .saturn-blog-item img {
@@ -1187,11 +1186,13 @@ iframe {
 .saturn-blog-item ul.post-categories li a {
     display: inline-block;
     font-size: 12px;
-    font-weight: 300;
-    padding: 2px 4px;
+    font-weight: 400;
+    line-height: 1;
+    padding: 6px;
     margin: 2px;
     text-decoration: none;
-    background-color: #eaf5ff;
+    background-color: var(--primarycolor);
+    color: #ffffff;
     border-radius: 3px;
 }
 

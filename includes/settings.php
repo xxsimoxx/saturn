@@ -108,6 +108,8 @@ function saturn_settings() {
 
                 // Colours
                 update_option('primary_colour', sanitize_text_field($_POST['primary_colour']));
+                update_option('saturn_ui_link_colour', sanitize_text_field($_POST['saturn_ui_link_colour']));
+                update_option('saturn_ui_link_colour_hover', sanitize_text_field($_POST['saturn_ui_link_colour_hover']));
                 update_option('body_background_colour', sanitize_text_field($_POST['body_background_colour']));
                 update_option('body_text_colour', sanitize_text_field($_POST['body_text_colour']));
                 update_option('header_background_colour', sanitize_text_field($_POST['header_background_colour']));
@@ -295,8 +297,18 @@ function saturn_settings() {
                         <tr>
                             <th scope="row"><label>Primary Colour</label></th>
                             <td>
-                                <input class="color-well" name="primary_colour" type="text" value="<?php echo get_option('primary_colour'); ?>">
-                                <small>This is the main colour, used for accents, overlays and tints.</small>
+                                <p>
+                                    <input class="color-well" name="primary_colour" type="text" value="<?php echo get_option('primary_colour'); ?>">
+                                    <small>This is the main colour, used for accents, overlays and tints.</small>
+                                </p>
+                                <p>
+                                    <input class="color-well" name="saturn_ui_link_colour" type="text" value="<?php echo get_option('saturn_ui_link_colour'); ?>">
+                                    <small>This is the link colour, used when a colour is not specifically declared.</small>
+                                </p>
+                                <p>
+                                    <input class="color-well" name="saturn_ui_link_colour_hover" type="text" value="<?php echo get_option('saturn_ui_link_colour_hover'); ?>">
+                                    <small>This is the link hover colour, used when a hover colour is not specifically declared.</small>
+                                </p>
                             </td>
                         </tr>
                         <tr>
