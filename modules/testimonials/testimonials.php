@@ -185,9 +185,12 @@ function saturn_testimonial_carousel($atts, $content = null) {
 
                 $out .= '<div class="testimonial-body">
                     <div class="img">' . $testimonialThumbnail . '</div>
-                    <div class="testimonial-quote">' . $testimonialContent . '</div>
-                    <p><em>&mdash; ' . $testimonialAuthor . '</em></p>
-                 </div>';
+                    <div class="testimonial-quote">' . $testimonialContent . '</div>';
+
+                    if ($testimonialAuthor !== '') {
+                        $out .= '<p class="testimonial-cite"><em>&mdash; ' . $testimonialAuthor . '</em></p>';
+                    }
+                $out .= '</div>';
              }
          }
 
