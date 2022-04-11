@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "neue-haas-grotesk-display";
+    src: url("500-display.woff2") format("woff2");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 500;
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "neue-haas-grotesk-display";
+    src: url("600-display.woff2") format("woff2");
+    font-display: swap;
+    font-style: normal;
+    font-weight:600;
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "neue-haas-grotesk-text";
+    src: url("400-text.woff2") format("woff2");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: normal;
+}
+@font-face {
+    font-family: "neue-haas-grotesk-text";
+    src: url("500-text.woff2") format("woff2");
+    font-display: swap;
+    font-style: normal;
+    font-weight: 500;
+    font-stretch: normal;
+}
+
+.has-font-neue-haas-grotesk-display {
+    font-family: "neue-haas-grotesk-display", sans-serif;
+}
+.has-font-neue-haas-grotesk-text {
+    font-family: "neue-haas-grotesk-text", sans-serif;
+}
+
+.tk-neue-haas-grotesk-display,
+.tk-neue-haas-grotesk-text {
+    letter-spacing: 0em;
+    font-variant-ligatures: common-ligatures;
+    font-variant-numeric: oldstyle-nums;
+    font-kerning: normal;
+    font-feature-settings: "salt";
+}
