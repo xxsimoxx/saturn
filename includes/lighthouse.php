@@ -19,7 +19,10 @@ function saturn_init() {
     remove_filter('the_content', 'convert_chars');
 
     add_filter('option_use_smilies', function(){ return false; });
-    add_filter('emoji_svg_url', '__return_false');
+
+    if ( ! is_admin() ) {
+        add_filter( 'emoji_svg_url', '__return_false' );
+    }
 }
 
 global $wp_taxonomies;
