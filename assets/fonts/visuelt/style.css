@@ -1,0 +1,28 @@
+@font-face {
+    font-display: fallback;
+    font-family: 'Visuelt';
+    src: url("Visuelt-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-display: fallback;
+    font-family: 'Visuelt';
+    src: url("Visuelt-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal
+}
+@font-face {
+    font-display: fallback;
+    font-family: 'Visuelt';
+    src: url("Visuelt-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal
+}
+@font-face {
+    font-display: fallback;
+    font-family: 'Visuelt';
+    src: url("Visuelt-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal
+}

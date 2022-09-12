@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Outfit;
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: block;
+    src: local(Outfit), url('../fonts/outfit-variable/outfit-variable.woff2') format('woff2');
+    font-stretch: normal;
+}
