@@ -9,12 +9,11 @@
 html {
     scroll-behavior: smooth;
 
-    --bg: var(--body-background), #ffffff;
+    --bg: var(--body-background, #ffffff);
     --bg-header-nav: var(--header_background_colour);
     --color-header-menu-text: var(--header_menu_text_colour);
     --color-heading: rgb(27, 168, 14); 
-    --color-text: var(--body-text), #2c3e50;
-;
+    --color-text: var(--body-text, #2c3e50);
 }
 html[data-theme="dark"] {
     --bg: #0d1117;
@@ -424,7 +423,7 @@ header.header-rounded nav .sub-menu {
 .header-sticky-modern {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 3;
 }
 
 header.header-sticky-modern nav,
