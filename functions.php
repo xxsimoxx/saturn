@@ -165,6 +165,8 @@ function saturn_setup() {
     add_theme_support( 'custom-line-height' );
     add_theme_support( 'custom-spacing' );
     add_theme_support( 'block-templates' );
+    add_theme_support( 'appearance-tools' );
+
     add_theme_support( 'woocommerce' );
 
     add_image_size( 'homepage_hero', 1440, 900, true );
