@@ -1,32 +1,36 @@
 <?php
 get_header();
 
-if (have_posts()): while (have_posts()): the_post(); ?>
-    <div class="wrap-inner">
-        <h1 class="entry-title"><?php the_title(); ?></h1>
+if ( have_posts() ) {
+    while ( have_posts() ) {
+        the_post();
+        ?>
+        <div class="wrap-inner">
+            <h1 class="entry-title"><?php the_title(); ?></h1>
 
-        <div class="wrap-content">
-            <?php
-            if (function_exists('yoast_breadcrumb')) {
-                yoast_breadcrumb('<p id="breadcrumbs">', '</p>');
-            }
+            <div class="wrap-content">
+                <?php
+                if ( function_exists( 'yoast_breadcrumb' ) ) {
+                    yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' );
+                }
 
-            /**
-             * Jetpack sharing buttons
-             */
-            if (function_exists('sharing_display')) {
-                echo sharing_display();
-            }
+                /**
+                 * Jetpack sharing buttons
+                 */
+                if ( function_exists( 'sharing_display' ) ) {
+                    echo sharing_display();
+                }
 
-            do_action('before_post_content', get_the_ID());
+                do_action( 'before_post_content', get_the_ID() );
 
-            the_content();
+                the_content();
 
-            setSaturnPostViews(get_the_ID());
-            ?>
+                setSaturnPostViews( get_the_ID() );
+                ?>
+            </div>
         </div>
-    </div>
-<?php
-endwhile; endif;
+        <?php
+    }
+}
 
 get_footer();
