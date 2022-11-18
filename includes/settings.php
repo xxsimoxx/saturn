@@ -46,6 +46,13 @@ function saturn_settings() {
                 delete_option( 'wppd_google_places_api' );
                 delete_option( 'wppd_google_place_id' );
 
+                delete_post_meta_by_key( 'xtender_dynamic_sidebar' );
+                delete_post_meta_by_key( 'slide_template' );
+                delete_post_meta_by_key( 'resmushed_cumulated_optimized_sizes' );
+                delete_post_meta_by_key( 'resmushed_cumulated_original_sizes' );
+                delete_post_meta_by_key( 'resmushed_quality' );
+
+
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
@@ -408,13 +415,13 @@ function saturn_settings() {
                                 </p>
                                 <hr>
                                 <p>
-                                    <select name="use_local_font[]" id="local-font" multiple>
+                                    <select name="use_local_font[]" id="local-font" class="regular-text" size="6" multiple>
                                         <option value="">Select a native Saturn font...</option>
                                         <option value="benton-sans" <?php if (in_array('benton-sans', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Benton Sans</option>
                                         <option value="cascadia-code" <?php if (in_array('cascadia-code', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Cascadia Code</option>
                                         <option value="gilroy" <?php if (in_array('gilroy', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Gilroy</option>
                                         <option value="finn" <?php if (in_array('finn', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Finn</option>
-                                        <option value="neue-haas-display" <?php if (in_array('neue-haas-display', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Neue Haas Display</option>
+                                        <option value="nhaasgroteskdspro" <?php if (in_array('nhaasgroteskdspro', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Neue Haas Display Pro</option>
                                         <option value="neue-haas-grotesk" <?php if (in_array('neue-haas-grotesk', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Neue Haas Grotesk</option>
                                         <option value="recoleta" <?php if (in_array('recoleta', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Recoleta</option>
                                         <option value="stone-sans-itc" <?php if (in_array('stone-sans-itc', (array) get_option('use_local_font'))) { echo 'selected'; } ?>>Stone Sans ITC</option>
@@ -592,32 +599,36 @@ function saturn_settings() {
                 <hr>
                 <p><input type="submit" name="supernova_save" value="Save Changes" class="button-primary"></p>
             </form>
-        <?php } else if ($tab === 'modules') {
-            if (isset($_POST['supernova_save'])) {
-                delete_option('use_side_drawer');
-                delete_option('side_drawer_handle_title');
-                delete_option('supernova_drawer_block_id');
+            <?php
+        } elseif ( $tab === 'modules' ) {
+            if ( isset( $_POST['supernova_save'] ) ) {
+                update_option( 'use_views', (int) $_POST['use_views'] );
+                update_option( 'use_testimonials', (int) $_POST['use_testimonials'] );
 
-                delete_option('supernova_snackbar');
-                delete_option('supernova_snackbar_block_id');
-                delete_option('supernova_snackbar_scroll_value');
+                update_option( 'use_side_panel', (int) $_POST['use_side_panel'] );
+                update_option( 'supernova_side_panel_modal', (int) $_POST['supernova_side_panel_modal'] );
+                update_option( 'supernova_side_panel_block_id', (int) $_POST['supernova_side_panel_block_id'] );
 
-                update_option('use_side_panel', (int) $_POST['use_side_panel']);
-                update_option('supernova_side_panel_modal', (int) $_POST['supernova_side_panel_modal']);
-                update_option('supernova_side_panel_block_id', (int) $_POST['supernova_side_panel_block_id']);
+                update_option( 'use_leaflet', (int) $_POST['use_leaflet'] );
+                update_option( 'use_flickity', (int) $_POST['use_flickity'] );
+                update_option( 'use_cursor', (int) $_POST['use_cursor'] );
+                update_option( 'use_butter', (int) $_POST['use_butter'] );
+                update_option( 'use_dark_mode', (int) $_POST['use_dark_mode'] );
 
-                update_option('use_leaflet', (int) $_POST['use_leaflet']);
-                update_option('use_flickity', (int) $_POST['use_flickity']);
-                update_option('use_cursor', (int) $_POST['use_cursor']);
-                update_option('use_butter', (int) $_POST['use_butter']);
-                update_option('use_dark_mode', (int) $_POST['use_dark_mode']);
-
-                update_option('use_organic_underline', (int) $_POST['use_organic_underline']);
-                update_option('use_back_to_top', (int) $_POST['use_back_to_top']);
+                update_option( 'use_organic_underline', (int) $_POST['use_organic_underline'] );
+                update_option( 'use_back_to_top', (int) $_POST['use_back_to_top'] );
 
                 // JavaScript Libraries
-                delete_option('use_splitting_js');
-                update_option('use_magnetmouse_js', (int) $_POST['use_magnetmouse_js']);
+                delete_option( 'use_splitting_js' );
+                delete_option( 'use_side_drawer' );
+                delete_option( 'side_drawer_handle_title' );
+                delete_option( 'supernova_drawer_block_id' );
+
+                delete_option( 'supernova_snackbar' );
+                delete_option( 'supernova_snackbar_block_id' );
+                delete_option( 'supernova_snackbar_scroll_value' );
+
+                update_option( 'use_magnetmouse_js', (int) $_POST['use_magnetmouse_js'] );
 
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
@@ -666,6 +677,20 @@ function saturn_settings() {
                                     echo '</select>
                                     <br><small><a href="' . admin_url('edit.php?post_type=wp_block') . '">Select your side panel reusable block or create one now</a>.</small>';
                                     ?>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Theme Features</label></th>
+                            <td>
+                                <p>
+                                    <input type="checkbox" id="use_views" name="use_views" value="1" <?php checked( 1, (int) get_option( 'use_views' ) ); ?>>
+                                    <label for="use_views">Count post/page views</label>
+                                    <br><small>Count all post/page/CPT views.</small>
+                                </p>
+                                <p>
+                                    <input type="checkbox" id="use_testimonials" name="use_testimonials" value="1" <?php checked( 1, (int) get_option( 'use_testimonials' ) ); ?>>
+                                    <label for="use_testimonials">Enable testimonials</label>
                                 </p>
                             </td>
                         </tr>
