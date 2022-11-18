@@ -367,7 +367,7 @@ function saturn_settings() {
                                 <p>Any URL's added here will be added as <code>&lt;link&gt;s</code> in order, and before the CSS in the editor.</p>
 
                                 <label class="thin-ui-popover">
-                                    <button name="popover" class="button button-secondary">&#129300; See Examples</button>
+                                    <button name="popover" class="button button-secondary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="thin-ui-svg"><path d="M256 8C119.04 8 8 119.08 8 256c0 137 111.04 248 248 248s248-111 248-248C504 119.08 392.96 8 256 8zm0 448c-110.53 0-200-89.43-200-200 0-110.5 89.47-200 200-200 110.5 0 200 89.47 200 200s-89.43 200-200 200zm107.24-255.2c0 67.05-72.42 68.08-72.42 92.86V300a12 12 0 0 1-12 12h-45.64a12 12 0 0 1-12-12v-8.66c0-35.74 27.1-50.03 47.58-61.51 17.56-9.85 28.32-16.55 28.32-29.58 0-17.25-22-28.7-39.78-28.7-23.2 0-33.9 10.98-48.95 29.97a12 12 0 0 1-16.66 2.13l-27.83-21.1a12.03 12.03 0 0 1-2.64-16.37C184.85 131.5 214.94 112 261.79 112c49.07 0 101.45 38.3 101.45 88.8zM298 368c0 23.16-18.84 42-42 42s-42-18.84-42-42 18.84-42 42-42 42 18.84 42 42z"/></svg> See Examples</button>
                                     <div class="thin-ui-popover-body">
                                         <h3>Example resource URL:</h3>
                                         <p>
@@ -758,7 +758,7 @@ function saturn_settings() {
                             <td>
                                 <p>
                                     <input class="wppd-ui-toggle" type="checkbox" id="use_magnetmouse_js" name="use_magnetmouse_js" value="1" <?php echo ((int) get_option('use_magnetmouse_js') === 1) ? 'checked' : ''; ?>>
-                                    <label for="use_magnetmouse_js">Enable <code>Magnet Mouse</code></label>
+                                    <label for="use_magnetmouse_js">Enable Magnet Mouse</label>
                                 </p>
                             </td>
                         </tr>
