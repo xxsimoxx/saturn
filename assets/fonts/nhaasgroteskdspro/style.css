@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'NeueHaasGroteskDisp Pro UltTh';
+    src: url('subset-NHaasGroteskDSPro-15UltTh.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeueHaasGroteskDisp Pro Md';
+    src: url('subset-NHaasGroteskDSPro-65Md.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeueHaasGroteskDisp Pro Blk';
+    src: url('subset-NHaasGroteskDSPro-95Blk.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeueHaasGroteskDisp Pro';
+    src: url('subset-NHaasGroteskDSPro-25Th.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeueHaasGroteskDisp Pro XLt';
+    src: url('subset-NHaasGroteskDSPro-35XLt.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeueHaasGroteskDisp Pro';
+    src: url('subset-NHaasGroteskDSPro-55Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeueHaasGroteskDisp Pro';
+    src: url('subset-NHaasGroteskDSPro-75Bd.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeueHaasGroteskDisp Pro Lt';
+    src: url('subset-NHaasGroteskDSPro-45Lt.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
