@@ -5,24 +5,31 @@
     <div class="has-medium-font-size"><?php echo category_description(); ?></div>
 
     <div class="flex-container-updated">
-        <?php if (have_posts()) : while (have_posts()): the_post(); ?>
-            <div class="saturn-blog-item flex-item-updated flex-item-padding">
-                <a href="<?php the_permalink(); ?>">
-                    <?php the_post_thumbnail('homepage_grid'); ?>
-                </a>
-                <h3>
-                    <a href="<?php the_permalink(); ?>" class="saturn-blog-link"><?php the_title(); ?></a>
-                    <span class="saturn-blog-meta">
-                        <?php echo getSaturnPostViews(get_the_ID()); ?>
-                    </span>
-                    <?php echo get_the_category_list(); ?>
-                </h3>
+        <?php
+        if ( have_posts() ) {
+            while ( have_posts() ) {
+                the_post();
+                ?>
+                <div class="saturn-blog-item flex-item-updated flex-item-padding">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail( 'homepage_grid' ); ?>
+                    </a>
+                    <h3>
+                        <a href="<?php the_permalink(); ?>" class="saturn-blog-link"><?php the_title(); ?></a>
+                        <span class="saturn-blog-meta">
+                            <?php echo getSaturnPostViews( get_the_ID() ); ?>
+                        </span>
+                        <?php echo get_the_category_list(); ?>
+                    </h3>
 
-                <div class="saturn-blog-excerpt">
-                    <?php the_excerpt(); ?>
+                    <div class="saturn-blog-excerpt">
+                        <?php the_excerpt(); ?>
+                    </div>
                 </div>
-            </div>
-        <?php endwhile; endif; ?>
+                <?php
+            }
+        }
+        ?>
     </div>
 
     <div class="saturn-cat-pagination">
@@ -31,4 +38,5 @@
     </div>
 </div>
 
-<?php get_footer();
+<?php
+get_footer();
