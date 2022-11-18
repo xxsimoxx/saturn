@@ -10,15 +10,18 @@ require_once 'includes/user.php';
  * Custom post types
  */
 require_once 'includes/functions.php';
-require_once 'includes/cpt-testimonials.php';
-require_once 'includes/cpt-slides.php';
 
-require 'modules/testimonials/testimonials.php';
+if ( (int) get_option( 'use_testimonials' ) === 1 ) {
+    include 'includes/cpt-testimonials.php';
+    include 'modules/testimonials/testimonials.php';
+}
 
 // Saturn Module: Saturn Slider
 if ( (int) get_option( 'use_flickity' ) === 1 ) {
-    require_once 'blocks/slider/index.php';
-    require_once 'modules/slider/slider.php';
+    include 'includes/cpt-slides.php';
+
+    include 'blocks/slider/index.php';
+    include 'modules/slider/slider.php';
 }
 
 
@@ -299,6 +302,10 @@ add_action( 'wp_body_open', 'saturn_body_open' );
 
 
 function getSaturnPostViews($postID) {
+    if ( (int) get_option( 'use_views' ) !== 1 ) {
+        return;
+    }
+
     $count_key = 'post_views_count';
     $count = get_post_meta($postID, $count_key, true);
 
@@ -313,6 +320,10 @@ function getSaturnPostViews($postID) {
 }
 
 function setSaturnPostViews($postID) {
+    if ( (int) get_option( 'use_views' ) !== 1 ) {
+        return;
+    }
+
     $count_key = 'post_views_count';
     $count = get_post_meta($postID, $count_key, true);
 
@@ -436,3 +447,18 @@ function saturn_mime_types( $mimes ) {
     return $mimes;
 }
 add_filter( 'upload_mimes', 'saturn_mime_types' );
+
+
+
+
+// Change add to cart text on single product page
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'woocommerce_add_to_cart_button_text_single' ); 
+function woocommerce_add_to_cart_button_text_single() {
+    return __( 'Reserve', 'woocommerce' ); 
+}
+
+// Change add to cart text on product archives page
+add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_add_to_cart_button_text_archives' );  
+function woocommerce_add_to_cart_button_text_archives() {
+    return __( 'Reserve', 'woocommerce' );
+}
