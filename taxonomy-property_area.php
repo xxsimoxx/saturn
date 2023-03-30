@@ -1,10 +1,10 @@
 <?php
 get_header();
 
-$areaObject = get_queried_object();
+$area_object = get_queried_object();
 
-$areaName = $areaObject->name;
-$areaSlug = sanitize_title($areaObject->name);
+$area_name = $area_object->name;
+$area_slug = sanitize_title( $area_object->name );
 
 /**
  * Area taxonomy template
@@ -14,20 +14,22 @@ $areaSlug = sanitize_title($areaObject->name);
 
 <div class="wrap wrap--landing-page">
     <?php
-    $reusableBlockAreaId = get_term_meta($areaObject->term_id, 'reusable_block_area_id', true);
-    if ((int) $reusableBlockAreaId > 0) {
-        $reusableBlockArea = get_post($reusableBlockAreaId);
+    $reusable_block_id = get_term_meta( $area_object->term_id, 'reusable_block_area_id', true );
 
-        echo apply_filters('the_content', $reusableBlockArea->post_content);
+    if ( (int) $reusable_block_id > 0 ) {
+        $reusable_block_area = get_post( $reusable_block_id );
+
+        echo apply_filters( 'the_content', $reusable_block_area->post_content );
     } else {
         // Filler
         echo '<div style="height:128px" aria-hidden="true" class="wp-block-spacer"></div>';
-        echo '<h1>Property in ' . $areaName . '</h1>';
-        echo wpautop($areaObject->description);
+        echo '<h1>Property in ' . $area_name . '</h1>';
+        echo wpautop( $area_object->description );
     }
 
-    echo do_shortcode('[property-grid location="' . $areaSlug . '" count="48"]');
+    echo do_shortcode( '[property-grid location="' . $area_slug . '" count="48"]' );
     ?>
 </div>
 
-<?php get_footer();
+<?php
+get_footer();

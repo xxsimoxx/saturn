@@ -1,10 +1,10 @@
 <?php
 get_header();
 
-$countyObject = get_queried_object();
+$county_object = get_queried_object();
 
-$countyName = $countyObject->name;
-$countySlug = sanitize_title($countyObject->name);
+$county_name = $county_object->name;
+$county_slug = sanitize_title( $county_object->name );
 
 /**
  * County taxonomy template
@@ -14,20 +14,22 @@ $countySlug = sanitize_title($countyObject->name);
 
 <div class="wrap wrap--landing-page">
     <?php
-    $reusableBlockCountyId = get_term_meta($countyObject->term_id, 'reusable_block_county_id', true);
-    if ((int) $reusableBlockCountyId > 0) {
-        $reusableBlockCounty = get_post($reusableBlockCountyId);
+    $reusable_block_id = get_term_meta( $county_object->term_id, 'reusable_block_county_id', true );
 
-        echo apply_filters('the_content', $reusableBlockCounty->post_content);
+    if ( (int) $reusable_block_id > 0 ) {
+        $reusable_block_county = get_post( $reusable_block_id );
+
+        echo apply_filters( 'the_content', $reusable_block_county->post_content );
     } else {
         // Filler
         echo '<div style="height:128px" aria-hidden="true" class="wp-block-spacer"></div>';
-        echo '<h1>Property in ' . $countyName . '</h1>';
-        echo wpautop($countyObject->description);
+        echo '<h1>Property in ' . $county_name . '</h1>';
+        echo wpautop( $county_object->description );
     }
 
-    echo do_shortcode('[property-grid county="' . $countySlug . '" count="48"]');
+    echo do_shortcode( '[property-grid county="' . $county_slug . '" count="48"]' );
     ?>
 </div>
 
-<?php get_footer();
+<?php
+get_footer();

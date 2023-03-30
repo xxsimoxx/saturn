@@ -1,4 +1,6 @@
 <?php
+require_once 'includes/updater.php';
+
 require_once 'includes/lighthouse.php';
 require_once 'includes/settings.php';
 require_once 'includes/meta.php';
@@ -20,7 +22,6 @@ if ( (int) get_option( 'use_testimonials' ) === 1 ) {
 if ( (int) get_option( 'use_flickity' ) === 1 ) {
     include 'includes/cpt-slides.php';
 
-    include 'blocks/slider/index.php';
     include 'modules/slider/slider.php';
 }
 

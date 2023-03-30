@@ -33,9 +33,6 @@ function saturn_settings() {
             <p style="font-size: 18px;">Saturn is our flagship theme, enhanced for <b>speed</b>, <b>security</b>, <b>performance</b>, improved <b>search engine experience</b> and <b>high conversion ratio</b>.</p>
             <p style="font-size: 18px;">The underlying Saturn code is lightning fast, secure and SEO-friendly with full block editor support and 100% compatibility with Yoast SEO, Jetpack, SendGrid, Cloudflare and more.</p>
 
-            <p>Use this GitHub.com Access Token for your Git Updater plugin:</p>
-            <p><code>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</code></p>
-
             <p><small>Saturn v<?php echo wp_get_theme()->get( 'Version' ); ?></small></p>
         <?php } elseif ( $tab === 'tools' ) {
             if ( isset( $_POST['supernova_save'] ) ) {
@@ -634,7 +631,7 @@ function saturn_settings() {
             }
             ?>
             <h3>Modules</h3>
-            <p>Select all the modules you need for your current theme setup.</p>
+            <p>Select all the modules you need for your current theme setup. Check out the <a href="https://getbutterfly.com/wordpress-theme-saturn/" target="_blank" rel="external">documentation</a> to learn how to use each of these features.</p>
 
             <form method="post" action="">
                 <table class="form-table">
