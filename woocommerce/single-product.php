@@ -41,6 +41,50 @@ get_header( 'shop' ); ?>
 
     <?php
     /**
+     * Cross-sell products
+     */
+    ?>
+
+    <div class="related">
+        <?php
+        // Customised: Show cross-sells on single product pages, under the attributes and short description
+        global $post;
+
+        $crosssells = get_post_meta( $post->ID, '_crosssell_ids', true );
+
+        if ( $crosssells ) {
+            echo '<h2>Related products</h2>';
+            echo '<ul>';
+            foreach ($crosssells as $item) {
+                // WP_Query arguments
+                $args = array (
+                    'p'                      => $item,
+                    'post_type'              => array( 'product' ),
+                    'post_status'            => array( 'publish' ),
+                );
+                // The Query
+                $related = new WP_Query( $args );
+                // The Loop
+                if ( $related->have_posts() ) {
+                    while ( $related->have_posts() ) {
+                        $related->the_post();
+                        ?>
+                            <li><a href="<?php the_permalink();?>"><?php the_title();?></a></li>
+                        <?php
+                    }
+                } else {
+                    // no posts found
+                }
+                // Restore original Post Data
+                wp_reset_postdata();
+            }
+            echo '</ul>';
+        }
+        ?>
+    </div>
+
+    <?php
+    /**
      * woocommerce_after_main_content hook.
      *
      * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
