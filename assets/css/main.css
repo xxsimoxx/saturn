@@ -284,8 +284,8 @@ header nav .sub-menu {
 }
 header nav ul {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: var(--ui-nav-align, center);
+    justify-content: var(--ui-nav-justify, flex-end);
 
     padding: 0;
     position: relative;
@@ -299,13 +299,16 @@ header nav ul li {
     display: inline-block;
 }
 header nav ul li a {
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: var(--ui-nav-weight, 400);
+    font-size: var(--ui-nav-size, 14px);
     text-decoration: none;
     color: var(--color-header-menu-text);
     display: inline-block;
     padding: 16px 12px;
     white-space: nowrap;
+}
+header.header-spacing--relaxed nav ul li a {
+    padding: 16px 24px 16px 24px;
 }
 header nav ul li a:hover {
     color: var(--header_menu_hover_colour);
@@ -485,7 +488,6 @@ header ul.sub-menu ul.sub-menu {
  * Add an Icofont submenu hint, instead of the default Unicode one.
  */
 header.header-organic nav ul li a {
-    padding: 0 0 6px 24px;
     position: relative;
 }
 
