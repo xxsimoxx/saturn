@@ -25,7 +25,14 @@
     <?php } ?>
 
     --content_width: <?php echo get_option( 'content_width' ); ?>px;
+    --wp--style--global--content-size: <?php echo get_option( 'content_width' ); ?>px;
+
     --primarycolor: <?php echo get_option( 'primary_colour' ); ?>;
+
+    --ui-nav-size: <?php echo ( (int) get_option( 'ui_nav_size' ) > 0 ) ? get_option( 'ui_nav_size' ) . 'px' : '14px'; ?>;
+    --ui-nav-weight: <?php echo ( (int) get_option( 'ui_nav_weight' ) > 0 ) ? get_option( 'ui_nav_weight' ) : '400'; ?>;
+    --ui-nav-align: <?php echo ( (string) get_option( 'ui_nav_align' ) !== '' ) ? get_option( 'ui_nav_align' ) : 'center'; ?>;
+    --ui-nav-justify: <?php echo ( (string) get_option( 'ui_nav_justify' ) !== '' ) ? get_option( 'ui_nav_justify' ) : 'flex-end'; ?>;
 
     --saturn-ui-link-colour: <?php echo get_option( 'saturn_ui_link_colour' ); ?>;
     --saturn-ui-link-colour-hover: <?php echo get_option( 'saturn_ui_link_colour_hover' ); ?>;

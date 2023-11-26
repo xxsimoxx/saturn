@@ -12,17 +12,19 @@ function get_saturn_header() {
     $out = '';
 
     // Initialize options
-    $headerBoxedNav = (int) get_option('boxed_nav');
-    $headerType = (int) get_option('header_type');
+    $header_boxed_nav = (int) get_option('boxed_nav');
+    $header_type      = (int) get_option('header_type');
 
-    $headerBoxedNav = ($headerBoxedNav === 1) ? 'wrap' : '';
+    $header_boxed_nav = ( $header_boxed_nav === 1 ) ? 'wrap' : '';
 
-    $primaryPipes = wp_nav_menu([
-        'theme_location' => 'primary-pipes',
-        'menu_class' => 'wrap',
-        'container' => false,
-        'echo' => false
-    ]);
+    $primary_pipes = wp_nav_menu(
+        [
+            'theme_location' => 'primary-pipes',
+            'menu_class'     => 'wrap',
+            'container'      => false,
+            'echo'           => false,
+        ]
+    );
     $primaryMenu = wp_nav_menu([
         'theme_location' => 'main-menu',
         'menu_class' => 'wrap',
@@ -30,7 +32,7 @@ function get_saturn_header() {
         'echo' => false
     ]);
 
-    switch ($headerType) {
+    switch ($header_type) {
         case 1:
             $headerClass = 'header-top';
             break;
@@ -58,10 +60,15 @@ function get_saturn_header() {
         $headerClass .= ' header-organic';
     }
 
+    if ( (string) get_option( 'ui_logo_align' ) === 'right' ) {
+        $headerClass .= ' header-logo-right';
+    }
 
-    $out .= '<header class="' . $headerClass . ' ' . $headerBoxedNav . '">
+    $headerClass .= ' header-spacing--' . (string) get_option( 'ui_nav_spacing' );
+
+    $out .= '<header class="' . $headerClass . ' ' . $header_boxed_nav . '">
         <nav>
-            ' . $primaryPipes . '
+            ' . $primary_pipes . '
             ' . $primaryMenu . '
         </nav>
     </header>';
