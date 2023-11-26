@@ -1,7 +1,7 @@
 function saturnGetContrast(hexcolor) {
     hexcolor = hexcolor.replace('#', '');
 
-    return (parseInt(hexcolor, 16) > 0xffffff/2) ? 'black' : 'white';
+    return (parseInt(hexcolor, 16) > 0xffffff / 2) ? 'black' : 'white';
 }
 function saturnResetColorWell() {
     this.style.backgroundColor = 'white';
@@ -46,19 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
             colorWell.addEventListener('blur', function () {
                 this.style.backgroundColor = this.value;
                 this.style.color = saturnGetContrast(this.value);
-            });
-        });
-    }
-
-
-
-    /**
-     * Thin UI Popovers
-     */
-    if (document.querySelector('button[name="popover"]')) {
-        [].forEach.call(document.querySelectorAll('button[name="popover"]'), (popover) => {
-            popover.addEventListener('click', (event) => {
-                event.preventDefault();
             });
         });
     }
