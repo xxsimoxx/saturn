@@ -1,4 +1,38 @@
 <?php
+function saturn_side_panel_enqueue() {
+    // Add custom styles
+    $custom_side_panel_css = '<style>';
+
+    if ( (int) get_option( 'saturn_side_panel_fullscreen' ) === 1 ) {
+        $custom_side_panel_css .= '#site-menu { opacity: 0.75; transition: 1750ms cubic-bezier(0.16, 1, 0.3, 1) all; }';
+        $custom_side_panel_css .= '#site-menu.show-nav { width: 100%; opacity: 1; box-shadow: none; }';
+    }
+
+    if ( ! empty( (string) get_option( 'saturn_side_panel_background_colour' ) ) )  {
+        $custom_side_panel_css .= '#site-menu { background-color: ' . get_option( 'saturn_side_panel_background_colour' ) . '; }';
+    }
+
+    if ( ! empty( (string) get_option( 'saturn_side_panel_text_colour' ) ) ) {
+        $custom_side_panel_css .= '#site-menu { color: ' . get_option( 'saturn_side_panel_text_colour' ) . '; }';
+    }
+
+    if ( ! empty( (string) get_option( 'saturn_side_panel_link_colour' ) ) ) {
+        $custom_side_panel_css .= '#site-menu a { color: ' . get_option( 'saturn_side_panel_link_colour' ) . '; }';
+    }
+
+    if ( ! empty( (string) get_option( 'saturn_side_panel_link_hover_colour' ) ) ) {
+        $custom_side_panel_css .= '#site-menu a:hover { color: ' . get_option( 'saturn_side_panel_link_hover_colour' ) . '; }';
+    }
+
+    $custom_side_panel_css .= '</style>';
+
+    echo $custom_side_panel_css;
+}
+
+add_action( 'wp_head', 'saturn_side_panel_enqueue' );
+
+
+
 function saturn_show_side_panel() {
     $supernova_side_panel_block_id = (int) get_option( 'supernova_side_panel_block_id' );
     $supernova_side_panel_modal    = (int) get_option( 'supernova_side_panel_modal' );
