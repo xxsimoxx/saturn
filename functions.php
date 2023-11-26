@@ -75,9 +75,9 @@ add_action( 'admin_enqueue_scripts', 'saturn_admin_scripts' );
 function saturn_admin_scripts() {
     $version = wp_get_theme()->get( 'Version' );
 
-    wp_enqueue_style( 'saturn', get_stylesheet_directory_uri() . '/assets/css/admin.css', [], $version );
+    wp_register_style( 'saturn', get_stylesheet_directory_uri() . '/assets/css/admin.css', [], $version );
 
-    wp_enqueue_script( 'saturn', get_stylesheet_directory_uri() . '/js/saturn.js', [], $version, true );
+    wp_register_script( 'saturn', get_stylesheet_directory_uri() . '/js/saturn.js', [], $version, true );
 }
 
 function saturn_enqueue() {
@@ -172,6 +172,10 @@ function saturn_setup() {
     add_theme_support( 'appearance-tools' );
 
     add_theme_support( 'woocommerce' );
+
+    // WordPress 6.3
+    add_theme_support( 'link-color' );
+    add_theme_support( 'border' );
 
     add_image_size( 'homepage_hero', 1440, 900, true );
     add_image_size( 'homepage_grid', 640, 400, true );
@@ -282,16 +286,6 @@ add_filter( 'excerpt_length', 'saturn_excerpt_length', 999 );
 
 
 
-
-
-
-function saturn_block_editor_assets() {
-    wp_enqueue_style( 'saturn-editor-style', get_stylesheet_directory_uri() . '/assets/css/editor.css', [], '1.0.1' );
-}
-add_action( 'enqueue_block_editor_assets', 'saturn_block_editor_assets' );
-
-
-
 function saturn_body_open() {
     if ( ! empty( get_option( 'tracking_gtm' ) ) ) {
         echo '<!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=' . get_option( 'tracking_gtm' ) . '" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) -->';
@@ -355,9 +349,9 @@ add_action( 'wp_footer', 'saturn_footer', 10, 0 );
 
 
 /**
- * Get the formatted HTML content of a given reusable block ID and return it
+ * Get the formatted HTML content of a given pattern ID and return it
  *
- * @var    int    $block_id ID of reusable block
+ * @var    int    $block_id ID of pattern
  * @return string
  */
 function saturn_get_reusable_block( $block_id = '' ) {
@@ -451,15 +445,11 @@ add_filter( 'upload_mimes', 'saturn_mime_types' );
 
 
 
-
-// Change add to cart text on single product page
-add_filter( 'woocommerce_product_single_add_to_cart_text', 'woocommerce_add_to_cart_button_text_single' ); 
-function woocommerce_add_to_cart_button_text_single() {
-    return __( 'Reserve', 'woocommerce' ); 
-}
-
-// Change add to cart text on product archives page
-add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_add_to_cart_button_text_archives' );  
-function woocommerce_add_to_cart_button_text_archives() {
-    return __( 'Reserve', 'woocommerce' );
+/**
+ * Disallow Elementor, if active
+ */
+if ( is_plugin_active( 'elementor/elementor.php' ) ) {
+    deactivate_plugins( 'elementor/elementor.php' );
+} else {
+    // Elementor is not active
 }
