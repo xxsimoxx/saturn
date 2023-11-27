@@ -4,7 +4,7 @@
         if ( (int) get_option( 'reusable_block_footer_id' ) > 0 ) {
             $reusable_block_footer_id = get_post( (int) get_option( 'reusable_block_footer_id' ) );
 
-            echo apply_filters( 'the_content', $reusable_block_footer_id->post_content );
+            echo do_blocks( $reusable_block_footer_id->post_content );
         }
         ?>
     </div>
