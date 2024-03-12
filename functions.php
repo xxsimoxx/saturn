@@ -75,6 +75,8 @@ add_action( 'admin_enqueue_scripts', 'saturn_admin_scripts' );
 function saturn_admin_scripts() {
     $version = wp_get_theme()->get( 'Version' );
 
+    wp_register_style( 'saturn-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap', [], $version );
+
     wp_register_style( 'saturn', get_stylesheet_directory_uri() . '/assets/css/admin.css', [], $version );
 
     wp_register_script( 'saturn', get_stylesheet_directory_uri() . '/js/saturn.js', [], $version, true );
@@ -442,14 +444,3 @@ function saturn_mime_types( $mimes ) {
     return $mimes;
 }
 add_filter( 'upload_mimes', 'saturn_mime_types' );
-
-
-
-/**
- * Disallow Elementor, if active
- */
-if ( is_plugin_active( 'elementor/elementor.php' ) ) {
-    deactivate_plugins( 'elementor/elementor.php' );
-} else {
-    // Elementor is not active
-}
