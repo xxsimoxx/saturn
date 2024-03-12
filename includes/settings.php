@@ -3,15 +3,14 @@ add_action( 'admin_menu', 'saturn_settings_menu' );
 
 function saturn_settings_menu() {
     add_menu_page( 'Saturn', 'Saturn', 'manage_options', 'saturn-settings', 'saturn_settings', 'dashicons-star-filled', 4 );
-
-    add_menu_page( 'Patterns', 'Patterns', 'edit_posts', 'edit.php?post_type=wp_block', '', 'dashicons-editor-table', 22 );
 }
 
 function saturn_settings() {
+    wp_enqueue_style( 'saturn-google-fonts' );
     wp_enqueue_style( 'saturn' );
     wp_enqueue_script( 'saturn' );
     ?>
-    <div class="wrap">
+    <div class="wrap saturn--ui">
         <h1>Saturn</h1>
 
         <?php
@@ -111,6 +110,10 @@ function saturn_settings() {
 
                 update_option( 'header_type', (int) $_POST['header_type'] );
                 update_option( 'navicon_type', (int) $_POST['navicon_type'] );
+
+                // Logo
+                update_option( 'saturn_logo', sanitize_url( $_POST['saturn_logo'] ) );
+                update_option( 'saturn_logo_height', (int) sanitize_text_field( $_POST['saturn_logo_height'] ) );
 
                 update_option( 'ui_nav_size', (int) $_POST['ui_nav_size'] );
                 update_option( 'ui_nav_weight', (int) $_POST['ui_nav_weight'] );
@@ -355,6 +358,88 @@ function saturn_settings() {
                                 </p>
                             </td>
                         </tr>
+
+                        <tr>
+                            <th scope="row" colspan="2"><h2>Logo Settings</h2></th>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Logo</label></th>
+                            <td>
+                                <div>
+                                    <?php
+                                    if ( get_option( 'saturn_logo' ) ) {
+                                        $image_url = get_option( 'saturn_logo' );
+                                        echo '<p><img src="' . $image_url . '" style="max-width: 320px;" alt=""></p>';
+                                    } else {
+                                        echo '<p>No image selected.</p>';
+                                    }
+
+                                    if ( ! empty( $_POST['image'] ) ) {
+                                        $image_url = $_POST['image'];
+                                    }
+
+                                    wp_enqueue_media();
+                                    ?>
+                                    <input id="saturn-logo-url" type="hidden" name="saturn_logo" value="<?php echo get_option( 'saturn_logo' ); ?>">
+                                    <input id="saturn-upload-logo-btn" type="button" class="button button-secondary" value="Upload or Select Image">
+                                </div>
+                                <script>
+                                jQuery(document).ready(function () {
+                                    var mediaUploader;
+
+                                    jQuery('#saturn-upload-logo-btn').click(function (e) {
+                                        e.preventDefault();
+
+                                        // If the uploader object has already been created, reopen the dialog
+                                        if (mediaUploader) {
+                                            mediaUploader.open();
+                                            return;
+                                        }
+                                        // Extend the wp.media object
+                                        mediaUploader = wp.media.frames.file_frame = wp.media({
+                                            title: 'Choose Image',
+                                            button: {
+                                                text: 'Choose Image'
+                                            },
+                                            multiple: false
+                                        });
+
+                                        // When a file is selected, grab the URL and set it as the text field's value
+                                        mediaUploader.on('select', function () {
+                                            var attachment = mediaUploader.state().get('selection').first().toJSON();
+                                            jQuery('#saturn-logo-url').val(attachment.url);
+                                        });
+
+                                        // Open the uploader dialog
+                                        mediaUploader.open();
+                                    });
+                                });
+                                </script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Logo Dimensions</label></th>
+                            <td>
+                                <p>
+                                    <label for="saturn_logo_height">Logo height (will preserve aspect ratio)</label>
+
+                                    <br>
+                                    <input type="range" min="0" max="1024" step="1" value="<?php echo get_option( 'saturn_logo_height' ); ?>" step="1" name="saturn_logo_height" id="saturn_logo_height" style="width:240px">
+                                    <br>
+                                    <code class="codor" id="saturn_logo_height_value"></code>px
+                                    <script>
+                                    let slider = document.getElementById('saturn_logo_height');
+                                    let output = document.getElementById('saturn_logo_height_value');
+                                    output.innerHTML = slider.value;
+
+                                    slider.oninput = () => {
+                                        output.innerHTML = slider.value;
+                                    }
+                                    </script>
+                                </p>
+                            </td>
+                        </tr>
+
                         <tr>
                             <th scope="row" colspan="2"><h2>Header Navigation Text Style</h2></th>
                         </tr>
@@ -363,7 +448,9 @@ function saturn_settings() {
                             <td>
                                 <p>
                                     <input type="radio" id="ui_nav_size_small" name="ui_nav_size" value="12" <?php checked( 12, (int) get_option( 'ui_nav_size' ) ); ?>>
-                                    <label for="ui_nav_size_regular">Small <code>12px</code></label>
+                                    <label for="ui_nav_size_small">Small <code>12px</code></label>
+                                    <input type="radio" id="ui_nav_size_compact" name="ui_nav_size" value="13" <?php checked( 13, (int) get_option( 'ui_nav_size' ) ); ?>>
+                                    <label for="ui_nav_size_compact">Compact <code>13px</code></label>
                                     <input type="radio" id="ui_nav_size_regular" name="ui_nav_size" value="14" <?php checked( 14, (int) get_option( 'ui_nav_size' ) ); ?>>
                                     <label for="ui_nav_size_regular">Regular <code>14px</code></label>
                                     <input type="radio" id="ui_nav_size_medium" name="ui_nav_size" value="16" <?php checked( 16, (int) get_option( 'ui_nav_size' ) ); ?>>
@@ -702,6 +789,7 @@ function saturn_settings() {
             if ( isset( $_POST['supernova_save'] ) ) {
                 update_option( 'use_views', (int) $_POST['use_views'] );
                 update_option( 'use_testimonials', (int) $_POST['use_testimonials'] );
+                update_option( 'use_author_box', (int) $_POST['use_author_box'] );
 
                 update_option( 'use_side_panel', (int) $_POST['use_side_panel'] );
                 update_option( 'supernova_side_panel_modal', (int) $_POST['supernova_side_panel_modal'] );
@@ -817,6 +905,10 @@ function saturn_settings() {
                                 <p>
                                     <input type="checkbox" id="use_testimonials" name="use_testimonials" value="1" <?php checked( 1, (int) get_option( 'use_testimonials' ) ); ?>>
                                     <label for="use_testimonials">Enable testimonials</label>
+                                </p>
+                                <p>
+                                    <input type="checkbox" id="use_author_box" name="use_author_box" value="1" <?php checked( 1, (int) get_option( 'use_author_box' ) ); ?>>
+                                    <label for="use_author_box">Enable author box</label>
                                 </p>
                             </td>
                         </tr>

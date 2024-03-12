@@ -76,16 +76,25 @@ function get_saturn_header() {
     return $out;
 }
 
-function saturn_custom_menu_item($items, $args) {
-    if ($args->theme_location === 'main-menu') {
+function saturn_custom_menu_item( $items, $args ) {
+    if ( $args->theme_location === 'main-menu' ) {
         $current_items = $items;
-        $items = '<li class="menu-logo-container"><a href="' . home_url() . '" class="menu-logo-large">' . get_bloginfo('name') . '</a></li>';
-        if (has_custom_logo()) {
+
+        $items = '<li class="menu-logo-container"><a href="' . home_url() . '" class="menu-logo-large">' . get_bloginfo( 'name' ) . '</a></li>';
+
+        if ( has_custom_logo() ) {
             $items = '<li class="pull-left">' . get_custom_logo() . '</li>';
+        } elseif ( (string) get_option( 'saturn_logo' ) !== '' ) {
+            $items = '<li class="pull-left">
+                <a href="' . home_url() . '" class="menu-logo-large">
+                    <img src="' . get_option( 'saturn_logo' ) . '" height="' . get_option( 'saturn_logo_height' ) . '" alt="' . get_bloginfo( 'name' ) . '">
+                </a>
+            </li>';
         }
+
         $items .= $current_items;
 
-        if ((int) get_option('use_icofont') === 1) {
+        if ( (int) get_option( 'use_icofont' ) === 1 ) {
             $items .= '<li class="menu-item menu-toggle">
                 <a href="#">
                     <i class="icofont-navigation-menu side-menu-close" style="font-size: 24px;"></i>
