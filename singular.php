@@ -25,6 +25,28 @@ if ( have_posts() ) {
 
                 the_content();
 
+                if ( (int) get_option( 'use_author_box' ) === 1 ) {
+                    ?>
+                    <div class="saturn-author-box">
+                        <div class="saturn-author-avatar" itemscope itemprop="image" alt="Photo of <?php the_author_meta( 'display_name' ); ?>">
+                            <?php echo get_avatar( get_the_author_meta( 'ID' ), 128 ); ?>
+                        </div>
+                        <div class="saturn-author-info vcard author" itemprop="url" rel="author">
+                            <div class="saturn-author-title" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" class="fn" itemprop="name">
+                                    <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                        <span itemprop="name"><?php the_author_meta( 'display_name' ); ?></span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="saturn-author-summary">
+                                <p class="saturn-author-description"><?php echo wp_kses( get_the_author_meta( 'description' ), null ); ?></p></div>
+                            <div class="saturn-author-links">
+                        </div>
+                    </div>
+                    <?php
+                }
+
                 setSaturnPostViews( get_the_ID() );
                 ?>
             </div>
