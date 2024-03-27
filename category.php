@@ -4,6 +4,16 @@
     <h1 class="entry-title"><?php echo single_cat_title(); ?></h1>
     <div class="has-medium-font-size"><?php echo category_description(); ?></div>
 
+    <?php if ( (int) get_option( 'use_blog_search' ) === 1 ) { ?>
+        <form action="<?php echo home_url( '/' ); ?>" class="search-form" method="get">
+            <p>
+                <input type="search" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="Quick search...">
+                <input type="hidden" value="post" name="post_type" id="post_type">
+                <input type="submit" value="Search">
+            </p>
+        </form>
+    <?php } ?>
+
     <div class="flex-container-updated">
         <?php
         if ( have_posts() ) {

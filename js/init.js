@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keyup', (e) => {
-        console.log('keyup');
-        console.log(e.key);
         if (e.key === 'Escape') {
             document.querySelector('#side-menu').classList.toggle('active');
             document.querySelector('#overlay').classList.toggle('active');

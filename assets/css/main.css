@@ -251,7 +251,7 @@ p#breadcrumb {
     display: block;
 }
 .page-template-default .wrap-content-inner {
-    margin: 24px 24px;
+    margin: 24px 0;
 }
 /**/
 
@@ -263,6 +263,24 @@ p#breadcrumb {
 .floatright {
     float: right;
     margin: 0 0 24px 24px;
+}
+
+
+
+/**
+ * Search form
+ */
+form.search-form {
+    text-align: center;
+}
+form.search-form input[type="search"],
+form.search-form input[type="submit"] {
+    padding: 8px 12px;
+}
+form.search-form input[type="submit"] {
+    font-weight: 500;
+    padding: 8px 16px;
+    cursor: pointer;
 }
 
 
@@ -1056,14 +1074,22 @@ iframe {
  * Blog UI
  */
 .flex-container-updated {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
 }
-.saturn-blog-item {
-    flex-basis: 33%;
-    padding: 24px;
+
+@media (max-width: 768px) {
+    .flex-container-updated {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
+@media (max-width: 480px) {
+    .flex-container-updated {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 .saturn-blog-item img {
     border-radius: 2px;
     max-width: 100%;
@@ -1225,19 +1251,6 @@ h2.saturn-search-header {
     border-radius: 2px 2px 0 0;
     border: 1px solid rgba(0,0,0,.15);
     font-size: 14px;
-}
-
-
-
-@media (max-width: 768px) {
-    .saturn-blog-item {
-        flex-basis: 50%;
-    }
-}
-@media (max-width: 480px) {
-    .saturn-blog-item {
-        flex-basis: 100%;
-    }
 }
 
 

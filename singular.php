@@ -21,6 +21,13 @@ if ( have_posts() ) {
                     echo sharing_display();
                 }
 
+                /**
+                 * WP-PostRatings
+                 */
+                if ( function_exists( 'the_ratings' ) ) {
+                    the_ratings();
+                }
+
                 do_action( 'before_post_content', get_the_ID() );
 
                 the_content();

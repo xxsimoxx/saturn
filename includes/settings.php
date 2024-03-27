@@ -790,6 +790,7 @@ function saturn_settings() {
                 update_option( 'use_views', (int) $_POST['use_views'] );
                 update_option( 'use_testimonials', (int) $_POST['use_testimonials'] );
                 update_option( 'use_author_box', (int) $_POST['use_author_box'] );
+                update_option( 'use_blog_search', (int) $_POST['use_blog_search'] );
 
                 update_option( 'use_side_panel', (int) $_POST['use_side_panel'] );
                 update_option( 'supernova_side_panel_modal', (int) $_POST['supernova_side_panel_modal'] );
@@ -909,6 +910,13 @@ function saturn_settings() {
                                 <p>
                                     <input type="checkbox" id="use_author_box" name="use_author_box" value="1" <?php checked( 1, (int) get_option( 'use_author_box' ) ); ?>>
                                     <label for="use_author_box">Enable author box</label>
+                                </p>
+                                <p>
+                                    <input type="checkbox" id="use_blog_search" name="use_blog_search" value="1" <?php checked( (int) get_option( 'use_blog_search' ), 1 ); ?>>
+                                    <label for="use_blog_search">
+                                        Enable blog search
+                                        <br><small>Add a quick search form on the category template page.</small>
+                                    </label>
                                 </p>
                             </td>
                         </tr>
