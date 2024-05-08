@@ -208,6 +208,24 @@ header nav ul li a,
 
 
 
+/* Fix for https://github.com/WordPress/gutenberg/pull/60489 */
+.wp-block-group.alignwide,
+.wp-block-group.alignfull {
+    display: flex;
+}
+.wp-block-cover,
+.wp-block-group {
+    justify-content: center;
+}
+.wp-block-cover.alignwide > .is-layout-constrained,
+.wp-block-group.alignwide > .is-layout-constrained,
+.wp-block-cover.alignfull > .is-layout-constrained,
+.wp-block-group.alignfull > .is-layout-constrained {
+    max-width: var(--wp--style--global--content-size);
+}
+
+
+
 .wrap,
 .wrap-inner,
 header.wrap nav {

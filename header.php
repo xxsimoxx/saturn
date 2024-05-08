@@ -26,6 +26,7 @@
 
     --content_width: <?php echo get_option( 'content_width' ); ?>px;
     --wp--style--global--content-size: <?php echo get_option( 'content_width' ); ?>px;
+    --wp--style--global--wide-size: 1440px;
 
     --primarycolor: <?php echo get_option( 'primary_colour' ); ?>;
 

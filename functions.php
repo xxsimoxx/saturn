@@ -447,3 +447,35 @@ function saturn_mime_types( $mimes ) {
     return $mimes;
 }
 add_filter( 'upload_mimes', 'saturn_mime_types' );
+
+
+
+add_filter( 'nav_menu_link_attributes', 'saturn_label_menu_items', 10, 4 );
+
+/**
+ * Filter nav menu items
+ *
+ * @param array $atts {
+ *     The HTML attributes applied to the menu item's `<a>` element, empty strings are ignored.
+ *
+ *     @type string $title        Title attribute.
+ *     @type string $target       Target attribute.
+ *     @type string $rel          The rel attribute.
+ *     @type string $href         The href attribute.
+ *     @type string $aria_current The aria-current attribute.
+ * }
+ * @param WP_Post  $item  The current menu item.
+ * @param stdClass $args  An object of wp_nav_menu() arguments.
+ * @param int      $depth Depth of menu item. Used for padding.
+ *
+ * @see Walker_Nav_Menu
+ *
+ * @return array
+ */
+function saturn_label_menu_items( $atts, $item, $args, $depth ) {
+    if ( (string) $atts['title'] !== '' ) {
+        $atts['aria-label'] = strip_tags( $atts['title'] );
+    }
+
+    return $atts;
+}
