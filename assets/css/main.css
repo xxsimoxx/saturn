@@ -209,9 +209,12 @@ header nav ul li a,
 
 
 /* Fix for https://github.com/WordPress/gutenberg/pull/60489 */
-.wp-block-group.alignwide,
-.wp-block-group.alignfull {
-    display: flex;
+/*
+@media all and (min-width: 768px) {
+    .wp-block-group.alignwide,
+    .wp-block-group.alignfull {
+        display: flex;
+    }
 }
 .wp-block-cover,
 .wp-block-group {
@@ -223,6 +226,7 @@ header nav ul li a,
 .wp-block-group.alignfull > .is-layout-constrained {
     max-width: var(--wp--style--global--content-size);
 }
+/**/
 
 
 

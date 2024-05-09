@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <?php } ?>
 
+<?php wp_head(); ?>
+
 <style>
 :root {
     <?php if ( (int) get_option( 'use_native_fonts' ) !== 1 && ( (string) get_option( 'heading_font' ) !== '0' || (string) get_option( 'body_font' ) !== '0' ) ) { ?>
@@ -49,8 +51,6 @@
     --footer_background_colour: <?php echo get_option( 'footer_background_colour' ); ?>;
 }
 </style>
-
-<?php wp_head(); ?>
 
 <style>
 <?php

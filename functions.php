@@ -155,6 +155,15 @@ function saturn_enqueue() {
 
 add_action( 'wp_enqueue_scripts', 'saturn_enqueue' );
 
+// Enqueue block styles for editor
+function saturn_blocks_editor_enqueue() {
+    $version = wp_get_theme()->get( 'Version' );
+
+    wp_enqueue_style( 'saturn-editor-style', get_stylesheet_directory_uri() . '/assets/css/editor.css', [], $version );
+}
+add_action( 'enqueue_block_editor_assets', 'saturn_blocks_editor_enqueue' );
+
+
 function saturn_setup() {
     $content_width = (int) get_option( 'content_width' );
 
