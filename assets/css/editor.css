@@ -1,3 +1,8 @@
 :where(.editor-styles-wrapper) {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 }
+.editor-styles-wrapper .editor-editor-canvas__post-title-wrapper,
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container {
+    padding: 2em;
+    line-height: 1.5;
+}
