@@ -27,7 +27,23 @@ function saturn_settings() {
             <a href="<?php echo $section; ?>gdpr" class="nav-tab <?php echo $tab === 'gdpr' ? 'nav-tab-active' : ''; ?>">GDPR</a>
         </h2>
 
-        <?php if ( $tab === 'welcome' ) { ?>
+        <?php
+        if ( $tab === 'welcome' ) {
+            // Clean up
+            delete_option( 'use_minify_css' );
+            delete_option( 'flickity_wrapAround' );
+            delete_option( 'wppd_google_places_api' );
+            delete_option( 'wppd_google_place_id' );
+            delete_option( 'use_cascadia_code_fonts' );
+            delete_option( 'use_splitting_js' );
+            delete_option( 'use_side_drawer' );
+            delete_option( 'side_drawer_handle_title' );
+            delete_option( 'supernova_drawer_block_id' );
+            delete_option( 'supernova_snackbar' );
+            delete_option( 'supernova_snackbar_block_id' );
+            delete_option( 'supernova_snackbar_scroll_value' );
+            ?>
+
             <h2 class="saturn-welcome">Welcome to Saturn</h2>
 
             <p style="font-size: 18px;">Thank you for choosing Saturn theme for WordPress! You are now to build your block-powered website!</p>
@@ -40,9 +56,6 @@ function saturn_settings() {
                 update_option( 'tracking_ga', sanitize_text_field( $_POST['tracking_ga'] ) );
                 update_option( 'tracking_gtm', sanitize_text_field( $_POST['tracking_gtm'] ) );
                 update_option( 'google_fonts_api', sanitize_text_field( $_POST['google_fonts_api'] ) );
-
-                delete_option( 'wppd_google_places_api' );
-                delete_option( 'wppd_google_place_id' );
 
                 delete_post_meta_by_key( 'xtender_dynamic_sidebar' );
                 delete_post_meta_by_key( 'slide_template' );
@@ -139,8 +152,6 @@ function saturn_settings() {
                 update_option( 'use_native_fonts', (int) $_POST['use_native_fonts'] );
                 update_option( 'use_icofont', (int) $_POST['use_icofont'] );
 
-                delete_option( 'use_cascadia_code_fonts' );
-
                 $local_font_array = ( is_array( $_POST['use_local_font'] ) ) ? array_map( 'sanitize_text_field', $_POST['use_local_font'] ) : [];
                 update_option( 'use_local_font', $local_font_array );
 
@@ -148,7 +159,6 @@ function saturn_settings() {
                 update_option( 'body_font', (string) $_POST['body_font'] );
 
                 // Flickity options
-                update_option( 'flickity_wrapAround', (int) $_POST['flickity_wrapAround'] );
                 update_option( 'flickity_groupCells', (int) $_POST['flickity_groupCells'] );
                 update_option( 'flickity_groupCellsValue', (int) $_POST['flickity_groupCellsValue'] );
                 update_option( 'flickity_autoPlay', (int) $_POST['flickity_autoPlay'] );
@@ -173,6 +183,7 @@ function saturn_settings() {
                                         <option value="1024" <?php selected( (int) get_option( 'content_width' ), 1024 ); ?>>Classic (1024px)</option>
                                         <option value="1170" <?php selected( (int) get_option( 'content_width' ), 1170 ); ?>>Bootstrapped (1170px, recommended)</option>
                                         <option value="1280" <?php selected( (int) get_option( 'content_width' ), 1280 ); ?>>Large (1280px)</option>
+                                        <option value="1360" <?php selected( (int) get_option( 'content_width' ), 1360 ); ?>>Wide (1360px)</option>
                                     </select>
                                 </p>
                             </td>
@@ -687,9 +698,6 @@ function saturn_settings() {
                                     <b>Flickity Options</b>
                                 </p>
                                 <p>
-                                    <input type="checkbox" id="flickity_wrapAround" name="flickity_wrapAround" value="1" <?php echo ((int) get_option('flickity_wrapAround') === 1) ? 'checked' : ''; ?>>
-                                    <label for="flickity_wrapAround"><code class="codor"><a href="https://flickity.metafizzy.co/options.html#wraparound">wrapAround</a></code> (bool)</label>
-                                    <br>
                                     <input type="checkbox" id="flickity_groupCells" name="flickity_groupCells" value="1" <?php echo ((int) get_option('flickity_groupCells') === 1) ? 'checked' : ''; ?>>
                                     <label for="flickity_groupCells"><code class="codor"><a href="https://flickity.metafizzy.co/options.html#groupcells">groupCells</a></code> (bool)</label>
                                     <br>
@@ -711,18 +719,16 @@ function saturn_settings() {
 
                 <p><input type="submit" name="supernova_save" value="Save Changes" class="button-primary"></p>
             </form>
-        <?php } else if ($tab === 'css') {
-            if (isset($_POST['supernova_save'])) {
-                update_option('supernova_custom_css', $_POST['supernova_custom_css']);
-
-                // Performance
-                update_option('use_minify_css', (int) $_POST['use_minify_css']);
+            <?php
+        } elseif ( $tab === 'css' ) {
+            if ( isset( $_POST['supernova_save'] ) ) {
+                update_option( 'supernova_custom_css', $_POST['supernova_custom_css'] );
 
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
-            <h3><?php esc_html_e('Custom CSS', 'saturn'); ?></h3>
-            <p>Add your own CSS code here to customise the appearance and layout of your site or use the <a href="<?php echo admin_url('customize.php'); ?>">WordPress Customizer</a> to add custom CSS rules.</p>
+            <h3><?php esc_html_e( 'Custom CSS', 'saturn' ); ?></h3>
+            <p>Add your own CSS code here to customise the appearance and layout of your site.</p>
 
             <form method="post" action="">
                 <table class="form-table">
@@ -731,16 +737,7 @@ function saturn_settings() {
                             <th scope="row"><label>Custom CSS Rules</label></th>
                             <td>
                                 <p>
-                                    <textarea name="supernova_custom_css" id="supernova_custom_css" class="large-text code saturn-code" rows="32"><?php echo stripslashes(get_option('supernova_custom_css')); ?></textarea>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label>Performance</label></th>
-                            <td>
-                                <p>
-                                    <input type="checkbox" id="use_minify_css" name="use_minify_css" value="1" <?php echo ((int) get_option('use_minify_css') === 1) ? 'checked' : ''; ?>>
-                                    <label for="use_minify_css">Minify inline CSS</label>
+                                    <textarea name="supernova_custom_css" id="supernova_custom_css" class="large-text code saturn-code" rows="32"><?php echo stripslashes( get_option( 'supernova_custom_css' ) ); ?></textarea>
                                 </p>
                             </td>
                         </tr>
@@ -749,15 +746,16 @@ function saturn_settings() {
                 <hr>
                 <p><input type="submit" name="supernova_save" value="Save Changes" class="button-primary"></p>
             </form>
-        <?php } else if ($tab === 'html') {
-            if (isset($_POST['supernova_save'])) {
-                update_option('supernova_custom_html', htmlentities(stripslashes($_POST['supernova_custom_html'])));
-                update_option('supernova_custom_html_footer', htmlentities(stripslashes($_POST['supernova_custom_html_footer'])));
+            <?php
+        } elseif ( $tab === 'html' ) {
+            if ( isset( $_POST['supernova_save'] ) ) {
+                update_option( 'supernova_custom_html', htmlentities( stripslashes( $_POST['supernova_custom_html'] ) ) );
+                update_option( 'supernova_custom_html_footer', htmlentities( stripslashes( $_POST['supernova_custom_html_footer'] ) ) );
 
                 echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
             }
             ?>
-            <h3><?php esc_html_e('Custom HTML/JS', 'saturn'); ?></h3>
+            <h3><?php esc_html_e( 'Custom HTML/JS', 'saturn' ); ?></h3>
             <p>Add your own HTML or JavaSscript code snippets or tracking snippets here to customize the appearance and layout of your site.</p>
 
             <form method="post" action="">
@@ -767,7 +765,7 @@ function saturn_settings() {
                             <th scope="row"><label>Custom HTML/JS (<code>&lt;head&gt;</code>)</label></th>
                             <td>
                                 <p>
-                                    <textarea name="supernova_custom_html" id="supernova_custom_html" class="large-text code saturn-code" rows="24"><?php echo html_entity_decode(get_option('supernova_custom_html')); ?></textarea>
+                                    <textarea name="supernova_custom_html" id="supernova_custom_html" class="large-text code saturn-code" rows="24"><?php echo html_entity_decode( get_option( 'supernova_custom_html' ) ); ?></textarea>
                                 </p>
                             </td>
                         </tr>
@@ -775,7 +773,7 @@ function saturn_settings() {
                             <th scope="row"><label>Custom HTML/JS (footer)</label></th>
                             <td>
                                 <p>
-                                    <textarea name="supernova_custom_html_footer" id="supernova_custom_html_footer" class="large-text code saturn-code" rows="24"><?php echo html_entity_decode(get_option('supernova_custom_html_footer')); ?></textarea>
+                                    <textarea name="supernova_custom_html_footer" id="supernova_custom_html_footer" class="large-text code saturn-code" rows="24"><?php echo html_entity_decode( get_option( 'supernova_custom_html_footer' ) ); ?></textarea>
                                 </p>
                             </td>
                         </tr>
@@ -810,16 +808,6 @@ function saturn_settings() {
 
                 update_option( 'use_organic_underline', (int) $_POST['use_organic_underline'] );
                 update_option( 'use_back_to_top', (int) $_POST['use_back_to_top'] );
-
-                // JavaScript Libraries
-                delete_option( 'use_splitting_js' );
-                delete_option( 'use_side_drawer' );
-                delete_option( 'side_drawer_handle_title' );
-                delete_option( 'supernova_drawer_block_id' );
-
-                delete_option( 'supernova_snackbar' );
-                delete_option( 'supernova_snackbar_block_id' );
-                delete_option( 'supernova_snackbar_scroll_value' );
 
                 update_option( 'use_magnetmouse_js', (int) $_POST['use_magnetmouse_js'] );
 
