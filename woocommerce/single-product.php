@@ -12,7 +12,7 @@
  *
  * @see         https://docs.woocommerce.com/document/template-structure/
  * @package     WooCommerce\Templates
- * @version     1.6.4
+ * @version     8.6.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -55,13 +55,13 @@ get_header( 'shop' ); ?>
         if ( $crosssells ) {
             echo '<h2>Related products</h2>';
             echo '<ul>';
-            foreach ($crosssells as $item) {
+            foreach ( $crosssells as $item ) {
                 // WP_Query arguments
-                $args = array (
-                    'p'                      => $item,
-                    'post_type'              => array( 'product' ),
-                    'post_status'            => array( 'publish' ),
-                );
+                $args = [
+                    'p'           => $item,
+                    'post_type'   => [ 'product' ],
+                    'post_status' => [ 'publish' ],
+                ];
                 // The Query
                 $related = new WP_Query( $args );
                 // The Loop
@@ -69,7 +69,7 @@ get_header( 'shop' ); ?>
                     while ( $related->have_posts() ) {
                         $related->the_post();
                         ?>
-                            <li><a href="<?php the_permalink();?>"><?php the_title();?></a></li>
+                            <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
                         <?php
                     }
                 } else {
