@@ -11,8 +11,6 @@ require_once 'includes/user.php';
 /**
  * Custom post types
  */
-require_once 'includes/functions.php';
-
 if ( (int) get_option( 'use_testimonials' ) === 1 ) {
     include 'includes/cpt-testimonials.php';
     include 'modules/testimonials/testimonials.php';
@@ -77,8 +75,6 @@ add_action( 'admin_enqueue_scripts', 'saturn_admin_scripts' );
 
 function saturn_admin_scripts() {
     $version = wp_get_theme()->get( 'Version' );
-
-    wp_register_style( 'saturn-google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap', [], $version );
 
     wp_register_style( 'saturn', get_stylesheet_directory_uri() . '/assets/css/admin.css', [], $version );
 

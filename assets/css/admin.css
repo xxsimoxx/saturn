@@ -1,15 +1,3 @@
-.saturn--ui h1,
-.saturn--ui h2,
-.saturn--ui h3,
-.saturn--ui h4,
-.saturn--ui h5,
-.saturn--ui h5,
-.saturn--ui summary,
-.saturn--ui .button,
-.saturn--ui .nav-tab {
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-}
-
 .saturn-code {
     background-color: #1a2023;
     border: 0 none;
