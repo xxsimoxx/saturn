@@ -189,18 +189,20 @@ function saturn_setup() {
     add_image_size( 'homepage_hero', 1440, 900, true );
     add_image_size( 'homepage_grid', 640, 400, true );
 
-    add_theme_support(
-        'html5',
-        [
-            'script',
-            'style',
-            'search-form',
-            'comment-form',
-            'comment-list',
-            'gallery',
-            'caption',
-        ]
-    );
+    if ( ! function_exists( 'classicpress_version' ) ) {
+        add_theme_support(
+            'html5',
+            [
+                'script',
+                'style',
+                'search-form',
+                'comment-form',
+                'comment-list',
+                'gallery',
+                'caption',
+            ]
+        );
+    }
 
     add_theme_support(
         'custom-logo',
