@@ -27,7 +27,7 @@
     <?php } ?>
 
     --content_width: <?php echo get_option( 'content_width' ); ?>px;
-    --wp--style--global--content-size: <?php echo get_option( 'content_width' ); ?>px;
+    --wp--style--global--content-size: <?php echo get_option( 'content_width' ); ?>px !important;
     --wp--style--global--wide-size: 1440px;
 
     --primarycolor: <?php echo get_option( 'primary_colour' ); ?>;
@@ -49,6 +49,15 @@
     --header_background_colour: <?php echo get_option( 'header_background_colour' ); ?>;
 
     --footer_background_colour: <?php echo get_option( 'footer_background_colour' ); ?>;
+
+    --entry-title-border-height: <?php echo ( (int) get_option( 'saturn_page_title_border_height' ) > 0 ) ? get_option( 'saturn_page_title_border_height' ) . 'px' : 0; ?>;
+
+    --saturn-global-font-base: <?php echo ( (int) get_option( 'saturn_global_font_base' ) > 0 ) ? (int) get_option( 'saturn_global_font_base' ) . 'px' : '16px'; ?>;
+    --saturn-global-radius: <?php echo ( (int) get_option( 'saturn_global_radius' ) >= 0 ) ? (int) get_option( 'saturn_global_radius' ) . 'px' : 0; ?>;
+}
+body {
+    --content_width: <?php echo get_option( 'content_width' ); ?>px;
+    --wp--style--global--content-size: <?php echo get_option( 'content_width' ); ?>px !important;
 }
 </style>
 

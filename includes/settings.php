@@ -20,6 +20,7 @@ function saturn_settings() {
         <h2 class="nav-tab-wrapper">
             <a href="<?php echo $section; ?>welcome" class="nav-tab <?php echo $tab === 'welcome' ? 'nav-tab-active' : ''; ?>">Welcome</a>
             <a href="<?php echo $section; ?>design" class="nav-tab <?php echo $tab === 'design' ? 'nav-tab-active' : ''; ?>">Design</a>
+            <a href="<?php echo $section; ?>templates" class="nav-tab <?php echo $tab === 'templates' ? 'nav-tab-active' : ''; ?>">Templates</a>
             <a href="<?php echo $section; ?>css" class="nav-tab <?php echo $tab === 'css' ? 'nav-tab-active' : ''; ?>">Custom CSS</a>
             <a href="<?php echo $section; ?>html" class="nav-tab <?php echo $tab === 'html' ? 'nav-tab-active' : ''; ?>">Custom HTML/JS</a>
             <a href="<?php echo $section; ?>modules" class="nav-tab <?php echo $tab === 'modules' ? 'nav-tab-active' : ''; ?>">Modules</a>
@@ -720,6 +721,100 @@ function saturn_settings() {
                 <p><input type="submit" name="supernova_save" value="Save Changes" class="button-primary"></p>
             </form>
             <?php
+        } elseif ( $tab === 'templates' ) {
+            if ( isset( $_POST['saturn_save'] ) ) {
+                update_option( 'saturn_page_title_alignment', sanitize_text_field( $_POST['saturn_page_title_alignment'] ) );
+                update_option( 'saturn_page_title_border_height', (int) $_POST['saturn_page_title_border_height'] );
+
+                update_option( 'saturn_global_font_base', (int) $_POST['saturn_global_font_base'] );
+                update_option( 'saturn_global_radius', (int) $_POST['saturn_global_radius'] );
+
+                echo '<div class="updated notice is-dismissible"><p>Settings updated successfully!</p></div>';
+            }
+            ?>
+            <h3>Template Settings</h3>
+
+            <form method="post" action="">
+                <table class="form-table">
+                    <tbody>
+                        <tr>
+                            <th scope="row" colspan="2"><h2>Templates (posts, pages, categories and taxonomies)</h2></th>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Page Title</label></th>
+                            <td>
+                                <p>
+                                    <label>Page title alignment</label>
+                                    <br><small>The alignment only applies to the default templates, not landing ones.</small>
+                                </p>
+                                <p class="thin-ui-group-switch">
+                                    <input type="radio" id="ui_page_title_align_left" name="saturn_page_title_alignment" value="alignleft" <?php checked( 'alignleft', (string) get_option( 'saturn_page_title_alignment' ) ); ?>>
+                                    <label for="ui_page_title_align_left"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9v6h11V9H9zM4 20h1.5V4H4v16z"/></svg></label>
+
+                                    <input type="radio" id="ui_page_title_align_center" name="saturn_page_title_alignment" value="aligncenter" <?php checked( 'aligncenter', (string) get_option( 'saturn_page_title_alignment' ) ); ?>>
+                                    <label for="ui_page_title_align_center"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 9h-7.2V4h-1.6v5H4v6h7.2v5h1.6v-5H20z"/></svg></label>
+
+                                    <input type="radio" id="ui_page_title_align_right" name="saturn_page_title_alignment" value="alignright" <?php checked( 'alignright', (string) get_option( 'saturn_page_title_alignment' ) ); ?>>
+                                    <label for="ui_page_title_align_right"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 15h11V9H4v6zM18.5 4v16H20V4h-1.5z"/></svg></label>
+                                </p>
+                                <p>
+                                    <label for="saturn_page_title_border_height">
+                                        Page title bottom border height
+                                    </label>
+
+                                    <br>
+                                    <input type="range" min="0" max="16" value="<?php echo get_option( 'saturn_page_title_border_height' ); ?>" step="1" name="saturn_page_title_border_height" id="saturn_page_title_border_height" style="width:240px">
+                                    <br>
+                                    <code class="codor" id="saturn_page_title_border_height_value"></code>px
+                                    <script>
+                                    let slider = document.getElementById('saturn_page_title_border_height');
+                                    let output = document.getElementById('saturn_page_title_border_height_value');
+                                    output.innerHTML = slider.value;
+
+                                    slider.oninput = () => {
+                                        output.innerHTML = slider.value;
+                                    }
+                                    </script>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="2"><h2>Globals (global values, used by various template elements)</h2></th>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Font Base Size</label></th>
+                            <td>
+                                <p>
+                                    <select name="saturn_global_font_base" id="saturn_global_font_base">
+                                        <option value="0">Select a font base size...</option>
+                                        <option value="14" <?php selected( 14, (int) get_option( 'saturn_global_font_base' ) ); ?>>14px</option>
+                                        <option value="15" <?php selected( 15, (int) get_option( 'saturn_global_font_base' ) ); ?>>15px</option>
+                                        <option value="16" <?php selected( 16, (int) get_option( 'saturn_global_font_base' ) ); ?>>16px (default)</option>
+                                        <option value="17" <?php selected( 17, (int) get_option( 'saturn_global_font_base' ) ); ?>>17px</option>
+                                        <option value="18" <?php selected( 18, (int) get_option( 'saturn_global_font_base' ) ); ?>>18px</option>
+                                        <option value="19" <?php selected( 19, (int) get_option( 'saturn_global_font_base' ) ); ?>>19px</option>
+                                        <option value="20" <?php selected( 20, (int) get_option( 'saturn_global_font_base' ) ); ?>>20px</option>
+                                    </select>
+                                    <label for="saturn_global_radius">Global font base size (in pixels)</label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label>Border Radius</label></th>
+                            <td>
+                                <p>
+                                    <input type="number" min="0" name="saturn_global_radius" id="saturn_global_radius" value="<?php echo get_option( 'saturn_global_radius' ); ?>">
+                                    <label for="saturn_global_radius">Global border radius (in pixels)</label>
+                                    <br><small>The border radius applies to blocks or block elements that do not have a settable radius property.</small>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <p><input type="submit" name="saturn_save" value="Save Changes" class="button button-primary"></p>
+            </form>
+            <?php
         } elseif ( $tab === 'css' ) {
             if ( isset( $_POST['supernova_save'] ) ) {
                 update_option( 'supernova_custom_css', $_POST['supernova_custom_css'] );
@@ -973,6 +1068,15 @@ function saturn_settings() {
                                 <p>
                                     <input type="checkbox" id="use_magnetmouse_js" name="use_magnetmouse_js" value="1" <?php echo ((int) get_option('use_magnetmouse_js') === 1) ? 'checked' : ''; ?>>
                                     <label for="use_magnetmouse_js">Enable Magnet Mouse</label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="saturn_auto_update">Automatic Background Updates</label></th>
+                            <td>
+                                <p>
+                                    <input type="checkbox" id="saturn_auto_update" name="saturn_auto_update" value="1" <?php checked( 1, (int) get_option( 'saturn_auto_update' ) ); ?>> <label for="saturn_auto_update">Enable automatic updates</label>
+                                    <br><small>Enable to allow Saturn to download and install bug fixes and security updates automatically in the background.</small>
                                 </p>
                             </td>
                         </tr>

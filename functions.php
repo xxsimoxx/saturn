@@ -23,6 +23,11 @@ if ( (int) get_option( 'use_flickity' ) === 1 ) {
     include 'modules/slider/slider.php';
 }
 
+if ( class_exists( 'GFForms' ) ) {
+    // Gravity Forms is enabled
+    include 'modules/gravity-forms.php';
+}
+
 // Saturn Module: Mini CSS
 include 'modules/custom-css.php';
 

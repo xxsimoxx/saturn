@@ -1,7 +1,11 @@
-<?php get_header(); ?>
+<?php
+get_header();
+
+$saturn_page_title_alignment = (string) get_option( 'saturn_page_title_alignment' ) !== '' ? get_option( 'saturn_page_title_alignment' ) : 'aligncenter';
+?>
 
 <div class="wrap-inner">
-    <h1 class="entry-title"><?php echo single_cat_title(); ?></h1>
+    <h1 class="entry-title <?php echo $saturn_page_title_alignment; ?>"><?php echo single_cat_title(); ?></h1>
     <div class="has-medium-font-size"><?php echo category_description(); ?></div>
 
     <?php if ( (int) get_option( 'use_blog_search' ) === 1 ) { ?>

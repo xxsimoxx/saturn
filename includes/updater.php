@@ -47,17 +47,15 @@ if ( is_admin() ) {
 
 
 function saturn_auto_update_specific_themes( $update, $item ) {
-    // Array of theme slugs to always auto-update
-    $themes = [
-        'saturn',
-    ];
+    $theme_slug = 'supernova';
 
-    if ( in_array( $item->slug, $themes ) ) {
-        // Always update themes in this array
+    if ( $item->slug === $theme_slug ) {
         return true;
-    } else {
-        // Else, use the normal API response to decide whether to update or not
-        return $update;
     }
+
+    return $update;
 }
-add_filter( 'auto_update_theme', 'saturn_auto_update_specific_themes', 10, 2 );
+
+if ( (int) get_option( 'saturn_auto_update' ) === 1 ) {
+    add_filter( 'auto_update_theme', 'saturn_auto_update_specific_themes', 10, 2 );
+}

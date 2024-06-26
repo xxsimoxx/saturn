@@ -83,7 +83,7 @@ body {
     font-family: var(--font_default);
     font-family: var(--body_font);
     position: relative;
-    font-size: 16px;
+    font-size: var(--saturn-global-font-base, 16px);
     line-height: 1.75;
     color: #2c3e50;
     color: var(--color-text);
@@ -970,10 +970,10 @@ header nav .menu-item.menu-toggle {
 
 h1.entry-title {
     font-weight: 300;
-    text-align: center;
     margin: 24px 0;
     padding: 24px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    border-bottom: 0 solid rgba(0, 0, 0, 0.10);
+    border-bottom-width: var(--entry-title-border-height, 0);
 }
 
 
