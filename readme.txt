@@ -5,7 +5,8 @@ Donate link: https://www.buymeacoffee.com/wolffe
 Requires at least: 6.0
 Tested up to: 6.6
 Requires PHP: 7.3
-Stable tag: 2.6.3
+Requires CP: 2.0
+Stable tag: 2.6.4
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
