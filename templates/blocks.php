@@ -7,38 +7,41 @@
  * @param string $content Content to be cleaned
  * @return string $content Cleaned content
  */
-function saturn_paragraph_fix($content) {
-    $removeArray = [
-        '<p>[' => '[',
-        ']</p>' => ']',
+function saturn_paragraph_fix( $content ) {
+    $remove_array = [
+        '<p>['    => '[',
+        ']</p>'   => ']',
         ']<br />' => ']',
-        ']<br>' => ']'
+        ']<br>'   => ']',
     ];
 
-    $content = strtr($content, $removeArray);
+    $content = strtr( $content, $remove_array );
 
     return $content;
 }
 
 
 
-add_filter('the_content', 'saturn_paragraph_fix',10,1);
+add_filter( 'the_content', 'saturn_paragraph_fix', 10, 1 );
 
 
 
-function get_osm_map($atts) {
-    $attributes = shortcode_atts([
-        'markers' => ''
-    ], $atts);
+function get_osm_map( $atts ) {
+    $attributes = shortcode_atts(
+        [
+            'markers' => '',
+        ],
+        $atts
+    );
 
     /**
      * [55.134874, -7.453658, "Market Square, Buncrana, Co. Donegal"],
      * [55.2512645,-7.2618951, "The Diamond, Carndonagh, Co. Donegal"],
      */
-    $addressPoints = '';
-    $markers = explode('|', $attributes['markers']);
-    foreach ($markers as $marker) {
-        $addressPoints .= '[' . trim($marker) . '],';
+    $address_points = '';
+    $markers        = explode( '|', $attributes['markers'] );
+    foreach ( $markers as $marker ) {
+        $address_points .= '[' . trim( $marker ) . '],';
     }
 
     $out = '<div id="osm-map"></div>
@@ -53,7 +56,7 @@ function get_osm_map($atts) {
 
         // Markers
         var addressPoints = [
-            ' . $addressPoints . '
+            ' . $address_points . '
         ];
         var markers = L.markerClusterGroup({
             spiderfyOnMaxZoom: false,
@@ -61,49 +64,38 @@ function get_osm_map($atts) {
             zoomToBoundsOnClick: false
         });
 
-        // Fit to bounds v1
-        // var bounds = new L.LatLngBounds();
-
         for (var i = 0; i < addressPoints.length; i++) {
 			var a = addressPoints[i];
 			var title = a[2];
 			var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
 			marker.bindPopup(title);
 			markers.addLayer(marker);
-
-            // Fit to bounds v1
-            // bounds.extend(marker.getLatLng());
 		}
         osmMap.addLayer(markers);
 
-        // Fit to bounds v1
-        // osmMap.fitBounds(bounds);
-
-        // Fit to bounds v2
         osmMap.fitBounds([addressPoints]);
-        //
 
         var currentZoom = parseInt(osmMap.getZoom());
         osmMap.setZoom(currentZoom);
-
-        // Disable scrollzoom
-        // osmMap.scrollWheelZoom.disable();
     }, false);
     </script>';
 
     return $out;
 }
 
-function saturn_fa($atts) {
-    $attributes = shortcode_atts([
-        'class' => ''
-    ], $atts);
+function saturn_fa( $atts ) {
+    $attributes = shortcode_atts(
+        [
+            'class' => '',
+        ],
+        $atts
+    );
 
-    $class = sanitize_text_field($attributes['class']);
+    $class = sanitize_text_field( $attributes['class'] );
 
     return '<i class="' . $class . '"></i>';
 }
-add_shortcode('fa', 'saturn_fa');
+add_shortcode( 'fa', 'saturn_fa' );
 
 
-add_shortcode('osm-map', 'get_osm_map');
+add_shortcode( 'osm-map', 'get_osm_map' );

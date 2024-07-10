@@ -495,7 +495,7 @@ header nav ul > li > ul > li a {
     padding: 8px 16px 8px 16px;
     display: block;
 }
-header nav ul > li:hover > ul {
+header:not(.header-clicky) nav ul > li:hover > ul {
     display: block;
     margin: 0 0 0 0;
 
@@ -518,6 +518,28 @@ header ul.sub-menu ul.sub-menu {
         margin: 0 0 0 0;
     }
 }
+
+
+
+/**
+ * Multilevel menu: Click instead of hover
+ */
+header.header-clicky nav ul > li:active > ul {
+    display: block;
+    margin: 0 0 0 0;
+}
+
+header.header-clicky nav ul > li a:focus + ul,
+header.header-clicky nav ul > li a:focus-visible + ul,
+header.header-clicky nav ul > li a:focus-within + ul {
+    display: block;
+    margin: 0 0 0 0;
+
+    animation-duration: 0.25s;
+    animation-name: slidein;
+}
+/**/
+
 
 
 

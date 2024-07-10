@@ -11,6 +11,8 @@ require_once 'includes/user.php';
 /**
  * Custom post types
  */
+include 'modules/template-parts.php';
+
 if ( (int) get_option( 'use_testimonials' ) === 1 ) {
     include 'includes/cpt-testimonials.php';
     include 'modules/testimonials/testimonials.php';
@@ -345,9 +347,9 @@ add_action( 'wp_footer', 'saturn_footer', 10, 0 );
 
 
 /**
- * Get the formatted HTML content of a given pattern ID and return it
+ * Get the formatted HTML content of a given template part ID and return it
  *
- * @var    int    $block_id ID of pattern
+ * @var    int    $block_id ID of template part
  * @return string
  */
 function saturn_get_reusable_block( $block_id = '' ) {

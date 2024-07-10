@@ -12,64 +12,72 @@ function get_saturn_header() {
     $out = '';
 
     // Initialize options
-    $header_boxed_nav = (int) get_option('boxed_nav');
-    $header_type      = (int) get_option('header_type');
+    $header_boxed_nav = (int) get_option( 'boxed_nav' );
+    $header_type      = (int) get_option( 'header_type' );
 
     $header_boxed_nav = ( $header_boxed_nav === 1 ) ? 'wrap' : '';
+
+    $ul_wrap_class = ( (int) get_option( 'fullwidth_nav' ) === 1 ) ? '' : 'wrap';
 
     $primary_pipes = wp_nav_menu(
         [
             'theme_location' => 'primary-pipes',
-            'menu_class'     => 'wrap',
+            'menu_class'     => $ul_wrap_class,
             'container'      => false,
             'echo'           => false,
         ]
     );
-    $primaryMenu = wp_nav_menu([
-        'theme_location' => 'main-menu',
-        'menu_class' => 'wrap',
-        'container' => false,
-        'echo' => false
-    ]);
 
-    switch ($header_type) {
+    $primary_menu = wp_nav_menu(
+        [
+            'theme_location' => 'main-menu',
+            'menu_class'     => $ul_wrap_class,
+            'container'      => false,
+            'echo'           => false,
+        ]
+    );
+
+    switch ( $header_type ) {
         case 1:
-            $headerClass = 'header-top';
+            $header_class = 'header-top';
             break;
         case 2:
-            $headerClass = 'header-sticky-modern';
+            $header_class = 'header-sticky-modern';
             break;
         default:
-            $headerClass = '';
+            $header_class = '';
     }
 
-    if ((int) get_option('padded_nav') === 1) {
-        $headerClass .= ' header-padded';
+    if ( (int) get_option( 'padded_nav' ) === 1 ) {
+        $header_class .= ' header-padded';
     }
-    if ((int) get_option('rounded_nav') === 1) {
-        $headerClass .= ' header-rounded';
+    if ( (int) get_option( 'rounded_nav' ) === 1 ) {
+        $header_class .= ' header-rounded';
     }
-    if ((int) get_option('transparent_nav') === 1) {
-        $headerClass .= ' header-transparent';
+    if ( (int) get_option( 'transparent_nav' ) === 1 ) {
+        $header_class .= ' header-transparent';
     }
-    if ((int) get_option('noshadow_nav') === 1) {
-        $headerClass .= ' header-noshadow';
+    if ( (int) get_option( 'noshadow_nav' ) === 1 ) {
+        $header_class .= ' header-noshadow';
+    }
+    if ( (int) get_option( 'clicky_nav' ) === 1 ) {
+        $header_class .= ' header-clicky';
     }
 
-    if ((int) get_option('use_organic_underline') === 1) {
-        $headerClass .= ' header-organic';
+    if ( (int) get_option( 'use_organic_underline' ) === 1 ) {
+        $header_class .= ' header-organic';
     }
 
     if ( (string) get_option( 'ui_logo_align' ) === 'right' ) {
-        $headerClass .= ' header-logo-right';
+        $header_class .= ' header-logo-right';
     }
 
-    $headerClass .= ' header-spacing--' . (string) get_option( 'ui_nav_spacing' );
+    $header_class .= ' header-spacing--' . (string) get_option( 'ui_nav_spacing' );
 
-    $out .= '<header class="' . $headerClass . ' ' . $header_boxed_nav . '">
+    $out .= '<header class="' . $header_class . ' ' . $header_boxed_nav . '">
         <nav>
             ' . $primary_pipes . '
-            ' . $primaryMenu . '
+            ' . $primary_menu . '
         </nav>
     </header>';
 
@@ -101,7 +109,7 @@ function saturn_custom_menu_item( $items, $args ) {
                 </a>
             </li>';
         } else {
-            if ((int) get_option('navicon_type') === 1) {
+            if ( (int) get_option( 'navicon_type' ) === 1 ) {
                 // Black icon
                 $items .= '<li class="menu-item menu-toggle">
                     <a href="#">
@@ -109,7 +117,7 @@ function saturn_custom_menu_item( $items, $args ) {
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYAQAAAADIDABVAAAAAnRSTlMAAQGU/a4AAAAXSURBVHjaY/j//z8DOj7AwAzGlIoDMQD2pDpdsSi2QgAAAABJRU5ErkJggg==" alt="Menu" class="side-menu-close">
                     </a>
                 </li>';
-            } else if ((int) get_option('navicon_type') === 2) {
+            } elseif ( (int) get_option( 'navicon_type' ) === 2 ) {
                 // White icon
                 $items .= '<li class="menu-item menu-toggle">
                     <a href="#">
@@ -119,8 +127,8 @@ function saturn_custom_menu_item( $items, $args ) {
             }
         }
 
-        if ((int) get_option('use_dark_mode') === 1) {
-            if ((int) get_option('use_icofont') === 1) {
+        if ( (int) get_option( 'use_dark_mode' ) === 1 ) {
+            if ( (int) get_option( 'use_icofont' ) === 1 ) {
                 $items .= '<li class="menu-item menu-theme-container">
                     <a class="toggle-container" href="#">
                         <input type="checkbox" id="switch" name="theme"><label for="switch" aria-label="Dark Mode"><i class="icofont-sun"></i><i class="icofont-moon"></i></label>
@@ -139,4 +147,4 @@ function saturn_custom_menu_item( $items, $args ) {
     return $items;
 }
 
-add_filter('wp_nav_menu_items', 'saturn_custom_menu_item', 10, 2);
+add_filter( 'wp_nav_menu_items', 'saturn_custom_menu_item', 10, 2 );

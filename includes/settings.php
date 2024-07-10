@@ -8,7 +8,17 @@ function saturn_settings_menu() {
 function saturn_settings() {
     wp_enqueue_style( 'saturn-google-fonts' );
     wp_enqueue_style( 'saturn' );
+
     wp_enqueue_script( 'saturn' );
+
+    $args = [
+        'post_type'      => [ 'wp_block', 'template_part' ],
+        'posts_per_page' => -1,
+        'order'          => 'ASC',
+        'orderby'        => 'title',
+    ];
+
+    $template_part_query = new WP_Query( $args );
     ?>
     <div class="wrap saturn--ui">
         <h1>Saturn</h1>
@@ -78,7 +88,7 @@ function saturn_settings() {
                             <td>
                                 <p>
                                     <input type="text" id="tracking_ga" name="tracking_ga" class="regular-text" value="<?php echo get_option( 'tracking_ga' ); ?>">
-                                    <br><small>Use your Google Analytics <code>UA-XXXXXX-YY</code> code here.</small>
+                                    <br><small>Use your Google Analytics 4 <code>G-XXXXXXXXXX</code> ID here.</small>
                                 </p>
                             </td>
                         </tr>
@@ -121,6 +131,9 @@ function saturn_settings() {
                 update_option( 'padded_nav', (int) $_POST['padded_nav'] );
                 update_option( 'transparent_nav', (int) $_POST['transparent_nav'] );
                 update_option( 'noshadow_nav', (int) $_POST['noshadow_nav'] );
+
+                update_option( 'fullwidth_nav', (int) $_POST['fullwidth_nav'] );
+                update_option( 'clicky_nav', (int) $_POST['clicky_nav'] );
 
                 update_option( 'header_type', (int) $_POST['header_type'] );
                 update_option( 'navicon_type', (int) $_POST['navicon_type'] );
@@ -190,97 +203,72 @@ function saturn_settings() {
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="reusable_block_footer_id">Footer Pattern</label></th>
+                            <th scope="row"><label for="reusable_block_footer_id">Footer Template Part</label></th>
                             <td>
                                 <?php
                                 $reusable_block_footer_id = get_option( 'reusable_block_footer_id' );
 
-                                $args = [
-                                    'post_type'      => 'wp_block',
-                                    'posts_per_page' => -1,
-                                    'order'          => 'ASC',
-                                    'orderby'        => 'title',
-                                ];
-
-                                $wp_block_query = new WP_Query( $args );
-
                                 $out = '<select name="reusable_block_footer_id" id="reusable_block_footer_id">';
-                                    $out .= '<option value="">Select a pattern...</option>';
+                                    $out .= '<option value="">Select a template part...</option>';
 
-                                    if ( $wp_block_query->have_posts() ) {
-                                        while ( $wp_block_query->have_posts() ) {
-                                            $wp_block_query->the_post();
+                                    if ( $template_part_query->have_posts() ) {
+                                        while ( $template_part_query->have_posts() ) {
+                                            $template_part_query->the_post();
 
                                             $selected = ( (int) $reusable_block_footer_id === (int) get_the_ID() ) ? 'selected' : '';
                                             $out     .= '<option value="' . get_the_ID() . '" ' . $selected . '>' . get_the_title() . '</option>';
                                         }
                                     }
                                 $out .= '</select>
-                                <br><small><a href="' . admin_url( 'edit.php?post_type=wp_block' ) . '">Select your footer pattern or create one now</a>.</small>';
+                                <br><small><a href="' . admin_url( 'edit.php?post_type=template_part' ) . '">Select your footer template part or create one now</a>.</small>';
 
                                 echo $out;
                                 ?>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="reusable_block_post_sidebar_id">Post Sidebar Pattern</label></th>
+                            <th scope="row"><label for="reusable_block_post_sidebar_id">Post Sidebar Template Part</label></th>
                             <td>
                                 <?php
                                 $reusableBlockPostSidebarId = get_option('reusable_block_post_sidebar_id');
 
-                                $args = [
-                                    'post_type' => 'wp_block',
-                                    'posts_per_page' => -1,
-                                    'order' => 'ASC',
-                                    'orderby' => 'title'
-                                ];
-                                $wp_block_query = new WP_Query($args);
-
                                 $out = '<select name="reusable_block_post_sidebar_id" id="reusable_block_post_sidebar_id">';
-                                    $out .= '<option value="">Select a pattern...</option>';
+                                    $out .= '<option value="">Select a template part...</option>';
 
-                                    if ($wp_block_query->have_posts()) {
-                                        while ($wp_block_query->have_posts()) {
-                                            $wp_block_query->the_post();
+                                    if ($template_part_query->have_posts()) {
+                                        while ($template_part_query->have_posts()) {
+                                            $template_part_query->the_post();
 
                                             $selected = ((int) $reusableBlockPostSidebarId === (int) get_the_ID()) ? 'selected' : '';
                                             $out .= '<option value="' . get_the_ID() . '" ' . $selected . '>' . get_the_title() . '</option>';
                                         }
                                     }
                                 $out .= '</select>
-                                <br><small><a href="' . admin_url('edit.php?post_type=wp_block') . '">Select your post sidebar pattern or create one now</a>. Use this sidebar for blog posts.</small>';
+                                <br><small><a href="' . admin_url('edit.php?post_type=template_part') . '">Select your post sidebar template part or create one now</a>. Use this sidebar for blog posts.</small>';
 
                                 echo $out;
                                 ?>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="reusable_block_mobile_id">Mobile Menu Pattern<br><small>Below menu</small></label></th>
+                            <th scope="row"><label for="reusable_block_mobile_id">Mobile Menu Template Part<br><small>Below menu</small></label></th>
                             <td>
                                 <?php
                                 $reusableBlockMobileId = get_option('reusable_block_mobile_id');
 
-                                $args = [
-                                    'post_type' => 'wp_block',
-                                    'posts_per_page' => -1,
-                                    'order' => 'ASC',
-                                    'orderby' => 'title'
-                                ];
-                                $wp_block_query = new WP_Query($args);
-
                                 $out = '<select name="reusable_block_mobile_id" id="reusable_block_mobile_id">';
-                                    $out .= '<option value="">Select a pattern...</option>';
+                                    $out .= '<option value="">Select a template part...</option>';
 
-                                    if ($wp_block_query->have_posts()) {
-                                        while ($wp_block_query->have_posts()) {
-                                            $wp_block_query->the_post();
+                                    if ($template_part_query->have_posts()) {
+                                        while ($template_part_query->have_posts()) {
+                                            $template_part_query->the_post();
 
                                             $selected = ((int) $reusableBlockMobileId === (int) get_the_ID()) ? 'selected' : '';
                                             $out .= '<option value="' . get_the_ID() . '" ' . $selected . '>' . get_the_title() . '</option>';
                                         }
                                     }
                                 $out .= '</select>
-                                <br><small><a href="' . admin_url('edit.php?post_type=wp_block') . '">Select your mobile pattern or create one now</a>. Use this block to show additional details under the mobile menu (e.g. social icons, location or even a map).</small>';
+                                <br><small><a href="' . admin_url('edit.php?post_type=template_part') . '">Select your mobile template part or create one now</a>. Use this block to show additional details under the mobile menu (e.g. social icons, location or even a map).</small>';
 
                                 echo $out;
                                 ?>
@@ -303,6 +291,14 @@ function saturn_settings() {
                                     <label for="transparent_nav">Transparent</label>
                                     <input type="checkbox" id="noshadow_nav" name="noshadow_nav" value="1" <?php echo ((int) get_option('noshadow_nav') === 1) ? 'checked' : ''; ?>>
                                     <label for="noshadow_nav">No Shadow</label>
+                                </p>
+                                <p>
+                                    <input type="checkbox" id="fullwidth_nav" name="fullwidth_nav" value="1" <?php checked( 1, (int) get_option( 'fullwidth_nav' ) ); ?>>
+                                    <label for="fullwidth_nav">Use full width instead of content width</label>
+                                </p>
+                                <p>
+                                    <input type="checkbox" id="clicky_nav" name="clicky_nav" value="1" <?php echo ((int) get_option('clicky_nav') === 1) ? 'checked' : ''; ?>>
+                                    <label for="clicky_nav">Use click instead of hover</label>
                                 </p>
                                 <p>
                                     <select name="header_type" id="header-type">
@@ -747,7 +743,7 @@ function saturn_settings() {
                                     <label>Page title alignment</label>
                                     <br><small>The alignment only applies to the default templates, not landing ones.</small>
                                 </p>
-                                <p class="thin-ui-group-switch">
+                                <p class="saturn-group-switch">
                                     <input type="radio" id="ui_page_title_align_left" name="saturn_page_title_alignment" value="alignleft" <?php checked( 'alignleft', (string) get_option( 'saturn_page_title_alignment' ) ); ?>>
                                     <label for="ui_page_title_align_left"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 9v6h11V9H9zM4 20h1.5V4H4v16z"/></svg></label>
 
@@ -937,27 +933,19 @@ function saturn_settings() {
                                     <?php
                                     $supernovaSidePanelBlockID = get_option('supernova_side_panel_block_id');
 
-                                    $args = [
-                                        'post_type' => 'wp_block',
-                                        'posts_per_page' => -1,
-                                        'order' => 'ASC',
-                                        'orderby' => 'title'
-                                    ];
-                                    $wp_block_query = new WP_Query($args);
-
                                     echo '<select name="supernova_side_panel_block_id" id="supernova_side_panel_block_id">
-                                        <option value="">Select a pattern...</option>';
+                                        <option value="">Select a template part...</option>';
 
-                                        if ($wp_block_query->have_posts()) {
-                                            while ($wp_block_query->have_posts()) {
-                                                $wp_block_query->the_post();
+                                        if ($template_part_query->have_posts()) {
+                                            while ($template_part_query->have_posts()) {
+                                                $template_part_query->the_post();
 
                                                 $selected = ((int) $supernovaSidePanelBlockID === (int) get_the_ID()) ? 'selected' : '';
                                                 echo '<option value="' . get_the_ID() . '" ' . $selected . '>' . get_the_title() . '</option>';
                                             }
                                         }
                                     echo '</select>
-                                    <br><small><a href="' . admin_url('edit.php?post_type=wp_block') . '">Select your side panel pattern or create one now</a>.</small>';
+                                    <br><small><a href="' . admin_url('edit.php?post_type=template_part') . '">Select your side panel template part or create one now</a>.</small>';
                                     ?>
                                 </p>
                                 <p>
